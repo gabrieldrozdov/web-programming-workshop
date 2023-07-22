@@ -1,0 +1,10 @@
+@font-face {
+	font-family: "Recursive";
+	src: url("assets/fonts/recursive.ttf");
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Recurse", monospace;
+}
