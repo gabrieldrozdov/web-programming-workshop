@@ -50,8 +50,13 @@
 	color: var(--black);
 	z-index: 99999999;
 }
-.taskbar h1 {
+.title {
 	font-size: 12px;
+	text-transform: uppercase;
+}
+.title a {
+	text-decoration: none;
+	color: var(--black);
 }
 #clock {
 	font-size: 12px;
@@ -61,11 +66,12 @@
 .dock {
 	position: absolute;
 	bottom: 4px;
-	left: 50%;
-	transform: translateX(-50%);
-	max-width: 100%;
+	left: calc(50% - 4px);
+	transform: translateX(calc(-50% + 4px));
+	width: calc(100% - 8px);
+	max-width: 1000px;
 	display: grid;
-	grid-template-columns: repeat(6, 1fr);
+	grid-template-columns: repeat(6, minmax(0, 1fr));
 	gap: 4px;
 	perspective: 200px;
 	z-index: 99999999;
@@ -79,10 +85,10 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: 5px;
+	gap: 8px;
 	background-color: var(--black);
 	border: 2px outset rgba(0,0,0,0);
-	padding: 4px 10px;
+	padding: 4px 8px;
 	cursor: pointer;
 	color: var(--black);
 	border-radius: 4px;
@@ -189,12 +195,9 @@
 	margin: 0 4px;
 }
 .window-title-name {
-	padding-top: .2em;
-	align-self: center;
-	text-overflow: ellipsis;
+	flex: 1 1 auto;
 	font-size: 12px;
-	white-space: nowrap;
-	overflow: hidden;
+	padding-top: .2em;
 }
 .window-btn {
 	flex: 0 0 auto;
@@ -218,6 +221,12 @@
 .window-btn svg {
 	width: 100%;
 	height: 100%;
+}
+
+/* Window transitions */
+.minimized {
+	transform: scale(0);
+	pointer-events: none;
 }
 
 /* Colored windows */
@@ -364,4 +373,11 @@
 	bottom: 8px;
 	width: 10px;
 	cursor: w-resize;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 900px) {
+	.dock-text {
+		display: none
+	}
 }

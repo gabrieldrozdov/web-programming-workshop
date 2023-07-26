@@ -28,7 +28,7 @@ let windows = {}
 var activeWindow = '';
 var zCounter = 0;
 function bringToTop(id) {
-	if (activeWindow != '') {
+	if (activeWindow != '' && windows[activeWindow]['status'] != 'closed') {
 		let prevActive = document.querySelector("#"+activeWindow);
 		prevActive.dataset.active = 0;
 	}
@@ -45,7 +45,7 @@ function generateWindow(type) {
 	let fullID = 'window' + idCounter;
 
 	let newWindow = document.createElement('div');
-	newWindow.classList.add('window');
+	newWindow.classList.add('window', 'minimized');
 	newWindow.addEventListener('mousedown', () => {bringToTop(fullID)});
 	newWindow.id = fullID;
 
@@ -154,10 +154,11 @@ function generateWindow(type) {
 
 	// Add to tracking object and iterate ID
 	windows[fullID] = {
-		'top': window.innerHeight*1/6,
-		'left': window.innerWidth*1/4,
-		'height': window.innerHeight*2/3,
-		'width': window.innerWidth*1/2,
+		'top': window.innerHeight*1/6 + Math.random()*50-25,
+		'left': window.innerWidth*1/4 + Math.random()*50-25,
+		'height': window.innerHeight*2/3 + Math.random()*50-25,
+		'width': window.innerWidth*1/2 + Math.random()*50-25,
+		'status': 'open',
 	}
 	newWindow.style.top = windows[fullID]['top'] + "px";
 	newWindow.style.left = windows[fullID]['left'] + "px";
@@ -167,6 +168,10 @@ function generateWindow(type) {
 	let container = document.querySelector('.container');
 	container.appendChild(newWindow);
 	bringToTop(fullID);
+
+	setTimeout(() => {
+		newWindow.classList.remove('minimized');
+	}, 100)
 
 	idCounter++;
 }
@@ -193,6 +198,7 @@ function closeWindow(id) {
 	let target = document.querySelector("#"+id);
 	let container = document.querySelector('.container');
 	container.removeChild(target);
+	windows[id]['status'] = 'closed';
 }
 function maximizeWindow(id) {
 	if (windows[id]['top'] == screenTop && windows[id]['left'] == screenLeft && windows[id]['height'] == screenHeight && windows[id]['width'] == screenWidth) {
@@ -207,13 +213,13 @@ function maximizeWindow(id) {
 }
 function minimizeWindow(id) {
 	let target = document.querySelector("#"+id);
-	target.style.transform = `scale(0)`;
-	target.style.pointerEvents = `none`;
+	target.classList.add('minimized');
+	windows[id]['status'] = 'minimized';
 }
 function showWindow(id) {
 	let target = document.querySelector("#"+id);
-	target.style.transform = `scale(1)`;
-	target.style.pointerEvents = `all`;
+	target.classList.remove('minimized');
+	windows[id]['status'] = 'open';
 }
 
 // Move window by dragging from titlebar
@@ -305,15 +311,15 @@ function resizeWindow(e1, id, dir) {
 		if (dir == 'topleft') {
 			windows[id]['left'] = e2.clientX;
 			windows[id]['width'] += rect.left - e2.clientX;
-			if (windows[id]['width'] < 200) {
-				windows[id]['width'] = 200;
-				windows[id]['left'] = rect.right - 200;
+			if (windows[id]['width'] < 300) {
+				windows[id]['width'] = 300;
+				windows[id]['left'] = rect.right - 300;
 			}
 			windows[id]['top'] = e2.clientY;
 			windows[id]['height'] += rect.top - e2.clientY;
-			if (windows[id]['height'] < 200) {
-				windows[id]['height'] = 200;
-				windows[id]['top'] = rect.bottom - 200;
+			if (windows[id]['height'] < 300) {
+				windows[id]['height'] = 300;
+				windows[id]['top'] = rect.bottom - 300;
 			}
 			if (windows[id]['top'] < screenTop) {
 				windows[id]['top'] = screenTop;
@@ -327,9 +333,9 @@ function resizeWindow(e1, id, dir) {
 		} else if (dir == 'top') {
 			windows[id]['top'] = e2.clientY;
 			windows[id]['height'] += rect.top - e2.clientY;
-			if (windows[id]['height'] < 200) {
-				windows[id]['height'] = 200;
-				windows[id]['top'] = rect.bottom - 200;
+			if (windows[id]['height'] < 300) {
+				windows[id]['height'] = 300;
+				windows[id]['top'] = rect.bottom - 300;
 			}
 			if (windows[id]['top'] < screenTop) {
 				windows[id]['top'] = screenTop;
@@ -338,8 +344,8 @@ function resizeWindow(e1, id, dir) {
 
 		} else if (dir == 'topright') {
 			windows[id]['width'] += e2.clientX - rect.right;
-			if (windows[id]['width'] < 200) {
-				windows[id]['width'] = 200;
+			if (windows[id]['width'] < 300) {
+				windows[id]['width'] = 300;
 			}
 			if (windows[id]['width'] + windows[id]['left'] > window.innerWidth) {
 				windows[id]['left'] = rect.left;
@@ -347,9 +353,9 @@ function resizeWindow(e1, id, dir) {
 			}
 			windows[id]['top'] = e2.clientY;
 			windows[id]['height'] += rect.top - e2.clientY;
-			if (windows[id]['height'] < 200) {
-				windows[id]['height'] = 200;
-				windows[id]['top'] = rect.bottom - 200;
+			if (windows[id]['height'] < 300) {
+				windows[id]['height'] = 300;
+				windows[id]['top'] = rect.bottom - 300;
 			}
 			if (windows[id]['top'] < screenTop) {
 				windows[id]['top'] = screenTop;
@@ -362,8 +368,8 @@ function resizeWindow(e1, id, dir) {
 
 		} else if (dir == 'right') {
 			windows[id]['width'] += e2.clientX - rect.right;
-			if (windows[id]['width'] < 200) {
-				windows[id]['width'] = 200;
+			if (windows[id]['width'] < 300) {
+				windows[id]['width'] = 300;
 			}
 			if (windows[id]['width'] + windows[id]['left'] > screenRight) {
 				windows[id]['left'] = rect.left;
@@ -372,12 +378,12 @@ function resizeWindow(e1, id, dir) {
 
 		} else if (dir == 'bottomright') {
 			windows[id]['width'] += e2.clientX - rect.right;
-			if (windows[id]['width'] < 200) {
-				windows[id]['width'] = 200;
+			if (windows[id]['width'] < 300) {
+				windows[id]['width'] = 300;
 			}
 			windows[id]['height'] += e2.clientY - rect.bottom;
-			if (windows[id]['height'] < 200) {
-				windows[id]['height'] = 200;
+			if (windows[id]['height'] < 300) {
+				windows[id]['height'] = 300;
 			}
 			if (windows[id]['top'] + windows[id]['height'] > screenBottom) {
 				windows[id]['top'] = rect.top;
@@ -390,8 +396,8 @@ function resizeWindow(e1, id, dir) {
 
 		} else if (dir == 'bottom') {
 			windows[id]['height'] += e2.clientY - rect.bottom;
-			if (windows[id]['height'] < 200) {
-				windows[id]['height'] = 200;
+			if (windows[id]['height'] < 300) {
+				windows[id]['height'] = 300;
 			}
 			if (windows[id]['top'] + windows[id]['height'] > screenBottom) {
 				windows[id]['top'] = rect.top;
@@ -401,13 +407,13 @@ function resizeWindow(e1, id, dir) {
 		} else if (dir == 'bottomleft') {
 			windows[id]['left'] = e2.clientX;
 			windows[id]['width'] += rect.left - e2.clientX;
-			if (windows[id]['width'] < 200) {
-				windows[id]['width'] = 200;
-				windows[id]['left'] = rect.right - 200;
+			if (windows[id]['width'] < 300) {
+				windows[id]['width'] = 300;
+				windows[id]['left'] = rect.right - 300;
 			}
 			windows[id]['height'] += e2.clientY - rect.bottom;
-			if (windows[id]['height'] < 200) {
-				windows[id]['height'] = 200;
+			if (windows[id]['height'] < 300) {
+				windows[id]['height'] = 300;
 			}
 			if (windows[id]['left'] < screenLeft) {
 				windows[id]['left'] = screenLeft;
@@ -421,9 +427,9 @@ function resizeWindow(e1, id, dir) {
 		} else if (dir == 'left') {
 			windows[id]['left'] = e2.clientX;
 			windows[id]['width'] += rect.left - e2.clientX;
-			if (windows[id]['width'] < 200) {
-				windows[id]['width'] = 200;
-				windows[id]['left'] = rect.right - 200;
+			if (windows[id]['width'] < 300) {
+				windows[id]['width'] = 300;
+				windows[id]['left'] = rect.right - 300;
 			}
 			if (windows[id]['left'] < screenLeft) {
 				windows[id]['left'] = screenLeft;
@@ -486,7 +492,55 @@ function showTime() {
     // Displaying the time
     document.getElementById(
         "clock"
-    ).innerHTML = currentTime;
+    ).innerText = currentTime;
 }
  
 showTime();
+
+
+
+let title = document.querySelector('.title');
+let temp = '<a href="https://webprogramming.gdwithgd.com/">'
+let colors = ['red','blue','purple','yellow','green','pink'];
+let colorIndex = 0;
+for (let char of title.innerText) {
+	temp += `<span data-color='${colorIndex}'>${char}</span>`;
+	colorIndex++;
+	if (colorIndex >= colors.length) {
+		colorIndex = 0;
+	}
+}
+temp += '</a>'
+title.innerHTML = temp;
+title.addEventListener('mouseenter', titleLoopStart);
+title.addEventListener('mouseleave', titleLoopStop);
+
+let titleLoop;
+function titleLoopStart() {
+	for (let char of document.querySelectorAll('.title a span')) {
+		let color = parseInt(char.dataset.color);
+		color++;
+		if (color >= colors.length) {
+			color = 0;
+		}
+		char.style.color = `var(--${colors[color]})`;
+		char.dataset.color = color;
+	}
+	titleLoop = setInterval(() => {
+		for (let char of document.querySelectorAll('.title a span')) {
+			let color = parseInt(char.dataset.color);
+			color++;
+			if (color >= colors.length) {
+				color = 0;
+			}
+			char.style.color = `var(--${colors[color]})`;
+			char.dataset.color = color;
+		}
+	}, 100)
+}
+function titleLoopStop() {
+	clearInterval(titleLoop);
+	for (let char of document.querySelectorAll('.title span')) {
+		char.style.color = `var(--black)`;
+	}
+}
