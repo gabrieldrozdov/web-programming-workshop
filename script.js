@@ -406,9 +406,9 @@ function moveWindow(e1, id) {
 			sizer.dataset.pos = 'top';
 		} else if (currentPos[1] >= screenBottom - 10) {
 			sizer.dataset.pos = 'bottom';
-		} else if (currentPos[0] <= screenLeft + 10) {
+		} else if (currentPos[0] <= screenLeft + 10 && window.innerWidth > 900) {
 			sizer.dataset.pos = 'left';
-		} else if (currentPos[0] >= screenRight - 10) {
+		} else if (currentPos[0] >= screenRight - 10 && window.innerWidth > 900) {
 			sizer.dataset.pos = 'right';
 		} else {
 			sizer.dataset.pos = '';
