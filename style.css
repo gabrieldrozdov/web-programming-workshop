@@ -91,6 +91,7 @@
 }
 .title {
 	font-size: 12px;
+	line-height: 1em;
 	text-transform: uppercase;
 }
 .title a {
@@ -102,6 +103,7 @@
 }
 #clock {
 	font-size: 12px;
+	line-height: 1em;
 }
 
 /* Dock */
