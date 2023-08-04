@@ -66,6 +66,7 @@ function generateWindow(type) {
 	let newWindow = document.createElement('div');
 	newWindow.classList.add('window', 'minimized');
 	newWindow.addEventListener('mousedown', () => {bringToTop(fullID)});
+	newWindow.addEventListener('touchstart', () => {bringToTop(fullID)});
 	newWindow.id = fullID;
 
 	// Generate titlebar
@@ -81,6 +82,7 @@ function generateWindow(type) {
 	let title = document.createElement('div');
 	title.classList.add('window-title');
 	title.addEventListener('mousedown', (e) => {moveWindow(e, fullID)});
+	title.addEventListener('touchstart', (e) => {moveWindow(e, fullID)});
 
 	let titleName = document.createElement('div');
 	titleName.classList.add('window-title-name');
@@ -190,6 +192,15 @@ function generateWindow(type) {
 	resizeBottom.addEventListener('mousedown', (e) => {resizeWindow(e, fullID, 'bottom')});
 	resizeBottomleft.addEventListener('mousedown', (e) => {resizeWindow(e, fullID, 'bottomleft')});
 	resizeLeft.addEventListener('mousedown', (e) => {resizeWindow(e, fullID, 'left')});
+
+	resizeTopleft.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'topleft')});
+	resizeTop.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'top')});
+	resizeTopright.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'topright')});
+	resizeRight.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'right')});
+	resizeBottomright.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'bottomright')});
+	resizeBottom.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'bottom')});
+	resizeBottomleft.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'bottomleft')});
+	resizeLeft.addEventListener('touchstart', (e) => {resizeWindow(e, fullID, 'left')});
 
 	newWindow.appendChild(resizeTopleft);
 	newWindow.appendChild(resizeTop);
@@ -329,6 +340,8 @@ function moveWindow(e1, id) {
 	target.dataset.reposition = 1;
 	window.addEventListener('mouseup', endMove);
 	window.addEventListener('mousemove', adjustMove);
+    window.addEventListener("touchend", endMove);
+	window.addEventListener("touchmove", adjustMove);
 
 	// Cursor and titlebar style
 	let body = document.querySelector('body');
@@ -336,10 +349,28 @@ function moveWindow(e1, id) {
 	let title = target.querySelector('.window-title');
 	title.dataset.dragging = 1;
 
-	var prevPos = [e1.clientX, e1.clientY];
+	let posX1, posY1;
+	if (e1.touches != null) {
+		posX1 = e1.touches[0].clientX;
+		posY1 = e1.touches[0].clientY;
+	} else {
+		posX1 = e1.clientX;
+		posY1 = e1.clientY;
+	}
+	var prevPos = [posX1, posY1];
+
 	function adjustMove(e2) {
-		e2.preventDefault();
-		let currentPos = [e2.clientX, e2.clientY];
+		let posX, posY;
+		if (e2.touches != null) {
+			posX = e2.touches[0].clientX;
+			posY = e2.touches[0].clientY;
+        } else {
+			posX = e2.clientX;
+			posY = e2.clientY;
+			e2.preventDefault();
+        }
+
+		let currentPos = [posX, posY];
 		let deltaPos = [currentPos[0] - prevPos[0], currentPos[1] - prevPos[1]];
 
 		// Keep window in sync with mouse
@@ -393,6 +424,8 @@ function moveWindow(e1, id) {
 		target.dataset.reposition = 0;
 		window.removeEventListener('mouseup', endMove);
 		window.removeEventListener('mousemove', adjustMove);
+		window.removeEventListener("touchend", endMove);
+		window.removeEventListener("touchmove", adjustMove);
 		body.style.cursor = 'unset';
 		title.dataset.dragging = 0;
 
@@ -431,6 +464,8 @@ function resizeWindow(e1, id, dir) {
 	target.dataset.reposition = 1;
 	window.addEventListener('mouseup', endResize);
 	window.addEventListener('mousemove', adjustResize);
+	window.addEventListener("touchend", endResize);
+	window.addEventListener("touchmove", adjustResize);
 
 	// Force cursor style
 	let body = document.querySelector('body');
@@ -454,19 +489,28 @@ function resizeWindow(e1, id, dir) {
 
 	// Resize window according to exact mouse position
 	function adjustResize(e2) {
-		e2.preventDefault();
 		const rect = target.getBoundingClientRect();
+
+		let posX, posY;
+		if (e2.touches != null) {
+			posX = e2.touches[0].clientX;
+			posY = e2.touches[0].clientY;
+        } else {
+			posX = e2.clientX;
+			posY = e2.clientY;
+			e2.preventDefault();
+        }
 
 		// Handle directional resize
 		if (dir == 'topleft') {
-			windows[id]['left'] = e2.clientX;
-			windows[id]['width'] += rect.left - e2.clientX;
+			windows[id]['left'] = posX;
+			windows[id]['width'] += rect.left - posX;
 			if (windows[id]['width'] < 300) {
 				windows[id]['width'] = 300;
 				windows[id]['left'] = rect.right - 300;
 			}
-			windows[id]['top'] = e2.clientY;
-			windows[id]['height'] += rect.top - e2.clientY;
+			windows[id]['top'] = posY;
+			windows[id]['height'] += rect.top - posY;
 			if (windows[id]['height'] < 300) {
 				windows[id]['height'] = 300;
 				windows[id]['top'] = rect.bottom - 300;
@@ -481,8 +525,8 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'top') {
-			windows[id]['top'] = e2.clientY;
-			windows[id]['height'] += rect.top - e2.clientY;
+			windows[id]['top'] = posY;
+			windows[id]['height'] += rect.top - posY;
 			if (windows[id]['height'] < 300) {
 				windows[id]['height'] = 300;
 				windows[id]['top'] = rect.bottom - 300;
@@ -493,7 +537,7 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'topright') {
-			windows[id]['width'] += e2.clientX - rect.right;
+			windows[id]['width'] += posX - rect.right;
 			if (windows[id]['width'] < 300) {
 				windows[id]['width'] = 300;
 			}
@@ -501,8 +545,8 @@ function resizeWindow(e1, id, dir) {
 				windows[id]['left'] = rect.left;
 				windows[id]['width'] = window.innerWidth - rect.left;
 			}
-			windows[id]['top'] = e2.clientY;
-			windows[id]['height'] += rect.top - e2.clientY;
+			windows[id]['top'] = posY;
+			windows[id]['height'] += rect.top - posY;
 			if (windows[id]['height'] < 300) {
 				windows[id]['height'] = 300;
 				windows[id]['top'] = rect.bottom - 300;
@@ -517,7 +561,7 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'right') {
-			windows[id]['width'] += e2.clientX - rect.right;
+			windows[id]['width'] += posX - rect.right;
 			if (windows[id]['width'] < 300) {
 				windows[id]['width'] = 300;
 			}
@@ -527,11 +571,11 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'bottomright') {
-			windows[id]['width'] += e2.clientX - rect.right;
+			windows[id]['width'] += posX - rect.right;
 			if (windows[id]['width'] < 300) {
 				windows[id]['width'] = 300;
 			}
-			windows[id]['height'] += e2.clientY - rect.bottom;
+			windows[id]['height'] += posY - rect.bottom;
 			if (windows[id]['height'] < 300) {
 				windows[id]['height'] = 300;
 			}
@@ -545,7 +589,7 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'bottom') {
-			windows[id]['height'] += e2.clientY - rect.bottom;
+			windows[id]['height'] += posY - rect.bottom;
 			if (windows[id]['height'] < 300) {
 				windows[id]['height'] = 300;
 			}
@@ -555,13 +599,13 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'bottomleft') {
-			windows[id]['left'] = e2.clientX;
-			windows[id]['width'] += rect.left - e2.clientX;
+			windows[id]['left'] = posX;
+			windows[id]['width'] += rect.left - posX;
 			if (windows[id]['width'] < 300) {
 				windows[id]['width'] = 300;
 				windows[id]['left'] = rect.right - 300;
 			}
-			windows[id]['height'] += e2.clientY - rect.bottom;
+			windows[id]['height'] += posY - rect.bottom;
 			if (windows[id]['height'] < 300) {
 				windows[id]['height'] = 300;
 			}
@@ -575,8 +619,8 @@ function resizeWindow(e1, id, dir) {
 			}
 
 		} else if (dir == 'left') {
-			windows[id]['left'] = e2.clientX;
-			windows[id]['width'] += rect.left - e2.clientX;
+			windows[id]['left'] = posX;
+			windows[id]['width'] += rect.left - posX;
 			if (windows[id]['width'] < 300) {
 				windows[id]['width'] = 300;
 				windows[id]['left'] = rect.right - 300;
@@ -596,6 +640,8 @@ function resizeWindow(e1, id, dir) {
 		target.dataset.reposition = 0;
 		window.removeEventListener('mouseup', endResize);
 		window.removeEventListener('mousemove', adjustResize);
+		window.removeEventListener("touchend", endResize);
+		window.removeEventListener("touchmove", adjustResize);
 	}
 }
 
