@@ -28,7 +28,6 @@
 	--bottom: 52px;
 	--left: 0px;
 }
-
 .container {
 	width: 100vw;
 	height: 100dvh;
@@ -37,7 +36,7 @@
 	background-color: var(--black);
 }
 
-
+/* Snap-to-edge resizer */
 .sizer {
 	position: absolute;
 	top: 32px;
@@ -80,14 +79,32 @@
 	background-color: var(--white);
 	border: 2px outset var(--white);
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	padding: 0 10px;
 	color: var(--black);
 	z-index: 99999999;
 	white-space: nowrap;
-	gap: 20px;
+	gap: 10px;
 	overflow-x: scroll;
+}
+.logo {
+	height: 18px;
+	fill: var(--white);
+	background-color: var(--black);
+	border: 2px outset var(--black);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.logo svg {
+	height: 100%;
+}
+.logo:hover {
+	opacity: .8;
+}
+.logo:active {
+	border: 2px inset var(--black);
 }
 .title {
 	font-size: 12px;
@@ -97,13 +114,26 @@
 .title a {
 	text-decoration: none;
 	color: var(--black);
+	font-weight: normal;
 }
 .title a:active {
 	opacity: .5;
 }
 #clock {
+	flex-grow: 1;
+	text-align: right;
+	justify-self: end;
 	font-size: 12px;
 	line-height: 1em;
+	font-weight: normal;
+}
+@media screen and (max-width: 800px) {
+	.taskbar {
+		justify-content: center;
+	}
+	#clock {
+		display: none;
+	}
 }
 
 /* Dock */
@@ -154,6 +184,7 @@
 	text-align: center;
 	font-size: 10px;
 	line-height: 1em;
+	padding-right: 4px;
 }
 @media screen and (max-width: 900px) {
 	.dock-text {
@@ -279,6 +310,50 @@
 	border: 2px inset var(--white);
 }
 
+/* Desktop */
+.desktop {
+	position: absolute;
+	top: var(--top);
+	right: var(--right);
+	bottom: var(--bottom);
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	flex-wrap: wrap-reverse;
+	padding: 10px;
+	gap: 10px;
+}
+.desktop-link {
+	color: var(--white);
+	text-decoration: none;
+	font-size: 10px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	padding: 10px;
+	width: 100px;
+}
+.desktop-link:hover {
+	outline: 1px solid var(--white);
+}
+.desktop-link:active {
+	opacity: .5;
+}
+.desktop-link-icon {
+	width: 30px;
+	height: 30px;
+	flex-shrink: 0;
+	image-rendering: pixelated;
+}
+@media screen and (max-width: 800px) {
+	.desktop-link-icon {
+		width: 20px;
+		height: 20px;
+	}
+}
+
 /* Windows */
 .window {
 	position: absolute;
@@ -376,9 +451,10 @@
 .window-title-name {
 	font-size: 12px;
 	padding-top: .2em;
+	font-weight: normal;
 }
 .window-btn {
-	flex: 0 0 auto;
+	flex: 0 0 20px;
 	aspect-ratio: 1/1;
 	height: 100%;
 	border: 2px outset var(--white);

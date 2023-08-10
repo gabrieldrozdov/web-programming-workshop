@@ -84,7 +84,7 @@ function generateWindow(type) {
 	title.addEventListener('mousedown', (e) => {moveWindow(e, fullID)});
 	title.addEventListener('touchstart', (e) => {moveWindow(e, fullID)});
 
-	let titleName = document.createElement('div');
+	let titleName = document.createElement('h3');
 	titleName.classList.add('window-title-name');
 
 	// Generate window indicator in dock
@@ -105,11 +105,11 @@ function generateWindow(type) {
 		titleIndicator.dataset.color = 'red';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Syllabus';
-	} else if (type == 'schedule') {
+	} else if (type == 'resources') {
 		newWindow.dataset.color = 'blue';
 		indicator.dataset.color = 'blue';
 		titleIndicator.dataset.color = 'blue';
-		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm10,10h60v10H20v-10Zm0,60v-40h60v40H20Z"/><rect x="30" y="50" width="10" height="20"/><polygon points="50 50 50 60 60 60 60 70 70 70 70 50 50 50"/></svg>`;
+		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>`;
 		titleName.innerText = 'Schedule';
 	} else if (type == 'lessons') {
 		newWindow.dataset.color = 'purple';
@@ -694,28 +694,28 @@ function showTime() {
 showTime();
 
 // ————————————————————————————————————————————————————————————
-// COLORFUL TITLE
+// COLORFUL TASKBAR LINKS
 // ————————————————————————————————————————————————————————————
 
-let title = document.querySelector('.title');
-let temp = '<a href="https://webprogramming.gdwithgd.com/">'
 let colors = ['red','blue','purple','yellow','green','pink'];
-let colorIndex = 0;
-for (let char of title.innerText) {
-	temp += `<span data-color='${colorIndex}'>${char}</span>`;
-	colorIndex++;
-	if (colorIndex >= colors.length) {
-		colorIndex = 0;
+function generateColorfulLink(linkurl, elmnt) {
+	let temp = `<a href="${linkurl}">`;
+	let colorIndex = 0;
+	for (let char of elmnt.innerText) {
+		temp += `<span data-color='${colorIndex}'>${char}</span>`;
+		colorIndex++;
+		if (colorIndex >= colors.length) {
+			colorIndex = 0;
+		}
 	}
+	temp += '</a>';
+	elmnt.innerHTML = temp;
+	elmnt.addEventListener('mouseenter', () => {colorfulLinkLoopStart(elmnt)});
 }
-temp += '</a>'
-title.innerHTML = temp;
-title.addEventListener('mouseenter', titleLoopStart);
-title.addEventListener('mouseleave', titleLoopStop);
 
-let titleLoop;
-function titleLoopStart() {
-	for (let char of document.querySelectorAll('.title a span')) {
+function colorfulLinkLoopStart(elmnt) {
+	elmnt.addEventListener('mouseleave', colorfulLinkLoopStop);
+	for (let char of elmnt.querySelectorAll(`a span`)) {
 		let color = parseInt(char.dataset.color);
 		color++;
 		if (color >= colors.length) {
@@ -724,8 +724,8 @@ function titleLoopStart() {
 		char.style.color = `var(--${colors[color]})`;
 		char.dataset.color = color;
 	}
-	titleLoop = setInterval(() => {
-		for (let char of document.querySelectorAll('.title a span')) {
+	let colorfulLinkLoop = setInterval(() => {
+		for (let char of elmnt.querySelectorAll(`a span`)) {
 			let color = parseInt(char.dataset.color);
 			color++;
 			if (color >= colors.length) {
@@ -735,10 +735,13 @@ function titleLoopStart() {
 			char.dataset.color = color;
 		}
 	}, 100)
-}
-function titleLoopStop() {
-	clearInterval(titleLoop);
-	for (let char of document.querySelectorAll('.title span')) {
-		char.style.color = `var(--black)`;
+
+	function colorfulLinkLoopStop() {
+		clearInterval(colorfulLinkLoop);
+		for (let char of elmnt.querySelectorAll(`a span`)) {
+			char.style.color = `var(--black)`;
+		}
 	}
 }
+
+generateColorfulLink("https://webprogramming.gdwithgd.com/", document.querySelector('.title'));
