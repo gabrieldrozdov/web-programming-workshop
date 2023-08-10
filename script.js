@@ -270,7 +270,7 @@ let lastClosed = 0;
 function renumberWindows() {
 	if (totalWindows != 0) {
 		for (let key of Object.keys(windows)) {
-			if (windows[key]['number'] > lastClosed && windows[key]['status'] == 'open') {
+			if (windows[key]['number'] > lastClosed && (windows[key]['status'] == 'open' || windows[key]['status'] == 'minimized')) {
 				windows[key]['number'] = windows[key]['number']-1;
 				let window = document.querySelector('#'+key);
 				window.querySelector('.window-titlebar-indicator').innerText = windows[key]['number'];
