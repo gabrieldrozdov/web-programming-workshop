@@ -8,14 +8,14 @@
 	box-sizing: border-box;
 }
 :root {
-	--red: #f45c28;
-	--blue: #00d6f5;
-	--purple: #ac6aff;
-	--yellow: #ffb800;
-	--pink: #fb8bd3;
-	--green: #98e079;
-	--black: #4d4d4d;
-	--white: #f2f2f2;
+	--red: #FF734D;
+	--blue: #5ADDE8;
+	--purple: #A690FC;
+	--yellow: #fcc03a;
+	--pink: #F3A8DD;
+	--green: #98DB6B;
+	--black: #353535;
+	--white: #e5e5e5;
 	--top: 32px;
 	--right: 0px;
 	--bottom: 52px;
@@ -802,17 +802,17 @@ body {
 	overflow: hidden;
 }
 .cm-s-gdwithgd.CodeMirror { background: var(--black); color: var(--white); }
-.cm-s-gdwithgd div.CodeMirror-selected { background: #333; }
-.cm-s-gdwithgd .CodeMirror-line::selection, .cm-s-gdwithgd .CodeMirror-line > span::selection, .cm-s-gdwithgd .CodeMirror-line > span > span::selection { background: #333; }
-.cm-s-gdwithgd .CodeMirror-line::-moz-selection, .cm-s-gdwithgd .CodeMirror-line > span::-moz-selection, .cm-s-gdwithgd .CodeMirror-line > span > span::-moz-selection { background: #333; }
-.cm-s-gdwithgd .CodeMirror-gutters { background: #333; border-right: unset;}
+.cm-s-gdwithgd div.CodeMirror-selected { background: rgba(0,0,0,.25); }
+.cm-s-gdwithgd .CodeMirror-line::selection, .cm-s-gdwithgd .CodeMirror-line > span::selection, .cm-s-gdwithgd .CodeMirror-line > span > span::selection { background: rgba(0,0,0,.25); }
+.cm-s-gdwithgd .CodeMirror-line::-moz-selection, .cm-s-gdwithgd .CodeMirror-line > span::-moz-selection, .cm-s-gdwithgd .CodeMirror-line > span > span::-moz-selection { background: rgba(0,0,0,.25); }
+.cm-s-gdwithgd .CodeMirror-gutters { background: rgba(0,0,0,.25); border-right: unset; }
 .cm-s-gdwithgd .CodeMirror-guttermarker { color: var(--red); }
-.cm-s-gdwithgd .CodeMirror-guttermarker-subtle { color: #333; }
+.cm-s-gdwithgd .CodeMirror-guttermarker-subtle { color: rgba(0,0,0,.25); }
 .cm-s-gdwithgd .CodeMirror-linenumber { color: var(--white); opacity: .5; }
 
-.cm-s-gdwithgd .CodeMirror-cursor { border-left: 2px solid var(--pink); }
+.cm-s-gdwithgd .CodeMirror-cursor { border-left: 2px solid var(--white); }
 
-.cm-s-gdwithgd span.cm-comment { color: #999; }
+.cm-s-gdwithgd span.cm-comment { color: rgba(255,255,255,.4); }
 .cm-s-gdwithgd span.cm-atom { color: var(--blue); }
 .cm-s-gdwithgd span.cm-number { color: var(--blue); }
 

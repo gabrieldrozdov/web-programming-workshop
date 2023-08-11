@@ -49,10 +49,17 @@ function bringToTop(id) {
 			indicator.dataset.active = 1;
 		}
 	
-		// Set active preview (if one available)
+		// Set active code preview (if a code editor available)
 		setActivePreview(id);
 	}
 }
+
+// Refresh CodeMirror whenever div dimension changes for code editors
+const codeObserver = new ResizeObserver(entries => {
+	entries.forEach(entry => {
+		codeMirrors[entry.target.id].refresh();
+	});
+});
 
 // Create a new window
 let idCounter = 0;
@@ -110,34 +117,34 @@ function generateWindow(type, source) {
 		titleIndicator.dataset.color = 'red';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Syllabus';
-	} else if (type == 'resources') {
-		newWindow.dataset.type = 'resources';
+	} else if (type == 'lessons') {
+		newWindow.dataset.type = 'lessons';
 		newWindow.dataset.color = 'blue';
 		indicator.dataset.color = 'blue';
 		titleIndicator.dataset.color = 'blue';
-		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>`;
-		titleName.innerText = 'Schedule';
-	} else if (type == 'lessons') {
-		newWindow.dataset.type = 'lessons';
-		newWindow.dataset.color = 'purple';
-		indicator.dataset.color = 'purple';
-		titleIndicator.dataset.color = 'purple';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Lessons';
 	} else if (type == 'projects') {
 		newWindow.dataset.type = 'projects';
-		newWindow.dataset.color = 'yellow';
-		indicator.dataset.color = 'yellow';
-		titleIndicator.dataset.color = 'yellow';
+		newWindow.dataset.color = 'purple';
+		indicator.dataset.color = 'purple';
+		titleIndicator.dataset.color = 'purple';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Projects';
 	} else if (type == 'glossary') {
 		newWindow.dataset.type = 'glossary';
+		newWindow.dataset.color = 'yellow';
+		indicator.dataset.color = 'yellow';
+		titleIndicator.dataset.color = 'yellow';
+		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>`;
+		titleName.innerText = 'Glossary';
+	} else if (type == 'resources') {
+		newWindow.dataset.type = 'resources';
 		newWindow.dataset.color = 'green';
 		indicator.dataset.color = 'green';
 		titleIndicator.dataset.color = 'green';
-		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>`;
-		titleName.innerText = 'Glossary';
+		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>`;
+		titleName.innerText = 'Resources';
 	} else if (type == 'code-editor') {
 		newWindow.dataset.type = 'code-editor';
 		newWindow.dataset.color = 'pink';
@@ -244,8 +251,20 @@ function generateWindow(type, source) {
 	dockDivider.dataset.active = 1;
 
 	// Generate window content
-	if (type == 'code-editor') {
+	if (type == 'syllabus') {
+		generateSyllabus(fullID, source);
+
+	} else if (type == 'lessons') {
+
+	} else if (type == 'projects') {
+
+	} else if (type == 'resources') {
+		
+	} else if (type == 'glossary') {
+		
+	} else if (type == 'code-editor') {
 		generateCodeEditor(fullID, source);
+		codeObserver.observe(newWindow);
 	}
 
 	setTimeout(() => {
@@ -782,10 +801,24 @@ function colorfulLinkLoopStart(elmnt) {
 generateColorfulLink("https://webprogramming.gdwithgd.com/", document.querySelector('.title'));
 
 // ————————————————————————————————————————————————————————————
+// SYLLABUS
+// ————————————————————————————————————————————————————————————
+
+function generateSyllabus(id) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+
+	targetContent.innerHTML = `
+		<div>hi</div>
+	`
+}
+
+
+// ————————————————————————————————————————————————————————————
 // TEXT EDITORS USING CODEMIRROR
 // ————————————————————————————————————————————————————————————
 
-let codeMirrors = [];
+let codeMirrors = {};
 function generateCodeEditor(id, source) {
 	let target = document.querySelector("#"+id);
 	let targetContent = target.querySelector('.window-content');
@@ -817,7 +850,7 @@ function generateCodeEditor(id, source) {
 		</div>
 		<div class="editor-btn-hide">
 			<svg viewBox="0 0 100 100"><polygon points="90 45 50 45 50 25 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 55 90 55 90 45"/><rect x="50" y="40" width="40" height="20"/></svg>
-			<span>Editor</span>
+			<span>Code</span>
 			<svg viewBox="0 0 100 100"><polygon points="90 45 50 45 50 25 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 55 90 55 90 45"/><rect x="50" y="40" width="40" height="20"/></svg>
 		</div>
 		<div class="editor-preview-container">
@@ -832,9 +865,10 @@ function generateCodeEditor(id, source) {
 	// Create CodeMirror editor
 	let targetCodeMirror = CodeMirror.fromTextArea(targetCodeEditor, {
 		mode: "htmlmixed",
+		styleActiveLine: true,
 		lineNumbers: true,
 		tabSize: 2,
-		lineWrapping: false,
+		lineWrapping: true,
 		theme: "gdwithgd",
 	});
 	targetCodeMirror.on("change", updatePreview);
@@ -844,7 +878,7 @@ function generateCodeEditor(id, source) {
 	setTimeout(() => {
 		targetCodeMirror.refresh();
 	}, 300)
-	codeMirrors.push(targetCodeMirror);
+	codeMirrors[id] = targetCodeMirror;
 
 	// Get source file if specified
 	if (source != undefined) {
@@ -862,7 +896,6 @@ function generateCodeEditor(id, source) {
 		dataBackup = data;
 		targetCodeMirror.setValue(data);
 	}
-	// TO DO: What if the file doesnt exist?
 
 	// Reset code
 	let targetBtnReset = targetContent.querySelector('.editor-btn-reset');
@@ -892,7 +925,7 @@ function generateCodeEditor(id, source) {
 
 	// Line wrapping
 	let targetBtnWrap = targetContent.querySelector('.editor-btn-wrap');
-	let targetWrap = false;
+	let targetWrap = true;
 	targetBtnWrap.addEventListener('click', toggleWrap);
 	function toggleWrap() {
 		targetWrap = !targetWrap;
@@ -914,6 +947,7 @@ function setActivePreview(id) {
 	deactivatePreviews();
 	let target = document.querySelector("#"+id);
 	if (target.dataset.type == 'code-editor') {
+		codeMirrors[id].refresh();
 		let preview = target.querySelector('.editor-preview');
 		preview.style.pointerEvents = 'all';
 	}
@@ -937,10 +971,10 @@ function fileNameDate() {
 }
 
 // Refresh all code editors when tab is visible
-document. addEventListener("visibilitychange", refreshEditors);
+document.addEventListener("visibilitychange", refreshEditors);
 function refreshEditors() {
-	for (let cm of codeMirrors) {
-		cm.refresh();
+	for (let id of Object.keys(codeMirrors)) {
+		codeMirrors[id].refresh();
 	}
 }
 
@@ -955,9 +989,3 @@ if (params.has("demo")) {
 } else {
 	generateWindow('syllabus');
 }
-
-
-
-// TODO: command f for all TODOS
-// fix glitches with numbers on codemirror gutter
-// maybe make numbers a toggle?
