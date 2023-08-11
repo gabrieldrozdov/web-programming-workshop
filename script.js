@@ -28,32 +28,36 @@ let windows = {}
 var activeWindow = '';
 var zCounter = 0;
 function bringToTop(id) {
-	if (activeWindow != '' && windows[activeWindow]['status'] != 'closed') {
-		let prevActive = document.querySelector("#"+activeWindow);
-		prevActive.dataset.active = 0;
-	}
-	let target = document.querySelector("#"+id);
-	target.style.zIndex = zCounter;
-	target.dataset.active = 1;
-	zCounter++;
-	activeWindow = id;
-
-	// Set active indicator
-	let indicators = document.querySelectorAll('.dock-indicator');
-	for (let indicator of indicators) {
-		indicator.dataset.active = 0;
-	}
-	let indicator = document.querySelector(`.dock-indicator[data-window="${id}"]`);
-	if (indicator != null) {
-		indicator.dataset.active = 1;
-
+	if (activeWindow != id) {
+		if (activeWindow != '' && windows[activeWindow]['status'] != 'closed') {
+			let prevActive = document.querySelector("#"+activeWindow);
+			prevActive.dataset.active = 0;
+		}
+		let target = document.querySelector("#"+id);
+		target.style.zIndex = zCounter;
+		target.dataset.active = 1;
+		zCounter++;
+		activeWindow = id;
+	
+		// Set active indicator
+		let indicators = document.querySelectorAll('.dock-indicator');
+		for (let indicator of indicators) {
+			indicator.dataset.active = 0;
+		}
+		let indicator = document.querySelector(`.dock-indicator[data-window="${id}"]`);
+		if (indicator != null) {
+			indicator.dataset.active = 1;
+		}
+	
+		// Set active preview (if one available)
+		setActivePreview(id);
 	}
 }
 
 // Create a new window
 let idCounter = 0;
 let totalWindows = 0;
-function generateWindow(type) {
+function generateWindow(type, source) {
 	let fullID = 'window' + idCounter;
 
 	// Set window number for indicator
@@ -100,36 +104,42 @@ function generateWindow(type) {
 
 	// Style with color and icon
 	if (type == 'syllabus') {
+		newWindow.dataset.type = 'syllabus';
 		newWindow.dataset.color = 'red';
 		indicator.dataset.color = 'red';
 		titleIndicator.dataset.color = 'red';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Syllabus';
 	} else if (type == 'resources') {
+		newWindow.dataset.type = 'resources';
 		newWindow.dataset.color = 'blue';
 		indicator.dataset.color = 'blue';
 		titleIndicator.dataset.color = 'blue';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>`;
 		titleName.innerText = 'Schedule';
 	} else if (type == 'lessons') {
+		newWindow.dataset.type = 'lessons';
 		newWindow.dataset.color = 'purple';
 		indicator.dataset.color = 'purple';
 		titleIndicator.dataset.color = 'purple';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Lessons';
 	} else if (type == 'projects') {
+		newWindow.dataset.type = 'projects';
 		newWindow.dataset.color = 'yellow';
 		indicator.dataset.color = 'yellow';
 		titleIndicator.dataset.color = 'yellow';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Projects';
 	} else if (type == 'glossary') {
+		newWindow.dataset.type = 'glossary';
 		newWindow.dataset.color = 'green';
 		indicator.dataset.color = 'green';
 		titleIndicator.dataset.color = 'green';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>`;
 		titleName.innerText = 'Glossary';
 	} else if (type == 'code-editor') {
+		newWindow.dataset.type = 'code-editor';
 		newWindow.dataset.color = 'pink';
 		indicator.dataset.color = 'pink';
 		titleIndicator.dataset.color = 'pink';
@@ -225,7 +235,6 @@ function generateWindow(type) {
 	let container = document.querySelector('.container');
 	container.appendChild(newWindow);
 	resetPosition(fullID);
-	bringToTop(fullID);
 
 	// Add indicator to dock
 	let dockIndicators = document.querySelector('.dock-indicators');
@@ -234,13 +243,18 @@ function generateWindow(type) {
 	let dockDivider = document.querySelector('.dock-divider');
 	dockDivider.dataset.active = 1;
 
+	// Generate window content
+	if (type == 'code-editor') {
+		generateCodeEditor(fullID, source);
+	}
+
 	setTimeout(() => {
 		newWindow.classList.remove('minimized');
+		bringToTop(fullID);
 	}, 100)
 
 	idCounter++;
 }
-generateWindow('syllabus');
 
 // Set live window position to stored position
 function refreshPosition(id) {
@@ -249,6 +263,15 @@ function refreshPosition(id) {
 	target.style.left = windows[id]['left'] + "px";
 	target.style.height = windows[id]['height'] + "px";
 	target.style.width = windows[id]['width'] + "px";
+
+	// Responsive sizing for different window types
+	if (target.dataset.type == "code-editor") {
+		if (windows[id]['width'] < 500) {
+			target.dataset.responsive = 1;
+		} else {
+			target.dataset.responsive = 0;
+		}
+	}
 }
 function resetPosition(id) {
 	if (window.innerWidth > 1000) {
@@ -343,6 +366,11 @@ function moveWindow(e1, id) {
     window.addEventListener("touchend", endMove);
 	window.addEventListener("touchmove", adjustMove);
 
+	// Deactivate previews to avoid mouse capture
+	setTimeout(() => {
+		deactivatePreviews();
+	}, 100)
+
 	// Cursor and titlebar style
 	let body = document.querySelector('body');
 	body.style.cursor = 'grabbing';
@@ -426,6 +454,7 @@ function moveWindow(e1, id) {
 		window.removeEventListener('mousemove', adjustMove);
 		window.removeEventListener("touchend", endMove);
 		window.removeEventListener("touchmove", adjustMove);
+		setActivePreview(id);
 		body.style.cursor = 'unset';
 		title.dataset.dragging = 0;
 
@@ -466,6 +495,11 @@ function resizeWindow(e1, id, dir) {
 	window.addEventListener('mousemove', adjustResize);
 	window.addEventListener("touchend", endResize);
 	window.addEventListener("touchmove", adjustResize);
+
+	// Deactivate previews to avoid mouse capture
+	setTimeout(() => {
+		deactivatePreviews();
+	}, 100)
 
 	// Force cursor style
 	let body = document.querySelector('body');
@@ -642,6 +676,7 @@ function resizeWindow(e1, id, dir) {
 		window.removeEventListener('mousemove', adjustResize);
 		window.removeEventListener("touchend", endResize);
 		window.removeEventListener("touchmove", adjustResize);
+		setActivePreview(id);
 	}
 }
 
@@ -653,9 +688,9 @@ function resizeWindow(e1, id, dir) {
 setInterval(showTime, 1000);
  
 // Defining showTime funcion
+let time = new Date();
 function showTime() {
 	// Getting current time and date
-	let time = new Date();
 	let hour = time.getHours();
 	let min = time.getMinutes();
 	let sec = time.getSeconds();
@@ -745,3 +780,184 @@ function colorfulLinkLoopStart(elmnt) {
 }
 
 generateColorfulLink("https://webprogramming.gdwithgd.com/", document.querySelector('.title'));
+
+// ————————————————————————————————————————————————————————————
+// TEXT EDITORS USING CODEMIRROR
+// ————————————————————————————————————————————————————————————
+
+let codeMirrors = [];
+function generateCodeEditor(id, source) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+
+	targetContent.innerHTML = `
+		<div class="editor-panel">
+			<div class="editor-info">
+				<div class="editor-info-name"></div>
+				<button class="editor-btn-reset">
+					<svg viewBox="0 0 100 100"><rect x="40" y="80" width="20" height="10"/><rect x="30" y="70" width="10" height="10"/><rect x="20" y="60" width="10" height="10"/><polygon points="20 20 10 20 10 50 40 50 40 40 30 40 30 30 20 30 20 20"/><rect x="30" y="20" width="10" height="10"/><rect x="40" y="10" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/><rect x="70" y="30" width="10" height="10"/><rect x="80" y="40" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="60" y="70" width="10" height="10"/></svg>
+					<span>Reset</span>
+				</button>
+				<button class="editor-btn-share">
+					<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>
+					<span>Copy Link</span>
+				</button>
+			</div>
+			<textarea class="editor-text"></textarea>
+			<div class="editor-controls">
+				<button class="editor-btn-download">
+					<svg viewBox="0 0 100 100"><polygon points="35 60 45 60 45 70 55 70 55 60 65 60 65 50 75 50 75 40 55 40 55 10 45 10 45 40 25 40 25 50 35 50 35 60"/><polygon points="80 70 80 80 20 80 20 70 10 70 10 90 90 90 90 70 80 70"/></svg>
+					<span>Save</span>
+				</button>
+				<button class="editor-btn-wrap">
+					<svg viewBox="0 0 100 100"><polygon points="10 10 10 20 80 20 80 60 40 60 40 40 30 40 30 50 20 50 20 60 10 60 10 70 20 70 20 80 30 80 30 90 40 90 40 70 90 70 90 10 10 10"/></svg>
+					<span>Wrap Text</span>
+				</button>
+			</div>
+		</div>
+		<div class="editor-btn-hide">
+			<svg viewBox="0 0 100 100"><polygon points="90 45 50 45 50 25 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 55 90 55 90 45"/><rect x="50" y="40" width="40" height="20"/></svg>
+			<span>Editor</span>
+			<svg viewBox="0 0 100 100"><polygon points="90 45 50 45 50 25 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 55 90 55 90 45"/><rect x="50" y="40" width="40" height="20"/></svg>
+		</div>
+		<div class="editor-preview-container">
+			<iframe class="editor-preview"></iframe>
+			<h4>Live Preview</h4>
+		</div>
+	`
+
+	let targetCodeEditor = targetContent.querySelector('.editor-text');
+	let targetPreview = targetContent.querySelector('.editor-preview');
+
+	// Create CodeMirror editor
+	let targetCodeMirror = CodeMirror.fromTextArea(targetCodeEditor, {
+		mode: "htmlmixed",
+		lineNumbers: true,
+		tabSize: 2,
+		lineWrapping: false,
+		theme: "gdwithgd",
+	});
+	targetCodeMirror.on("change", updatePreview);
+	function updatePreview() {
+		targetPreview.srcdoc = targetCodeMirror.getValue();
+	}
+	setTimeout(() => {
+		targetCodeMirror.refresh();
+	}, 300)
+	codeMirrors.push(targetCodeMirror);
+
+	// Get source file if specified
+	if (source != undefined) {
+		targetContent.dataset.source = 1;
+		fetchSource();
+	} else {
+		targetCodeMirror.setValue("<p>Write your code here!</p>");
+	}
+	let dataBackup;
+	async function fetchSource() {
+		let displayName = targetContent.querySelector(".editor-info-name");
+		displayName.innerText = source;
+		const response = await fetch("sources/demos/"+source);
+		const data = await response.text();
+		dataBackup = data;
+		targetCodeMirror.setValue(data);
+	}
+	// TO DO: What if the file doesnt exist?
+
+	// Reset code
+	let targetBtnReset = targetContent.querySelector('.editor-btn-reset');
+	targetBtnReset.addEventListener('click', resetCode);
+	function resetCode() {
+		targetCodeMirror.setValue(dataBackup);
+	}
+
+	// Copy shareable link to code
+	let targetBtnShare = targetContent.querySelector('.editor-btn-share');
+	targetBtnShare.addEventListener('click', shareCode);
+	function shareCode() {
+		navigator.clipboard.writeText(window.location.href.split('?')[0] + "?demo=" + source);
+	}
+
+	// Download code
+	let targetBtnDownload = targetContent.querySelector('.editor-btn-download');
+	targetBtnDownload.addEventListener('click', downloadCode);
+	function downloadCode() {
+		let codeBlob = new Blob([ targetCodeMirror.getValue()], { type: 'text/html' })
+		blobURL = URL.createObjectURL(codeBlob);
+		let tempLink = document.createElement("a");
+		tempLink.href = blobURL;
+		tempLink.download = fileNameDate();
+		tempLink.click();
+	}
+
+	// Line wrapping
+	let targetBtnWrap = targetContent.querySelector('.editor-btn-wrap');
+	let targetWrap = false;
+	targetBtnWrap.addEventListener('click', toggleWrap);
+	function toggleWrap() {
+		targetWrap = !targetWrap;
+		targetCodeMirror.setOption('lineWrapping', targetWrap);
+	}
+
+	// Show/hide text editor
+	let targetBtnHide = targetContent.querySelector('.editor-btn-hide');
+	let targetHide = false;
+	targetBtnHide.addEventListener('click', toggleHide);
+	function toggleHide() {
+		targetHide = !targetHide;
+		targetContent.dataset.editor = targetHide;
+	}
+}
+
+// Activate and deactivate previews to avoid mouse capture
+function setActivePreview(id) {
+	deactivatePreviews();
+	let target = document.querySelector("#"+id);
+	if (target.dataset.type == 'code-editor') {
+		let preview = target.querySelector('.editor-preview');
+		preview.style.pointerEvents = 'all';
+	}
+}
+function deactivatePreviews() {
+	let previews = document.querySelectorAll('.editor-preview');
+	for (let preview of previews) {
+		preview.style.pointerEvents = 'none';
+	}
+}
+function activatePreviews() {
+	let previews = document.querySelectorAll('.editor-preview');
+	for (let preview of previews) {
+		preview.style.pointerEvents = 'all';
+	}
+}
+
+// Create file name for downloading code
+function fileNameDate() {
+	return "saved-" + time.getFullYear() + "_" + ('0' + (time.getMonth()+1)).slice(-2) + "_" + ('0' + time.getDate()).slice(-2) + "-at-" + String(time.getHours()).padStart(2, '0') + "_" + String(time.getMinutes()).padStart(2, '0') + "_" + String(time.getSeconds()).padStart(2, '0');
+}
+
+// Refresh all code editors when tab is visible
+document. addEventListener("visibilitychange", refreshEditors);
+function refreshEditors() {
+	for (let cm of codeMirrors) {
+		cm.refresh();
+	}
+}
+
+// ————————————————————————————————————————————————————————————
+// GENERATING CONTENT BASED ON URL
+// ————————————————————————————————————————————————————————————
+
+let url = new URL(window.location.href);
+let params = new URLSearchParams(url.search);
+if (params.has("demo")) {
+	generateWindow('code-editor', params.get("demo"));
+} else {
+	generateWindow('syllabus');
+}
+
+
+
+// TODO: command f for all TODOS
+// fix glitches with numbers on codemirror gutter
+// maybe make numbers a toggle?
