@@ -253,15 +253,14 @@ function generateWindow(type, source) {
 	// Generate window content
 	if (type == 'syllabus') {
 		generateSyllabus(fullID, source);
-
 	} else if (type == 'lessons') {
-
+		generateLessons(fullID, source);
 	} else if (type == 'projects') {
-
+		generateProjects(fullID, source);
 	} else if (type == 'resources') {
-		
+		generateResources(fullID, source);
 	} else if (type == 'glossary') {
-		
+		generateGlossary(fullID, source);
 	} else if (type == 'code-editor') {
 		generateCodeEditor(fullID, source);
 		codeObserver.observe(newWindow);
@@ -284,7 +283,15 @@ function refreshPosition(id) {
 	target.style.width = windows[id]['width'] + "px";
 
 	// Responsive sizing for different window types
-	if (target.dataset.type == "code-editor") {
+	if (target.dataset.type == "lessons") {
+		if (windows[id]['width'] < 700) {
+			target.dataset.responsive = 2;
+		} else if (windows[id]['width'] < 1200) {
+			target.dataset.responsive = 1;
+		} else {
+			target.dataset.responsive = 0;
+		}
+	} else if (target.dataset.type == "code-editor") {
 		if (windows[id]['width'] < 500) {
 			target.dataset.responsive = 1;
 		} else {
@@ -294,10 +301,10 @@ function refreshPosition(id) {
 }
 function resetPosition(id) {
 	if (window.innerWidth > 1000) {
-		windows[id]['top'] = screenHeight*1/6 + screenTop + Math.random()*20-10;
-		windows[id]['left'] = screenWidth*1/4 + screenLeft + Math.random()*20-10;
-		windows[id]['height'] = screenHeight*2/3 + Math.random()*20-10;
-		windows[id]['width'] = screenWidth*1/2 + Math.random()*20-10;
+		windows[id]['top'] = screenHeight*1/10 + screenTop + Math.random()*20-10;
+		windows[id]['left'] = screenWidth*1/5 + screenLeft + Math.random()*20-10;
+		windows[id]['height'] = screenHeight*8/10 + Math.random()*20-10;
+		windows[id]['width'] = screenWidth*3/5 + Math.random()*20-10;
 	} else {
 		windows[id]['top'] = screenTop + 40 + Math.random()*20-10;
 		windows[id]['left'] = screenLeft + 40 + Math.random()*20-10;
@@ -523,21 +530,21 @@ function resizeWindow(e1, id, dir) {
 	// Force cursor style
 	let body = document.querySelector('body');
 	if (dir == 'topleft') {
-		body.style.cursor = 'nw-resize';
+		body.style.cursor = 'nwse-resize';
 	} else if (dir == 'top') {
-		body.style.cursor = 'n-resize';
+		body.style.cursor = 'ns-resize';
 	} else if (dir == 'topright') {
-		body.style.cursor = 'ne-resize';
+		body.style.cursor = 'nesw-resize';
 	} else if (dir == 'right') {
-		body.style.cursor = 'e-resize';
+		body.style.cursor = 'ew-resize';
 	} else if (dir == 'bottomright') {
-		body.style.cursor = 'se-resize';
+		body.style.cursor = 'nwse-resize';
 	} else if (dir == 'bottom') {
-		body.style.cursor = 's-resize';
+		body.style.cursor = 'ns-resize';
 	} else if (dir == 'bottomleft') {
-		body.style.cursor = 'sw-resize';
+		body.style.cursor = 'nesw-resize';
 	} else if (dir == 'left') {
-		body.style.cursor = 'w-resize';
+		body.style.cursor = 'ew-resize';
 	}
 
 	// Resize window according to exact mouse position
@@ -801,20 +808,6 @@ function colorfulLinkLoopStart(elmnt) {
 generateColorfulLink("https://webprogramming.gdwithgd.com/", document.querySelector('.title'));
 
 // ————————————————————————————————————————————————————————————
-// SYLLABUS
-// ————————————————————————————————————————————————————————————
-
-function generateSyllabus(id) {
-	let target = document.querySelector("#"+id);
-	let targetContent = target.querySelector('.window-content');
-
-	targetContent.innerHTML = `
-		<div>hi</div>
-	`
-}
-
-
-// ————————————————————————————————————————————————————————————
 // TEXT EDITORS USING CODEMIRROR
 // ————————————————————————————————————————————————————————————
 
@@ -849,9 +842,9 @@ function generateCodeEditor(id, source) {
 			</div>
 		</div>
 		<div class="editor-btn-hide">
-			<svg viewBox="0 0 100 100"><polygon points="90 45 50 45 50 25 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 55 90 55 90 45"/><rect x="50" y="40" width="40" height="20"/></svg>
+			<svg viewBox="0 0 100 100"><polygon points="50 40 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 60 90 60 90 40 50 40"/></svg>
 			<span>Code</span>
-			<svg viewBox="0 0 100 100"><polygon points="90 45 50 45 50 25 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 55 90 55 90 45"/><rect x="50" y="40" width="40" height="20"/></svg>
+			<svg viewBox="0 0 100 100"><polygon points="50 40 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 60 90 60 90 40 50 40"/></svg>
 		</div>
 		<div class="editor-preview-container">
 			<iframe class="editor-preview"></iframe>
@@ -887,13 +880,13 @@ function generateCodeEditor(id, source) {
 	} else {
 		targetCodeMirror.setValue("<p>Write your code here!</p>");
 	}
-	let dataBackup;
+	let sourceBackup;
 	async function fetchSource() {
 		let displayName = targetContent.querySelector(".editor-info-name");
 		displayName.innerText = source;
 		const response = await fetch("sources/demos/"+source);
 		const data = await response.text();
-		dataBackup = data;
+		sourceBackup = data;
 		targetCodeMirror.setValue(data);
 	}
 
@@ -901,15 +894,12 @@ function generateCodeEditor(id, source) {
 	let targetBtnReset = targetContent.querySelector('.editor-btn-reset');
 	targetBtnReset.addEventListener('click', resetCode);
 	function resetCode() {
-		targetCodeMirror.setValue(dataBackup);
+		targetCodeMirror.setValue(sourceBackup);
 	}
 
 	// Copy shareable link to code
 	let targetBtnShare = targetContent.querySelector('.editor-btn-share');
-	targetBtnShare.addEventListener('click', shareCode);
-	function shareCode() {
-		navigator.clipboard.writeText(window.location.href.split('?')[0] + "?demo=" + source);
-	}
+	targetBtnShare.addEventListener('click', () => copyURL([['demo', source.split('.')[0]]]));
 
 	// Download code
 	let targetBtnDownload = targetContent.querySelector('.editor-btn-download');
@@ -979,13 +969,430 @@ function refreshEditors() {
 }
 
 // ————————————————————————————————————————————————————————————
+// SYLLABUS
+// ————————————————————————————————————————————————————————————
+
+function generateSyllabus(id) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+
+	targetContent.innerHTML = `
+		<div>hi</div>
+	`
+}
+
+function generateLessons(id, source) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+	let activeLesson, activeIndex;
+	let initialize = true;
+
+	targetContent.innerHTML = `
+		<div class="lesson-catalog"></div>
+		<div class="lesson-content"></div>
+	`
+	let lessonCatalog = targetContent.querySelector('.lesson-catalog');
+	let lessonContent = targetContent.querySelector('.lesson-content');
+
+	// Populate catalog
+	let lessonsBackup;
+	async function fetchCatalog() {
+		const response = await fetch("sources/lessons.json");
+		const data = await response.json();
+		lessonsBackup = data;
+
+		let temp = '';
+		for (let index of Object.keys(lessonsBackup)) {
+			let entry = lessonsBackup[index];
+
+			// Generate difficulty rating
+			let color = 'red';
+			if (entry['rating'] == 1) {
+				color = 'blue';
+			} else if (entry['rating'] == 2) {
+				color = 'purple';
+			} else if (entry['rating'] == 3) {
+				color = 'yellow';
+			} else if (entry['rating'] == 4) {
+				color = 'green';
+			} else if (entry['rating'] == 5) {
+				color = 'pink';
+			}
+			let difficulty = `<div class='lesson-catalog-difficulty-rating'>`;
+			for (let i=0; i<5; i++) {
+				if (i<entry['rating']) {
+					difficulty += `<div data-active="1"></div>`;
+				} else {
+					difficulty += `<div></div>`;
+				}
+			}
+			difficulty += '</div>';
+
+			// Generate outcomes
+			let outcomesString = entry['outcomes'].split(',');
+			let outcomes = '';
+			for (let i of outcomesString) {
+				outcomes += `<li>${i.trimStart()}</li>`;
+			}
+
+			// Generate lesson number (if applicable)
+			let number = entry['number'];
+			if (number != "") {
+				number = `<span>${number}</span>`;
+			}
+
+			temp += `
+				<div class="lesson-catalog-link" data-index="${index}" data-color="${color}">
+					<div class="lesson-catalog-info">
+						<h4>
+							<span class="lesson-catalog-subtitle">${entry['type']}${number}</span>
+							<span  class="lesson-catalog-title">${entry['name']}</span>
+						</h4>
+						<p class="lesson-catalog-summary">
+							${entry['summary']}
+						</p>
+						<div class="lesson-catalog-outcomes">
+							<h5>Outcomes</h5>
+							<ul>
+								${outcomes}
+							</ul>
+						</div>
+					</div>
+					<div class="lesson-catalog-difficulty">
+						<h5>Difficulty</h5>
+						${difficulty}
+					</div>
+				</div>
+			`
+		}
+		lessonCatalog.innerHTML = temp;
+		for (let catalogLink of target.querySelectorAll('.lesson-catalog-link')) {
+			let index = catalogLink.dataset.index;
+			let source = lessonsBackup[index]['source'];
+			catalogLink.addEventListener('click', () => {
+				openLesson(source);
+			});
+		}
+
+		// Get source file if specified
+		if (source != undefined) {
+			target.dataset.menu = 0;
+			openLesson(source);
+		} else {
+			target.dataset.menu = 1;
+		}
+	}
+	fetchCatalog();
+
+	// Fetch source and generate lesson
+	let sourceBackup;
+	async function fetchSource(source) {
+		const response = await fetch("sources/lessons/"+source);
+		const data = await response.text();
+		sourceBackup = data;
+
+		populateContent(source);
+	}
+
+	// Populate lesson content
+	function populateContent(source) {
+		activeIndex = findByProperty(lessonsBackup, 'source', source);
+		let entry = lessonsBackup[activeIndex];
+
+		// Generate rating color and dots
+		let rating = lessonsBackup[activeIndex]['rating'];
+		let color = 'red';
+		let headerRating = `<div></div> <div></div> <div></div> <div></div> <div></div>`;
+		if (rating == 0) {
+			color = 'red';
+			headerRating = `<div></div> <div></div> <div></div> <div></div> <div></div>`;
+		} else if (rating == 1) {
+			color = 'blue';
+			headerRating = `<div data-active="1"></div> <div></div> <div></div> <div></div> <div></div>`;
+		} else if (rating == 2) {
+			color = 'purple';
+			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div></div> <div></div> <div></div>`;
+		} else if (rating == 3) {
+			color = 'yellow';
+			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div></div> <div></div>`;
+		} else if (rating == 4) {
+			color = 'green';
+			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div></div>`;
+		} else if (rating == 5) {
+			color = 'pink';
+			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div>`;
+		}
+		lessonContent.dataset.color = color;
+
+		// Generate header tags
+		let lessonConcepts = entry['concepts'].split(',');
+		let headerConcepts = '';
+		if (lessonConcepts != '') {
+			headerConcepts += '<div><h5>Concepts</h5><ul data-color="yellow">';
+			for (let i of lessonConcepts) {
+				headerConcepts += `<li>${i.trimStart()}</li>`;
+			}
+			headerConcepts += '</ul></div>'
+		}
+
+		let lessonHTML = entry['html'].split(',');
+		let headerHTML = '';
+		if (lessonHTML != '') {
+			headerHTML += '<div><h5>HTML</h5><ul data-color="yellow">';
+			for (let i of lessonHTML) {
+				headerHTML += `<li>${i.trimStart()}</li>`;
+			}
+			headerHTML += '</ul></div>'
+		}
+
+		let lessonCSS = entry['css'].split(',');
+		let headerCSS = '';
+		if (lessonCSS != '') {
+			headerCSS += '<div><h5>CSS</h5><ul data-color="yellow">';
+			for (let i of lessonCSS) {
+				headerCSS += `<li>${i.trimStart()}</li>`;
+			}
+			headerCSS += '</ul></div>'
+		}
+
+		let lessonJS = entry['js'].split(',');
+		let headerJS = '';
+		if (lessonJS != '') {
+			headerJS += '<div><h5>JS</h5><ul data-color="yellow">';
+			for (let i of lessonJS) {
+				headerJS += `<li>${i.trimStart()}</li>`;
+			}
+			headerJS += '</ul></div>'
+		}
+
+		let lessonDemos = entry['demos'].split(',');
+		let headerDemos = '';
+		if (lessonDemos != '') {
+			headerDemos += '<div><h5>Demos</h5><ul data-color="pink">';
+			for (let i of lessonDemos) {
+				headerDemos += `<li>${i.trimStart()}</li>`;
+			}
+			headerDemos += '</ul></div>'
+		}
+
+		let lessonProjects = entry['projects'].split(',');
+		let headerProjects = '';
+		if (lessonProjects != '') {
+			headerProjects += '<div><h5>Projects</h5><ul data-color="purple">';
+			for (let i of lessonProjects) {
+				headerProjects += `<li>${i.trimStart()}</li>`;
+			}
+			headerProjects += '</ul></div>'
+		}
+
+		let lessonResources = entry['resources'].split(',');
+		let headerResources = '';
+		if (lessonResources != '') {
+			headerResources += '<div><h5>Resources</h5><ul data-color="green">';
+			for (let i of lessonResources) {
+				headerResources += `<li>${i.trimStart()}</li>`;
+			}
+			headerResources += '</ul></div>'
+		}
+
+		// Header number
+		let headerNumber = entry['number'];
+		if (headerNumber != "") {
+			headerNumber = `<span>${headerNumber}</span>`;
+		}
+
+		let header = `
+			<header>
+				<h4>
+					<span class="lesson-doc-subtitle">${entry['type']}${headerNumber}</span>
+					<span class="lesson-doc-title">
+						<span class="lesson-doc-title-name">${entry['name']}</span>
+					</span>
+				</h4>
+
+				<p>${entry['summary']}</p>
+
+				<div class="lesson-doc-difficulty">
+					<h5>Difficulty</h5>
+					<div class="lesson-doc-difficulty-rating">
+						${headerRating}
+					</div>
+				</div>
+
+				<div class="lesson-doc-divider"></div>
+
+				<div class="lesson-doc-concepts">
+					${headerConcepts}
+				</div>
+
+				<div class="lesson-doc-concepts">
+					${headerHTML}
+					${headerCSS}
+					${headerJS}
+				</div>
+
+				<div class="lesson-doc-concepts">
+					${headerDemos}
+					${headerProjects}
+					${headerResources}
+				</div>
+			</header>
+		`
+
+
+		lessonContent.innerHTML = `
+			<div class="lesson-doc" data-color="${'blue'}">
+				${header}
+				${sourceBackup}
+			</div>
+		`;
+
+		// Add navigation
+		lessonContent.innerHTML += `
+			<div class="lesson-content-nav">
+				<button class='lesson-content-nav-catalog'>
+					<svg viewBox="0 0 100 100"><rect x="10" y="10" width="20" height="20"/><rect x="40" y="10" width="20" height="20"/><rect x="70" y="10" width="20" height="20"/><rect x="10" y="40" width="20" height="20"/><rect x="40" y="40" width="20" height="20"/><rect x="70" y="40" width="20" height="20"/><rect x="10" y="70" width="20" height="20"/><rect x="40" y="70" width="20" height="20"/><rect x="70" y="70" width="20" height="20"/></svg>
+					<span>View All Lessons</span>
+				</button>
+				<button class='lesson-content-nav-prev'>
+					<svg viewBox="0 0 100 100"><polygon points="50 40 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 60 90 60 90 40 50 40"/></svg>
+					<span>Previous Lesson</span>
+				</button>
+				<button class='lesson-content-nav-next'>
+				<svg viewBox="0 0 100 100"><polygon points="50 40 50 15 60 15 60 25 70 25 70 35 80 35 80 45 90 45 90 55 80 55 80 65 70 65 70 75 60 75 60 85 50 85 50 60 10 60 10 40 50 40"/></svg>
+					<span>Next Lesson</span>
+				</button>
+			</div>
+		`
+		let navPrev = target.querySelector('.lesson-content-nav-prev');
+		navPrev.addEventListener('click', prevLesson);
+		let navCatalog = target.querySelector('.lesson-content-nav-catalog');
+		navCatalog.addEventListener('click', openCatalog);
+		let navNext = target.querySelector('.lesson-content-nav-next');
+		navNext.addEventListener('click', nextLesson);
+
+		// Add share icons to titles and copyURL event listeners
+		let lessonTitle = lessonContent.querySelector('.lesson-doc-title');
+		lessonTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+		lessonTitle.addEventListener('click', () => copyURL([['lesson',activeLesson]]))
+		for (let section of lessonContent.querySelectorAll('.lesson-doc section')) {
+			let sectionTitle = section.querySelector('h5');
+			sectionTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+			sectionTitle.addEventListener('click', () => copyURL([['lesson',activeLesson], ['section',section.id]]));
+		}
+
+		// Add app icons to buttons
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='red']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='blue']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='purple']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='yellow']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='green']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='pink']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+
+		// Jump to section on initial load
+		if (initialize == true) {
+			let url = new URL(window.location.href);
+			let params = new URLSearchParams(url.search);
+			if (params.has('section')) {
+				setTimeout(() => {
+					jumpToSection(params.get('section'));
+				}, 500);
+			}
+			initialize = false;
+		}
+
+		target.dataset.menu = 0;
+	}
+
+	function jumpToSection(section) {
+		let anchor = lessonContent.querySelector('#' + section);
+		anchor.scrollIntoView({
+			behavior: 'smooth',
+			block: "start",
+		});
+	}
+
+	// Lesson traversal
+	function openLesson(source) {
+		activeLesson = source.split('.')[0];
+		fetchSource(source);
+	}
+	function openCatalog() {
+		target.dataset.menu = 1;
+	}
+	function prevLesson() {
+		activeIndex--;
+		if (activeIndex < 0) {
+			activeIndex = lessonsBackup.length-1;
+		}
+		openLesson(lessonsBackup[activeIndex]['source']);
+	}
+	function nextLesson() {
+		activeIndex++;
+		if (activeIndex >= lessonsBackup.length) {
+			activeIndex = 0;
+		}
+		openLesson(lessonsBackup[activeIndex]['source']);
+	}
+}
+
+// ————————————————————————————————————————————————————————————
 // GENERATING CONTENT BASED ON URL
 // ————————————————————————————————————————————————————————————
 
 let url = new URL(window.location.href);
 let params = new URLSearchParams(url.search);
 if (params.has("demo")) {
-	generateWindow('code-editor', params.get("demo"));
+	generateWindow('code-editor', params.get("demo") + ".html");
+} else if (params.has("lesson")) {
+	generateWindow('lessons', params.get("lesson") + ".html");
 } else {
-	generateWindow('syllabus');
+	// generateWindow('syllabus');
+}
+
+function copyURL(pairs) {
+	let url = window.location.href.split('?')[0] + "?";
+	for (let pair of pairs) {
+		url += pair[0] + "=" + pair[1];
+		if (pair != pairs[pairs.length-1]) {
+			url += "&";
+		}
+	}
+	navigator.clipboard.writeText(url);
+
+	// Show alert
+	let alert = document.querySelector('.alert');
+	let alertMsg = alert.querySelector('.alert-msg');
+	alertMsg.innerText = "URL copied!";
+	alert.dataset.show = 1;
+	setTimeout(() => {
+		alert.dataset.show = 0;
+	}, 1000)
+}
+
+
+
+
+
+// HELPER FUNCTIONS
+
+// Find object entry by property value
+function findByProperty(json, property, value) {
+	for (let key in json) {
+		let object = json[key]
+		if (object[property] == value) return key;
+	}
+	return false;
 }
