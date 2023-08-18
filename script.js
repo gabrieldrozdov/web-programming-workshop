@@ -283,7 +283,37 @@ function refreshPosition(id) {
 	target.style.width = windows[id]['width'] + "px";
 
 	// Responsive sizing for different window types
-	if (target.dataset.type == "lessons") {
+	if (target.dataset.type == "syllabus") {
+		if (windows[id]['width'] < 700) {
+			target.dataset.responsive = 1;
+		} else {
+			target.dataset.responsive = 0;
+		}
+	} else if (target.dataset.type == "lessons") {
+		if (windows[id]['width'] < 700) {
+			target.dataset.responsive = 2;
+		} else if (windows[id]['width'] < 1200) {
+			target.dataset.responsive = 1;
+		} else {
+			target.dataset.responsive = 0;
+		}
+	} else if (target.dataset.type == "projects") {
+		if (windows[id]['width'] < 700) {
+			target.dataset.responsive = 2;
+		} else if (windows[id]['width'] < 1200) {
+			target.dataset.responsive = 1;
+		} else {
+			target.dataset.responsive = 0;
+		}
+	} else if (target.dataset.type == "glossary") {
+		if (windows[id]['width'] < 700) {
+			target.dataset.responsive = 2;
+		} else if (windows[id]['width'] < 1200) {
+			target.dataset.responsive = 1;
+		} else {
+			target.dataset.responsive = 0;
+		}
+	} else if (target.dataset.type == "resources") {
 		if (windows[id]['width'] < 700) {
 			target.dataset.responsive = 2;
 		} else if (windows[id]['width'] < 1200) {
@@ -716,6 +746,7 @@ setInterval(showTime, 1000);
 // Defining showTime funcion
 let time = new Date();
 function showTime() {
+	time = new Date();
 	// Getting current time and date
 	let hour = time.getHours();
 	let min = time.getMinutes();
@@ -731,8 +762,7 @@ function showTime() {
 		am_pm = "AM";
 	}
 
-	hour =
-		hour < 10 ? "0" + hour : hour;
+	hour = hour < 10 ? "0" + hour : hour;
 	min = min < 10 ? "0" + min : min;
 	sec = sec < 10 ? "0" + sec : sec;
 
@@ -975,11 +1005,68 @@ function refreshEditors() {
 function generateSyllabus(id) {
 	let target = document.querySelector("#"+id);
 	let targetContent = target.querySelector('.window-content');
+	targetContent.dataset.nav = false;
 
-	targetContent.innerHTML = `
-		<div>hi</div>
-	`
+	let syllabusBackup;
+	async function fetchSyllabus() {
+		const response = await fetch("sources/syllabus.html");
+		const data = await response.text();
+		syllabusBackup = data;
+
+		targetContent.innerHTML = syllabusBackup;
+
+		// Add event listeners to navigation
+		let syllabusNav = targetContent.querySelector('.syllabus-nav');
+		let syllabusNavLogo = syllabusNav.querySelector('h4');
+		syllabusNavLogo.addEventListener('click', () => {scrollToSection('header')});
+		syllabusNavLogo.addEventListener('click', navClose);
+
+		let syllabusNavLinks = syllabusNav.querySelectorAll('[data-section]');
+		for (let syllabusNavLink of syllabusNavLinks) {
+			syllabusNavLink.addEventListener('click', () => {scrollToSection(syllabusNavLink.dataset.section)});
+			syllabusNavLink.addEventListener('click', navClose);
+		}
+
+		// Add share icons to titles and copyURL event listeners
+		let syllabusContent = targetContent.querySelector('.syllabus-content');
+		for (let sectionLink of syllabusContent.querySelectorAll('[data-link]')) {
+			sectionLink.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+			sectionLink.addEventListener('click', () => copyURL([['syllabus',sectionLink.dataset.link]]));
+		}
+
+		// Add event listener to nav toggle
+		let navToggle = targetContent.querySelector('.syllabus-nav-buttons');
+		navToggle.addEventListener('click', toggleNav);
+	}
+	fetchSyllabus();
+
+	function scrollToSection(section) {
+		let syllabusContent = targetContent.querySelector('.syllabus-content');
+		let targetSection = syllabusContent.querySelector(`[data-id="${section}"]`);
+		// delay scrolling on mobile
+		if (target.dataset.responsive == "1") {
+			setTimeout(() => {
+				syllabusContent.scrollTo({top: targetSection.offsetTop - 120, behavior: 'smooth'})
+			}, 100);
+		} else {
+			syllabusContent.scrollTo({top: targetSection.offsetTop - 120, behavior: 'smooth'});
+		}
+	}
+
+	let navState = false;
+	function toggleNav() {
+		navState = !navState;
+		targetContent.dataset.nav = navState;
+	}
+	function navClose() {
+		navState = false;
+		targetContent.dataset.nav = navState;
+	}
 }
+
+// ————————————————————————————————————————————————————————————
+// LESSONS
+// ————————————————————————————————————————————————————————————
 
 function generateLessons(id, source) {
 	let target = document.querySelector("#"+id);
@@ -1019,8 +1106,8 @@ function generateLessons(id, source) {
 				color = 'pink';
 			}
 			let difficulty = `<div class='lesson-catalog-difficulty-rating'>`;
-			for (let i=0; i<5; i++) {
-				if (i<entry['rating']) {
+			for (let i=0; i<6; i++) {
+				if (i<entry['rating']+1) {
 					difficulty += `<div data-active="1"></div>`;
 				} else {
 					difficulty += `<div></div>`;
@@ -1101,28 +1188,29 @@ function generateLessons(id, source) {
 
 		// Generate rating color and dots
 		let rating = lessonsBackup[activeIndex]['rating'];
+
 		let color = 'red';
-		let headerRating = `<div></div> <div></div> <div></div> <div></div> <div></div>`;
-		if (rating == 0) {
-			color = 'red';
-			headerRating = `<div></div> <div></div> <div></div> <div></div> <div></div>`;
-		} else if (rating == 1) {
+		if (entry['rating'] == 1) {
 			color = 'blue';
-			headerRating = `<div data-active="1"></div> <div></div> <div></div> <div></div> <div></div>`;
-		} else if (rating == 2) {
+		} else if (entry['rating'] == 2) {
 			color = 'purple';
-			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div></div> <div></div> <div></div>`;
-		} else if (rating == 3) {
+		} else if (entry['rating'] == 3) {
 			color = 'yellow';
-			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div></div> <div></div>`;
-		} else if (rating == 4) {
+		} else if (entry['rating'] == 4) {
 			color = 'green';
-			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div></div>`;
-		} else if (rating == 5) {
+		} else if (entry['rating'] == 5) {
 			color = 'pink';
-			headerRating = `<div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div> <div data-active="1"></div>`;
 		}
 		lessonContent.dataset.color = color;
+
+		let headerRating = '';
+		for (let i=0; i<6; i++) {
+			if (i<entry['rating']+1) {
+				headerRating += `<div data-active="1"></div>`;
+			} else {
+				headerRating += `<div></div>`;
+			}
+		}
 
 		// Generate header tags
 		let lessonConcepts = entry['concepts'].split(',');
@@ -1349,17 +1437,58 @@ function generateLessons(id, source) {
 }
 
 // ————————————————————————————————————————————————————————————
+// RESOURCES
+// ————————————————————————————————————————————————————————————
+
+function generateResources(id) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+
+	targetContent.innerHTML = `
+		<div>hi</div>
+	`
+}
+
+// ————————————————————————————————————————————————————————————
+// PROJECTS
+// ————————————————————————————————————————————————————————————
+
+function generateProjects(id) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+
+	targetContent.innerHTML = `
+		<div>hi</div>
+	`
+}
+
+// ————————————————————————————————————————————————————————————
+// GLOSSARY
+// ————————————————————————————————————————————————————————————
+
+function generateGlossary(id) {
+	let target = document.querySelector("#"+id);
+	let targetContent = target.querySelector('.window-content');
+
+	targetContent.innerHTML = `
+		<div>hi</div>
+	`
+}
+
+// ————————————————————————————————————————————————————————————
 // GENERATING CONTENT BASED ON URL
 // ————————————————————————————————————————————————————————————
 
 let url = new URL(window.location.href);
 let params = new URLSearchParams(url.search);
-if (params.has("demo")) {
-	generateWindow('code-editor', params.get("demo") + ".html");
+if (params.has("syllabus")) {
+	generateWindow('syllabus');
 } else if (params.has("lesson")) {
 	generateWindow('lessons', params.get("lesson") + ".html");
+} else if (params.has("demo")) {
+	generateWindow('code-editor', params.get("demo") + ".html");
 } else {
-	// generateWindow('syllabus');
+	generateWindow('syllabus');
 }
 
 function copyURL(pairs) {
@@ -1382,11 +1511,9 @@ function copyURL(pairs) {
 	}, 1000)
 }
 
-
-
-
-
+// ————————————————————————————————————————————————————————————
 // HELPER FUNCTIONS
+// ————————————————————————————————————————————————————————————
 
 // Find object entry by property value
 function findByProperty(json, property, value) {
@@ -1396,3 +1523,10 @@ function findByProperty(json, property, value) {
 	}
 	return false;
 }
+
+
+
+// TODO
+// redo styling for code editor (no longer matches)
+// make url open properly for syllabus
+// hide lesson header row if nothing is in it
