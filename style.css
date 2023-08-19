@@ -909,13 +909,25 @@ body {
 .syllabus-nav > ul > ul > li {
 	padding: 6px 16px 4px 16px;
 	cursor: pointer;
+	display: flex;
 }
 .syllabus-nav > ul > ul > li:hover {
 	background-color: var(--color);
 	color: var(--black);
 }
+.syllabus-nav > ul > ul > li:hover * {
+	color: var(--black);
+}
 .syllabus-nav > ul > ul > li:active {
 	opacity: .5;
+}
+.syllabus-nav > ul > ul > li > span {
+	flex: 0 0 32px;
+	font-weight: bold;
+	font-size: 12px;
+	padding-top: 1px;
+	color: var(--color);
+	font-family: "Paint", monospace;
 }
 .window[data-type="syllabus"][data-responsive='1'] .syllabus-nav {
 	display: none;
