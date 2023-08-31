@@ -1,0 +1,184 @@
+Date : 2023-08-29 13:32:24
+Directory : /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop
+Total : 132 files,  21866 codes, 2253 comments, 2444 blanks, all 26563 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         72 |     18,090 |      2,174 |      2,249 |     22,513 |
+| CSS        |          2 |      2,476 |         77 |        109 |      2,662 |
+| HTML       |         35 |        832 |          2 |         86 |        920 |
+| JSON       |          1 |        418 |          0 |          0 |        418 |
+| XML        |         22 |         50 |          0 |          0 |         50 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                 | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                    |        132 |     21,866 |      2,253 |      2,444 |     26,563 |
+| . (Files)                                                                                                                            |          3 |      3,587 |        167 |        247 |      4,001 |
+| assets                                                                                                                               |         22 |         50 |          0 |          0 |         50 |
+| assets/icons                                                                                                                         |         21 |         21 |          0 |          0 |         21 |
+| assets/meta                                                                                                                          |          1 |         29 |          0 |          0 |         29 |
+| cm                                                                                                                                   |         74 |     17,218 |      2,086 |      2,134 |     21,438 |
+| cm (Files)                                                                                                                           |          2 |      8,161 |      1,048 |      1,011 |     10,220 |
+| cm/mode                                                                                                                              |          5 |        702 |         11 |         74 |        787 |
+| cm/mode/htmlmixed                                                                                                                    |          2 |        224 |          3 |         28 |        255 |
+| cm/mode/xml                                                                                                                          |          3 |        478 |          8 |         46 |        532 |
+| cm/src                                                                                                                               |         67 |      8,355 |      1,027 |      1,049 |     10,431 |
+| cm/src (Files)                                                                                                                       |          2 |         76 |         12 |         13 |        101 |
+| cm/src/addon                                                                                                                         |          4 |         31 |          7 |         13 |         51 |
+| cm/src/addon/runmode                                                                                                                 |          4 |         31 |          7 |         13 |         51 |
+| cm/src/display                                                                                                                       |         15 |      1,514 |        213 |        205 |      1,932 |
+| cm/src/edit                                                                                                                          |         13 |      1,798 |        132 |        211 |      2,141 |
+| cm/src/input                                                                                                                         |          7 |      1,149 |        113 |        151 |      1,413 |
+| cm/src/line                                                                                                                          |          6 |        929 |        136 |         99 |      1,164 |
+| cm/src/measurement                                                                                                                   |          2 |        550 |        120 |         60 |        730 |
+| cm/src/model                                                                                                                         |         10 |      1,640 |        182 |        202 |      2,024 |
+| cm/src/util                                                                                                                          |          8 |        668 |        112 |         95 |        875 |
+| sources                                                                                                                              |         33 |      1,011 |          0 |         63 |      1,074 |
+| sources (Files)                                                                                                                      |          3 |        876 |          0 |         26 |        902 |
+| sources/demos                                                                                                                        |          4 |         22 |          0 |          8 |         30 |
+| sources/lessons                                                                                                                      |         26 |        113 |          0 |         29 |        142 |
++--------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                             | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/arr-left.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/arr-right.svg                                           | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/close.svg                                               | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/code.svg                                                | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/download.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/expand.svg                                              | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/glossary.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/hide.svg                                                | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/lessons.svg                                             | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/logo.svg                                                | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/maximize.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/menu.svg                                                | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/minimize.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/projects.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/reset.svg                                               | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/resources.svg                                           | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/schedule.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/share.svg                                               | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/show.svg                                                | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/syllabus.svg                                            | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/icons/wrap.svg                                                | XML        |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/assets/meta/favicon.svg                                              | XML        |         29 |          0 |          0 |         29 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/codemirror.css                                                    | CSS        |        279 |         23 |         43 |        345 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/codemirror.js                                                     | JavaScript |      7,882 |      1,025 |        968 |      9,875 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/mode/htmlmixed/htmlmixed.js                                       | JavaScript |        134 |          2 |         18 |        154 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/mode/htmlmixed/index.html                                         | HTML       |         90 |          1 |         10 |        101 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/mode/xml/index.html                                               | HTML       |         56 |          0 |          6 |         62 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/mode/xml/test.js                                                  | JavaScript |         37 |          3 |         12 |         52 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/mode/xml/xml.js                                                   | JavaScript |        385 |          5 |         28 |        418 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/addon/runmode/codemirror-standalone.js                        | JavaScript |         14 |          4 |          7 |         25 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/addon/runmode/codemirror.node.js                              | JavaScript |         13 |          3 |          6 |         22 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/addon/runmode/runmode-standalone.js                           | JavaScript |          2 |          0 |          0 |          2 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/addon/runmode/runmode.node.js                                 | JavaScript |          2 |          0 |          0 |          2 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/codemirror.js                                                 | JavaScript |          2 |          0 |          2 |          4 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/Display.js                                            | JavaScript |         60 |         39 |         18 |        117 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/focus.js                                              | JavaScript |         42 |          3 |          6 |         51 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/gutters.js                                            | JavaScript |         39 |          2 |          4 |         45 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/highlight_worker.js                                   | JavaScript |         49 |          1 |          6 |         56 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/line_numbers.js                                       | JavaScript |         40 |          5 |          4 |         49 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/mode_state.js                                         | JavaScript |         17 |          1 |          5 |         23 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/operations.js                                         | JavaScript |        158 |         22 |         27 |        207 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/scroll_events.js                                      | JavaScript |         88 |         34 |         11 |        133 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/scrollbars.js                                         | JavaScript |        156 |         14 |         25 |        195 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/scrolling.js                                          | JavaScript |        143 |         26 |         18 |        187 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/selection.js                                          | JavaScript |        151 |          4 |         19 |        174 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/update_display.js                                     | JavaScript |        212 |         25 |         31 |        268 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/update_line.js                                        | JavaScript |        163 |         13 |         14 |        190 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/update_lines.js                                       | JavaScript |         67 |         11 |          5 |         83 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/display/view_tracking.js                                      | JavaScript |        129 |         13 |         12 |        154 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/CodeMirror.js                                            | JavaScript |        175 |         19 |         24 |        218 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/commands.js                                              | JavaScript |        166 |          9 |          4 |        179 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/deleteNearSelection.js                                   | JavaScript |         24 |          5 |          2 |         31 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/drop_events.js                                           | JavaScript |        114 |          9 |          8 |        131 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/fromTextArea.js                                          | JavaScript |         53 |          3 |          6 |         62 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/global_events.js                                         | JavaScript |         35 |          7 |          4 |         46 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/key_events.js                                            | JavaScript |        130 |         14 |         20 |        164 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/legacy.js                                                | JavaScript |         60 |          0 |          3 |         63 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/main.js                                                  | JavaScript |         37 |          9 |         24 |         70 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/methods.js                                               | JavaScript |        482 |         23 |         51 |        556 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/mouse_events.js                                          | JavaScript |        345 |         31 |         42 |        418 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/options.js                                               | JavaScript |        171 |          3 |         21 |        195 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/edit/utils.js                                                 | JavaScript |          6 |          0 |          2 |          8 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/ContentEditableInput.js                                 | JavaScript |        478 |         13 |         56 |        547 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/TextareaInput.js                                        | JavaScript |        286 |         48 |         47 |        381 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/indent.js                                               | JavaScript |         58 |          9 |          5 |         72 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/input.js                                                | JavaScript |        110 |         11 |         14 |        135 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/keymap.js                                               | JavaScript |        119 |         15 |         14 |        148 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/keynames.js                                             | JavaScript |         13 |          3 |          2 |         18 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/input/movement.js                                             | JavaScript |         85 |         14 |         13 |        112 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/line/highlight.js                                             | JavaScript |        235 |         25 |         25 |        285 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/line/line_data.js                                             | JavaScript |        281 |         42 |         27 |        350 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/line/pos.js                                                   | JavaScript |         30 |          5 |          6 |         41 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/line/saw_special_spans.js                                     | JavaScript |          7 |          1 |          3 |         11 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/line/spans.js                                                 | JavaScript |        308 |         53 |         30 |        391 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/line/utils_line.js                                            | JavaScript |         68 |         10 |          8 |         86 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/measurement/position_measurement.js                           | JavaScript |        527 |        119 |         57 |        703 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/measurement/widgets.js                                        | JavaScript |         23 |          1 |          3 |         27 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/Doc.js                                                  | JavaScript |        393 |          9 |         35 |        437 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/change_measurement.js                                   | JavaScript |         48 |          6 |          8 |         62 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/changes.js                                              | JavaScript |        267 |         31 |         42 |        340 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/chunk.js                                                | JavaScript |        131 |         22 |         15 |        168 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/document_data.js                                        | JavaScript |         92 |         10 |         11 |        113 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/history.js                                              | JavaScript |        171 |         38 |         20 |        229 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/line_widget.js                                          | JavaScript |         71 |          1 |          7 |         79 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/mark_text.js                                            | JavaScript |        234 |         34 |         26 |        294 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/selection.js                                            | JavaScript |         66 |          8 |         11 |         85 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/model/selection_updates.js                                    | JavaScript |        167 |         23 |         27 |        217 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/modes.js                                                      | JavaScript |         74 |         12 |         11 |         97 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/StringStream.js                                          | JavaScript |         82 |          3 |          6 |         91 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/bidi.js                                                  | JavaScript |        139 |         57 |         20 |        216 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/browser.js                                               | JavaScript |         27 |          4 |          4 |         35 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/dom.js                                                   | JavaScript |         85 |          4 |         13 |        102 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/event.js                                                 | JavaScript |         79 |         10 |         15 |        104 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/feature_detection.js                                     | JavaScript |         71 |          6 |          8 |         85 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/misc.js                                                  | JavaScript |        130 |         19 |         20 |        169 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/cm/src/util/operation_group.js                                       | JavaScript |         55 |          9 |          9 |         73 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/index.html                                                           | HTML       |         93 |          1 |          7 |        101 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/script.js                                                            | JavaScript |      1,297 |        112 |        174 |      1,583 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/demos/demo-1_1.html                                          | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/demos/demo-1_2.html                                          | HTML       |          9 |          0 |          8 |         17 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/demos/demo-1_3.html                                          | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/demos/test.html                                              | HTML       |         11 |          0 |          0 |         11 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons.json                                                 | JSON       |        418 |          0 |          0 |        418 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/a-class-on-classes.html                              | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/a-set-of-stuff.html                                  | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/a-world-of-code.html                                 | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/coding-on-your-own-device.html                       | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/coding-with-code.html                                | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/do-designers-code.html                               | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/end-the-loop.html                                    | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/flexible-rows-and-columns.html                       | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/form-and-code.html                                   | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/going-live.html                                      | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/grid-systems-in-web-design.html                      | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/if-this-then-that.html                               | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/im-only-learning-to-code-to-create-my-portfolio.html | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/inspecting-the-web.html                              | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/make-it-drag.html                                    | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/making-your-code-dance.html                          | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/musical-machines.html                                | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/no-code-web-development.html                         | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/no-screen-too-small.html                             | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/on-a-set-interval.html                               | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/one-fewer-click.html                                 | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/so-what-is-a-website.html                            | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/technological-typography.html                        | HTML       |         88 |          0 |         29 |        117 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/the-click-of-a-mouse.html                            | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/who-uses-the-web.html                                | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/lessons/working-with-variable-fonts.html                     | HTML       |          1 |          0 |          0 |          1 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/resources.html                                               | HTML       |        214 |          0 |         11 |        225 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/sources/syllabus.html                                                | HTML       |        244 |          0 |         15 |        259 |
+| /Users/gabrieldrozdov/Documents/GitHub/web-programming-workshop/style.css                                                            | CSS        |      2,197 |         54 |         66 |      2,317 |
+| Total                                                                                                                                |            |     21,866 |      2,253 |      2,444 |     26,563 |
++--------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
