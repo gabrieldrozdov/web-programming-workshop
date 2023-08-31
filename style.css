@@ -811,6 +811,7 @@ body {
 	gap: 20px;
 	cursor: pointer;
 	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
 }
 .window[data-type="documents"][data-responsive="1"] .documents-catalog > div {
 	padding: 20px;
@@ -895,6 +896,7 @@ body {
 	background-color: rgba(0,0,0,.25);
 	flex-direction: column;
 	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
 }
 .doc-nav > h4 {
 	font-size: 18px;
@@ -1192,16 +1194,15 @@ body {
 	}
 }
 .doc-content header {
-	padding: 40px 80px;
-	margin: 0 -20px;
-	width: calc(100% + 40px);
+	padding: 80px 20px 40px 20px;
+	width: 100%;
 	font-family: "Paint", monospace;
 	font-size: 40px;
 	text-align: center;
-	background: linear-gradient(0deg, rgba(55,55,55,.9) 0%, rgba(55,55,55,.9) 100%), var(--color);
+	/* background: linear-gradient(0deg, rgba(55,55,55,.9) 0%, rgba(55,55,55,.9) 100%), var(--color); */
 	background-position: center;
 	--color: var(--white);
-	border-bottom: 2px solid var(--color);
+	/* border-bottom: 2px solid var(--color); */
 	animation: doc-header-color steps(1) 6s infinite;
 }
 .doc-header-scale {
@@ -1273,6 +1274,7 @@ body {
 /* Section headings */
 .doc-content section h5 {
 	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
 	font-size: 40px;
 	line-height: 1em;
 	cursor: pointer;
@@ -1410,6 +1412,7 @@ body {
 	justify-content: space-between;
 	gap: 40px;
 	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
 }
 .lesson-catalog-link:hover {
 	background-color: var(--color);
@@ -1723,6 +1726,7 @@ body {
 	font-size: 24px;
 	line-height: 1.2em;
 	backdrop-filter: blur(1.5px);
+	-webkit-backdrop-filter: blur(1.5px);
 }
 .window[data-type="lessons"][data-responsive='1'] .lesson-doc header {
 	margin-top: 20px;
@@ -1887,6 +1891,7 @@ body {
 /* Section headings */
 .lesson-doc section h5 {
 	backdrop-filter: blur(3px);
+	-webkit-backdrop-filter: blur(3px);
 	font-size: 40px;
 	line-height: 1em;
 	cursor: pointer;
