@@ -697,7 +697,7 @@ body {
 	row-gap: .1em;
 	justify-content: center;
 	color: var(--color);
-	text-shadow: 1px 1px 2px var(--black), -1px 1px 2px var(--black), -1px -1px 2px var(--color), 1px -1px 2px var(--color), 0 0 15px var(--color);
+	text-shadow: 1px 1px 1px var(--black), -1px 1px 1px var(--black), -1px -1px 1px var(--color), 1px -1px 1px var(--color), 0 0 15px var(--color);
 }
 .window[data-type="welcome"][data-responsive='1'] .welcome-header {
 	font-size: 24px;
@@ -1236,7 +1236,7 @@ body {
 	row-gap: .1em;
 	justify-content: center;
 	color: var(--color);
-	text-shadow: 1px 1px 2px var(--black), -1px 1px 2px var(--black), -1px -1px 2px var(--color), 1px -1px 2px var(--color), 0 0 15px var(--color);
+	text-shadow: 1px 1px 1px var(--black), -1px 1px 1px var(--black), -1px -1px 1px var(--color), 1px -1px 1px var(--color), 0 0 15px var(--color);
 }
 .window[data-type="documents"][data-responsive='2'] .doc-content header {
 	font-size: 24px;
@@ -2353,6 +2353,7 @@ body {
 	box-shadow: 0 0 5px var(--white), inset 0 0 2px var(--white);
 }
 .glossary-return button {
+	fill: var(--black);
 	width: 100%;
 	height: 24px;
 	font-family: "Paint", monospace;
@@ -2483,7 +2484,7 @@ body {
 	--color: var(--pink);
 }
 .window[data-type="glossary"][data-responsive="2"] .glossary-content {
-	padding: 20px 20px 0px 20px;
+	padding: 20px 20px 100px 20px;
 }
 .window[data-type="glossary"][data-responsive="2"] .window-content[data-nav="true"] .glossary-content {
 	display: none;
@@ -2755,6 +2756,7 @@ body {
 	height: 100%;
 	display: grid;
 	grid-template-rows: minmax(0, 1fr) 44px;
+	box-shadow: inset 0 0 10px black;
 }
 .window-content[data-source="1"] .editor-panel {
 	grid-template-rows: 72px minmax(0, 1fr) 44px;
@@ -2846,8 +2848,6 @@ body {
 	fill: var(--white);
 	gap: 12px;
 	box-shadow: inset 0 0 10px var(--white), 0 0 2px var(--white);
-	border-left: 2px solid var(--white);
-	border-right: 2px solid var(--white);
 }
 .editor-btn-hide:hover {
 	background-color: var(--white);

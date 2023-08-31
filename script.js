@@ -1467,8 +1467,12 @@ function generateGlossary(id, source) {
 			</div>
 		`;
 
+		// Close nav event listeners
 		let glossaryReturn = glossaryMenu.querySelector('.glossary-return-btn');
-		glossaryReturn.addEventListener('click', toggleNav);
+		glossaryReturn.addEventListener('click', closeNav);
+		for (let term of targetContent.querySelectorAll('.glossary-term')) {
+			term.addEventListener('click', toggleNav);
+		}
 
 		for (let term of glossaryMenu.querySelectorAll('.glossary-term')) {
 			let index = term.dataset.index;
@@ -1575,6 +1579,10 @@ function generateGlossary(id, source) {
 	let navState = false;
 	function toggleNav() {
 		navState = !navState;
+		targetContent.dataset.nav = navState;
+	}
+	function closeNav() {
+		navState = false;
 		targetContent.dataset.nav = navState;
 	}
 
