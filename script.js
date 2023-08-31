@@ -857,7 +857,7 @@ function generateWelcome(id) {
 		<div class="welcome-links">
 			<div data-color="blue" onclick="generateWindow('documents')" class="welcome-link">
 				<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>
-				<p>Taking (or teaching) a web programming course? Read through our <strong>documents</strong> to find the syllabus, schedules, and additional resources!</p>
+				<p>Taking (or teaching) a web programming course? Read through our <strong>documents</strong> to find the syllabus, schedules, and  resources!</p>
 			</div>
 			<div data-color="purple" onclick="generateWindow('lessons')" class="welcome-link">
 				<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>
@@ -1354,19 +1354,19 @@ function generateLessons(id, source) {
 
 		// Add app icons to buttons
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='red']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='blue']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='purple']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="40" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='yellow']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='green']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='pink']`)) {
 			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
@@ -1517,10 +1517,11 @@ function generateCodeEditor(id, source) {
 		fetchSource();
 	} else {
 		targetContent.dataset.source = 1;
-		fetchSource('template.html');
+		source = 'template.html';
+		fetchSource();
 	}
 	let sourceBackup;
-	async function fetchSource(source) {
+	async function fetchSource() {
 		let displayName = targetContent.querySelector(".editor-info-name");
 		displayName.innerText = source;
 		const response = await fetch("sources/demos/"+source);

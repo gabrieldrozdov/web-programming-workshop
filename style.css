@@ -2238,7 +2238,7 @@ body {
 .cm-s-gdwithgd .CodeMirror-gutters { background: rgba(0,0,0,.25); border-right: unset; }
 .cm-s-gdwithgd .CodeMirror-guttermarker { color: var(--red); }
 .cm-s-gdwithgd .CodeMirror-guttermarker-subtle { color: rgba(0,0,0,.25); }
-.cm-s-gdwithgd .CodeMirror-linenumber { color: var(--white); opacity: .5; }
+.cm-s-gdwithgd .CodeMirror-linenumber { color: var(--white); background-color: rgrgba(0,0,0,.25);}
 
 .cm-s-gdwithgd .CodeMirror-cursor { border-left: 2px solid var(--white); }
 
