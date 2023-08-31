@@ -131,20 +131,20 @@ function generateWindow(type, source, section) {
 		titleIndicator.dataset.color = 'purple';
 		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>`;
 		titleName.innerText = 'Lessons';
-	} else if (type == 'projects') {
-		newWindow.dataset.type = 'projects';
+	} else if (type == 'glossary') {
+		newWindow.dataset.type = 'glossary';
 		newWindow.dataset.color = 'yellow';
 		indicator.dataset.color = 'yellow';
 		titleIndicator.dataset.color = 'yellow';
-		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>`;
-		titleName.innerText = 'Projects';
-	} else if (type == 'glossary') {
-		newWindow.dataset.type = 'glossary';
+		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>`;
+		titleName.innerText = 'Glossary';
+	} else if (type == 'projects') {
+		newWindow.dataset.type = 'projects';
 		newWindow.dataset.color = 'green';
 		indicator.dataset.color = 'green';
 		titleIndicator.dataset.color = 'green';
-		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>`;
-		titleName.innerText = 'Glossary';
+		title.innerHTML += `<svg class="window-title-icon" viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>`;
+		titleName.innerText = 'Projects';
 	} else if (type == 'code-editor') {
 		newWindow.dataset.type = 'code-editor';
 		newWindow.dataset.color = 'pink';
@@ -305,7 +305,7 @@ function refreshPosition(id) {
 		} else {
 			target.dataset.responsive = 0;
 		}
-	} else if (target.dataset.type == "projects") {
+	} else if (target.dataset.type == "glossary") {
 		if (windows[id]['width'] < 700) {
 			target.dataset.responsive = 2;
 		} else if (windows[id]['width'] < 1200) {
@@ -313,7 +313,7 @@ function refreshPosition(id) {
 		} else {
 			target.dataset.responsive = 0;
 		}
-	} else if (target.dataset.type == "glossary") {
+	} else if (target.dataset.type == "projects") {
 		if (windows[id]['width'] < 700) {
 			target.dataset.responsive = 2;
 		} else if (windows[id]['width'] < 1200) {
@@ -863,13 +863,13 @@ function generateWelcome(id) {
 				<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>
 				<p>Here to learn? Follow along with one of our <strong>lessons</strong> to learn something new!</p>
 			</div>
-			<div data-color="yellow" onclick="generateWindow('projects')" class="welcome-link">
-				<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
-				<p>Need a challenge? Pick one of our <strong>projects</strong> and see what you create!</p>
-			</div>
-			<div data-color="green" onclick="generateWindow('glossary')" class="welcome-link">
+			<div data-color="yellow" onclick="generateWindow('glossary')" class="welcome-link">
 				<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>
 				<p>Looking for help? Reference our <strong>glossary</strong> when you’re feeling stuck!</p>
+			</div>
+			<div data-color="green" onclick="generateWindow('projects')" class="welcome-link">
+				<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>
+				<p>Need a challenge? Pick one of our <strong>projects</strong> and see what you create!</p>
 			</div>
 			<div data-color="pink" onclick="generateWindow('code-editor')" class="welcome-link">
 				<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>
@@ -891,35 +891,35 @@ function generateDocuments(id, source, section) {
 
 	targetContent.innerHTML = `
 		<div class="documents-catalog">
-			<div data-doc="syllabus" data-color="red" class='documents-catalog-link'>
+			<div data-doc="syllabus" class='documents-catalog-link' data-color='red'>
 				<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>
 				<div>
 					<h4>Syllabus</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
-			<div data-doc="resources" data-color="blue" class='documents-catalog-link'>
+			<div data-doc="resources" class='documents-catalog-link' data-color='blue'>
 				<svg viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>
 				<div>
 					<h4>Resources</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
-			<div data-doc="4-week" data-color="purple" class='documents-catalog-link'>
+			<div data-doc="4-week" class='documents-catalog-link' data-color='purple'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><polygon points="60 60 60 70 70 70 70 30 60 30 60 50 40 50 40 30 30 30 30 60 60 60"/></svg>
 				<div>
 					<h4>4-week Workshop Overview</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
-			<div data-doc="5-week" data-color="yellow" class='documents-catalog-link'>
+			<div data-doc="5-week" class='documents-catalog-link' data-color='yellow'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><polygon points="70 40 70 30 30 30 30 50 50 50 50 40 70 40"/><polygon points="70 70 70 50 50 50 50 60 30 60 30 70 70 70"/></svg>
 				<div>
 					<h4>5-week Intensive Overview</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
-			<div data-doc="12-week" data-color="green" class='documents-catalog-link'>
+			<div data-doc="12-week" class='documents-catalog-link' data-color='green'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><rect x="30" y="30" width="10" height="40"/><polygon points="70 30 50 30 50 40 60 40 60 50 70 50 70 30"/><polygon points="70 70 70 60 60 60 60 50 50 50 50 70 70 70"/></svg>
 				<div>
 					<h4>12-week Semester Overview</h4>
@@ -956,15 +956,15 @@ function generateDocuments(id, source, section) {
 		docReturn.innerHTML = `
 			<button class="doc-return-catalog">
 				<svg viewBox="0 0 100 100"><rect x="10" y="10" width="20" height="20"/><rect x="40" y="10" width="20" height="20"/><rect x="70" y="10" width="20" height="20"/><rect x="10" y="40" width="20" height="20"/><rect x="40" y="40" width="20" height="20"/><rect x="70" y="40" width="20" height="20"/><rect x="10" y="70" width="20" height="20"/><rect x="40" y="70" width="20" height="20"/><rect x="70" y="70" width="20" height="20"/></svg>
-				<span>View All Documents</span>
+				<span>Menu</span>
 			</button>
 			<button class="doc-return-share">
 				<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>
-				<span>Share This Document</span>
+				<span>Share</span>
 			</button>
 			<button class="doc-return-close">
 				<svg viewBox="0 0 100 100"><polygon points="10 90 10 80 80 80 80 40 40 40 40 60 30 60 30 50 20 50 20 40 10 40 10 30 20 30 20 20 30 20 30 10 40 10 40 30 90 30 90 90 10 90"/></svg>
-				<span>Return to Document</span>
+				<span>Return</span>
 			</button>
 		`;
 		let docReturnCatalog = docReturn.querySelector('.doc-return-catalog');
@@ -991,6 +991,31 @@ function generateDocuments(id, source, section) {
 		for (let sectionLink of docContent.querySelectorAll('[data-link]')) {
 			sectionLink.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
 			sectionLink.addEventListener('click', () => copyURL([['document',source],['section',sectionLink.dataset.link]]));
+		}
+
+		// Add app icons to buttons
+		for (let btn of docContent.querySelectorAll(`button[data-color='red']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of docContent.querySelectorAll(`button[data-color='blue']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of docContent.querySelectorAll(`button[data-color='purple']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of docContent.querySelectorAll(`button[data-color='yellow']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of docContent.querySelectorAll(`button[data-color='green']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of docContent.querySelectorAll(`button[data-color='pink']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of docContent.querySelectorAll(`button`)) {
+			if (btn.dataset.color == undefined) {
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+			}
 		}
 
 		// Create table of contents toggle
@@ -1080,20 +1105,20 @@ function generateLessons(id, source) {
 
 			// Generate difficulty rating
 			let color = 'red';
-			if (entry['rating'] == 1) {
+			if (entry['difficulty'] == 2) {
 				color = 'blue';
-			} else if (entry['rating'] == 2) {
+			} else if (entry['difficulty'] == 3) {
 				color = 'purple';
-			} else if (entry['rating'] == 3) {
+			} else if (entry['difficulty'] == 4) {
 				color = 'yellow';
-			} else if (entry['rating'] == 4) {
+			} else if (entry['difficulty'] == 5) {
 				color = 'green';
-			} else if (entry['rating'] == 5) {
+			} else if (entry['difficulty'] == 6) {
 				color = 'pink';
 			}
 			let difficulty = `<div class='lesson-catalog-difficulty-rating'>`;
-			for (let i=0; i<6; i++) {
-				if (i<entry['rating']+1) {
+			for (let i=1; i<7; i++) {
+				if (i<entry['difficulty']+1) {
 					difficulty += `<div data-active="1"></div>`;
 				} else {
 					difficulty += `<div></div>`;
@@ -1174,22 +1199,22 @@ function generateLessons(id, source) {
 
 		// Generate rating color and dots
 		let color = 'red';
-		if (entry['rating'] == 1) {
+		if (entry['difficulty'] == 2) {
 			color = 'blue';
-		} else if (entry['rating'] == 2) {
+		} else if (entry['difficulty'] == 3) {
 			color = 'purple';
-		} else if (entry['rating'] == 3) {
+		} else if (entry['difficulty'] == 4) {
 			color = 'yellow';
-		} else if (entry['rating'] == 4) {
+		} else if (entry['difficulty'] == 5) {
 			color = 'green';
-		} else if (entry['rating'] == 5) {
+		} else if (entry['difficulty'] == 6) {
 			color = 'pink';
 		}
 		lessonContent.dataset.color = color;
 
 		let headerRating = '';
-		for (let i=0; i<6; i++) {
-			if (i<entry['rating']+1) {
+		for (let i=1; i<7; i++) {
+			if (i<entry['difficulty']+1) {
 				headerRating += `<div data-active="1"></div>`;
 			} else {
 				headerRating += `<div></div>`;
@@ -1197,16 +1222,6 @@ function generateLessons(id, source) {
 		}
 
 		// Generate header tags
-		let lessonConcepts = entry['concepts'].split(',');
-		let headerConcepts = '';
-		if (lessonConcepts != '') {
-			headerConcepts += '<div><h5>Concepts</h5><ul data-color="yellow">';
-			for (let i of lessonConcepts) {
-				headerConcepts += `<li>${i.trimStart()}</li>`;
-			}
-			headerConcepts += '</ul></div>'
-		}
-
 		let lessonHTML = entry['html'].split(',');
 		let headerHTML = '';
 		if (lessonHTML != '') {
@@ -1214,7 +1229,7 @@ function generateLessons(id, source) {
 			for (let i of lessonHTML) {
 				headerHTML += `<li>${i.trimStart()}</li>`;
 			}
-			headerHTML += '</ul></div>'
+			headerHTML += '</ul></div>';
 		}
 
 		let lessonCSS = entry['css'].split(',');
@@ -1224,47 +1239,27 @@ function generateLessons(id, source) {
 			for (let i of lessonCSS) {
 				headerCSS += `<li>${i.trimStart()}</li>`;
 			}
-			headerCSS += '</ul></div>'
+			headerCSS += '</ul></div>';
 		}
 
-		let lessonJS = entry['js'].split(',');
+		let lessonJS = entry['javascript'].split(',');
 		let headerJS = '';
 		if (lessonJS != '') {
-			headerJS += '<div><h5>JS</h5><ul data-color="yellow">';
+			headerJS += '<div><h5>JavaScript</h5><ul data-color="yellow">';
 			for (let i of lessonJS) {
 				headerJS += `<li>${i.trimStart()}</li>`;
 			}
-			headerJS += '</ul></div>'
+			headerJS += '</ul></div>';
 		}
 
-		let lessonDemos = entry['demos'].split(',');
-		let headerDemos = '';
-		if (lessonDemos != '') {
-			headerDemos += '<div><h5>Demos</h5><ul data-color="pink">';
-			for (let i of lessonDemos) {
-				headerDemos += `<li>${i.trimStart()}</li>`;
+		let lessonMisc = entry['misc'].split(',');
+		let headerMisc = '';
+		if (lessonMisc != '') {
+			headerMisc += '<div><h5>Misc</h5><ul data-color="yellow">';
+			for (let i of lessonMisc) {
+				headerMisc += `<li>${i.trimStart()}</li>`;
 			}
-			headerDemos += '</ul></div>'
-		}
-
-		let lessonProjects = entry['projects'].split(',');
-		let headerProjects = '';
-		if (lessonProjects != '') {
-			headerProjects += '<div><h5>Projects</h5><ul data-color="purple">';
-			for (let i of lessonProjects) {
-				headerProjects += `<li>${i.trimStart()}</li>`;
-			}
-			headerProjects += '</ul></div>'
-		}
-
-		let lessonResources = entry['resources'].split(',');
-		let headerResources = '';
-		if (lessonResources != '') {
-			headerResources += '<div><h5>Resources</h5><ul data-color="green">';
-			for (let i of lessonResources) {
-				headerResources += `<li>${i.trimStart()}</li>`;
-			}
-			headerResources += '</ul></div>'
+			headerMisc += '</ul></div>';
 		}
 
 		// Header number
@@ -1294,19 +1289,10 @@ function generateLessons(id, source) {
 				<div class="lesson-doc-divider"></div>
 
 				<div class="lesson-doc-concepts">
-					${headerConcepts}
-				</div>
-
-				<div class="lesson-doc-concepts">
 					${headerHTML}
 					${headerCSS}
 					${headerJS}
-				</div>
-
-				<div class="lesson-doc-concepts">
-					${headerDemos}
-					${headerProjects}
-					${headerResources}
+					${headerMisc}
 				</div>
 			</header>
 		`
@@ -1363,13 +1349,18 @@ function generateLessons(id, source) {
 			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='yellow']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='green']`)) {
-			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button[data-color='pink']`)) {
 			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button`)) {
+			if (btn.dataset.color == undefined) {
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+			}
 		}
 
 		// Jump to section on initial load
@@ -1420,23 +1411,198 @@ function generateLessons(id, source) {
 }
 
 // ————————————————————————————————————————————————————————————
-// PROJECTS
+// GLOSSARY
 // ————————————————————————————————————————————————————————————
 
-function generateProjects(id) {
+function generateGlossary(id, source) {
 	let target = document.querySelector("#"+id);
 	let targetContent = target.querySelector('.window-content');
 
 	targetContent.innerHTML = `
-		<div>hi</div>
+		<div class="glossary-menu">
+			<div class="glossary-search">
+				<input type="text" placeholder="Search for Terms">
+			</div>
+		</div>
+		<div class="glossary-content"></div>
 	`
+
+	let glossaryMenu = targetContent.querySelector('.glossary-menu');
+	let glossaryContent = targetContent.querySelector('.glossary-content');
+	let activeGlossary = 'index.html';
+
+	let glossaryBackup;
+	async function fetchMenu() {
+		const response = await fetch("sources/glossary.json");
+		const data = await response.json();
+		glossaryBackup = data;
+
+		let temp = '';
+		for (let index of Object.keys(glossaryBackup)) {
+			let entry = glossaryBackup[index];
+
+			let color = 'red';
+			if (entry['type'] == 'css') {
+				color = 'blue';
+			} else if (entry['type'] == 'javascript') {
+				color = 'purple';
+			} else if (entry['type'] == 'misc') {
+				color = 'yellow';
+			}
+
+			temp += `
+				<div class="glossary-term" data-index="${index}" data-term="${entry['term']}" data-color="${color}">
+					<div class="glossary-term-type">${entry['type']}</div>
+					<div class="glossary-term-name">${entry['term']}</div>
+					<div class="glossary-term-desc">${entry['desc']}</div>
+				</div>
+			`
+		}
+		glossaryMenu.innerHTML += temp + `
+			<div class="glossary-return">
+				<button class="glossary-return-btn">
+					<svg viewBox="0 0 100 100"><polygon points="10 90 10 80 80 80 80 40 40 40 40 60 30 60 30 50 20 50 20 40 10 40 10 30 20 30 20 20 30 20 30 10 40 10 40 30 90 30 90 90 10 90"/></svg>
+					<span>Return</span>
+				</button>
+			</div>
+		`;
+
+		let glossaryReturn = glossaryMenu.querySelector('.glossary-return-btn');
+		glossaryReturn.addEventListener('click', toggleNav);
+
+		for (let term of glossaryMenu.querySelectorAll('.glossary-term')) {
+			let index = term.dataset.index;
+			let source = glossaryBackup[index]['source'];
+			term.addEventListener('click', () => {
+				fetchTerm(source);
+			});
+		}
+
+		// Search event listener
+		let glossarySearch = glossaryMenu.querySelector('.glossary-search input');
+		glossarySearch.addEventListener('input', () => {
+			setSearch(glossarySearch.value);
+		})
+
+		// Get source file if specified
+		if (source != undefined) {
+			target.dataset.menu = 0;
+		} else {
+			activeGlossary = 'index-html';
+			source = 'index-html.html';
+			target.dataset.menu = 1;
+		}
+		fetchTerm(source);
+	}
+	fetchMenu();
+
+	// Fetch source and generate lesson
+	let sourceBackup;
+	async function fetchTerm(source) {
+		const response = await fetch("sources/glossary/"+source);
+		const data = await response.text();
+		sourceBackup = data;
+		activeGlossary = source.split('.')[0];
+		let key = findByProperty(glossaryBackup, 'source', source);
+
+		// Generate header
+		let header = `
+			<header>
+				<div class="glossary-content-type">${glossaryBackup[key]['type']}</div>
+				<h4 class="glossary-content-name"><span>${glossaryBackup[key]['term']}</span></h4>
+				<p class="glossary-content-desc">${glossaryBackup[key]['desc']}</p>
+			</header>
+		`;
+
+		glossaryContent.innerHTML = header + data;
+
+		// Set color
+		let type = glossaryBackup[key]['type'];
+		let color = 'red';
+		if (type == 'css') {
+			color = 'blue';
+		} else if (type == 'javascript') {
+			color = 'purple';
+		} else if (type == 'misc') {
+			color = 'yellow';
+		}
+		glossaryContent.dataset.color = color;
+
+		// Add share icon to title and copyURL event listener
+		let glossaryName = glossaryContent.querySelector('.glossary-content-name');
+		glossaryName.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+		glossaryName.addEventListener('click', () => copyURL([['glossary',activeGlossary]]))
+
+		// Add app icons to buttons
+		for (let btn of glossaryContent.querySelectorAll(`button[data-color='red']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of glossaryContent.querySelectorAll(`button[data-color='blue']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of glossaryContent.querySelectorAll(`button[data-color='purple']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of glossaryContent.querySelectorAll(`button[data-color='yellow']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of glossaryContent.querySelectorAll(`button[data-color='green']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of glossaryContent.querySelectorAll(`button[data-color='pink']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of glossaryContent.querySelectorAll(`button`)) {
+			if (btn.dataset.color == undefined) {
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+			}
+		}
+	}
+
+	// Create menu toggle
+	let glossaryMenuToggle = document.createElement('div');
+	glossaryMenuToggle.classList.add('glossary-menu-toggle');
+	glossaryMenuToggle.innerHTML = `
+		<button>
+			<svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="20"/><rect x="10" y="40" width="80" height="20"/><rect x="10" y="70" width="80" height="20"/></svg>
+			<span>Browse Glossary</span>
+		</button>
+	`;
+	targetContent.appendChild(glossaryMenuToggle);
+	glossaryMenuToggle.addEventListener('click', toggleNav);
+
+	// Toggle menu
+	let navState = false;
+	function toggleNav() {
+		navState = !navState;
+		targetContent.dataset.nav = navState;
+	}
+
+	// Search filter
+	let searchString = "";
+	function setSearch(query) {
+		searchString = query;
+		formattedInput = searchString.toLowerCase().replace(/[.,\/#!$%\^&*;:{}=\-_`~()‘’“”\?]/g,"");
+		for (let term of glossaryMenu.querySelectorAll('.glossary-term')) {
+			let index = term.dataset.index;
+			let termType = glossaryBackup[index]['type'].toLowerCase().replace(/[.,\/#!$%\^&*;:{}=\-_`~()‘’“”\?]/g,"");
+			let termName = glossaryBackup[index]['term'].toLowerCase().replace(/[.,\/#!$%\^&*;:{}=\-_`~()‘’“”\?]/g,"");
+			let termDesc = glossaryBackup[index]['desc'].toLowerCase().replace(/[.,\/#!$%\^&*;:{}=\-_`~()‘’“”\?]/g,"");
+
+			if (termType.includes(formattedInput) || termName.includes(formattedInput) || termDesc.includes(formattedInput)) {
+				term.dataset.show = 1;
+			} else {
+				term.dataset.show = 0;
+			}
+		}
+	}
 }
 
 // ————————————————————————————————————————————————————————————
-// GLOSSARY
+// PROJECTS
 // ————————————————————————————————————————————————————————————
 
-function generateGlossary(id) {
+function generateProjects(id) {
 	let target = document.querySelector("#"+id);
 	let targetContent = target.querySelector('.window-content');
 
@@ -1621,10 +1787,10 @@ if (params.has("welcome")) {
 	generateWindow('documents', params.get("document"), params.get("section"));
 } else if (params.has("lesson")) {
 	generateWindow('lessons', params.get("lesson") + ".html");
+} else if (params.has("glossary")) {
+	generateWindow('glossary', params.get("glossary") + ".html");
 } else if (params.has("project")) {
 	generateWindow('projects', params.get("project") + ".html");
-} else if (params.has("glossary")) {
-	generateWindow('glossary', params.get("glossary"));
 } else if (params.has("demo")) {
 	generateWindow('code-editor', params.get("demo") + ".html");
 } else {

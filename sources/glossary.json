@@ -1,0 +1,428 @@
+[
+  {
+    "term": "index.html",
+    "type": "html",
+    "desc": "Something goes here",
+    "source": "index-html.html"
+  },
+  {
+    "term": "File Paths",
+    "type": "html",
+    "desc": "Something goes here",
+    "source": "file-paths.html"
+  },
+  {
+    "term": "HTML Comments",
+    "type": "html",
+    "desc": "Something goes here",
+    "source": "comments.html"
+  },
+  {
+    "term": "IDs, Anchor Links",
+    "type": "html",
+    "desc": "Something goes here",
+    "source": "ids-anchor-links.html"
+  },
+  {
+    "term": "Metadata, Opengraph",
+    "type": "html",
+    "desc": "Something goes here",
+    "source": "metadata.html"
+  },
+  {
+    "term": "p",
+    "type": "html",
+    "desc": "Paragraphs",
+    "source": "p.html"
+  },
+  {
+    "term": "br",
+    "type": "html",
+    "desc": "Line breaks",
+    "source": "br.html"
+  },
+  {
+    "term": "strong",
+    "type": "html",
+    "desc": "Bold text",
+    "source": "strong.html"
+  },
+  {
+    "term": "em",
+    "type": "html",
+    "desc": "Italic text",
+    "source": "em.html"
+  },
+  {
+    "term": "h1-h6",
+    "type": "html",
+    "desc": "Text headings",
+    "source": "h1-h6.html"
+  },
+  {
+    "term": "ul, ol, li",
+    "type": "html",
+    "desc": "Lists (bulletted and numbered)",
+    "source": "ul-ol-li.html"
+  },
+  {
+    "term": "a",
+    "type": "html",
+    "desc": "Links",
+    "source": "a.html"
+  },
+  {
+    "term": "img",
+    "type": "html",
+    "desc": "Images",
+    "source": "img.html"
+  },
+  {
+    "term": "div",
+    "type": "html",
+    "desc": "Generic division/container for content",
+    "source": "div.html"
+  },
+  {
+    "term": "head",
+    "type": "html",
+    "desc": "Container for metadata",
+    "source": "head.html"
+  },
+  {
+    "term": "body",
+    "type": "html",
+    "desc": "Container for content",
+    "source": "body.html"
+  },
+  {
+    "term": "span",
+    "type": "html",
+    "desc": "Inline text",
+    "source": "span.html"
+  },
+  {
+    "term": "style",
+    "type": "html",
+    "desc": "Embedding CSS into an HTML document",
+    "source": "style.html"
+  },
+  {
+    "term": "script",
+    "type": "html",
+    "desc": "Embedding JavaScript into an HTML document",
+    "source": "script.html"
+  },
+  {
+    "term": "font-size",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "font-size.html"
+  },
+  {
+    "term": "color",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "color.html"
+  },
+  {
+    "term": "text-align",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "text-align.html"
+  },
+  {
+    "term": "letter-spacing",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "letter-spacing.html"
+  },
+  {
+    "term": "word-spacing",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "word-spacing.html"
+  },
+  {
+    "term": "font-weight",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "font-weight.html"
+  },
+  {
+    "term": "text-transform",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "text-transform.html"
+  },
+  {
+    "term": "text-decoration",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "text-decoration.html"
+  },
+  {
+    "term": "line-height",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "line-height.html"
+  },
+  {
+    "term": "font-family",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "font-family.html"
+  },
+  {
+    "term": "@font-face",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "font-face.html"
+  },
+  {
+    "term": "width, min-width, max-width",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "width.html"
+  },
+  {
+    "term": "height, min-height, max-height",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "height.html"
+  },
+  {
+    "term": "margin",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "margin.html"
+  },
+  {
+    "term": "border",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "border.html"
+  },
+  {
+    "term": "padding",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "padding.html"
+  },
+  {
+    "term": "position",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "position.html"
+  },
+  {
+    "term": "transform",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "transform.html"
+  },
+  {
+    "term": "opacity",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "opacity.html"
+  },
+  {
+    "term": "filter",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "filter.html"
+  },
+  {
+    "term": "box-shadow",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "box-shadow.html"
+  },
+  {
+    "term": "border-radius",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "border-radius.html"
+  },
+  {
+    "term": "cursor",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "cursor.html"
+  },
+  {
+    "term": ":hover",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "hover.html"
+  },
+  {
+    "term": ":active",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "active.html"
+  },
+  {
+    "term": "transition",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "transition.html"
+  },
+  {
+    "term": "@keyframes, animation",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "keyframes.html"
+  },
+  {
+    "term": "display",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "display.html"
+  },
+  {
+    "term": "scroll-behavior",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "scroll-behavior.html"
+  },
+  {
+    "term": "Classes",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "classes.html"
+  },
+  {
+    "term": "Units",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "units.html"
+  },
+  {
+    "term": "Web-safe Fonts",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "web-safe-fonts.html"
+  },
+  {
+    "term": "Box Model",
+    "type": "css",
+    "desc": "Something goes here",
+    "source": "box-model.html"
+  },
+  {
+    "term": "console.log()",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "console-log.html"
+  },
+  {
+    "term": "let",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "let.html"
+  },
+  {
+    "term": "querySelector()",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "queryselector.html"
+  },
+  {
+    "term": "classList",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "classlist.html"
+  },
+  {
+    "term": "dataset",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "dataset.html"
+  },
+  {
+    "term": "innerHTML",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "innerhtml.html"
+  },
+  {
+    "term": "innerText",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "innertext.html"
+  },
+  {
+    "term": "addEventListener()",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "addeventlistener.html"
+  },
+  {
+    "term": "if...else",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "if-else.html"
+  },
+  {
+    "term": "while",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "while.html"
+  },
+  {
+    "term": "for",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "for.html"
+  },
+  {
+    "term": "Template Literals",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "template-literals.html"
+  },
+  {
+    "term": "Math.random()",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "math-random.html"
+  },
+  {
+    "term": "Math.floor(), Math.ceil(), Math.round()",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "math-floor.html"
+  },
+  {
+    "term": "Arrays",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "arrays.html"
+  },
+  {
+    "term": "Objects",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "objects.html"
+  },
+  {
+    "term": "Arithmetic Operators",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "arithmetic-operators.html"
+  },
+  {
+    "term": "Comparison Operators",
+    "type": "javascript",
+    "desc": "Something goes here",
+    "source": "comparison-operators.html"
+  },
+  {
+    "term": "GitHub",
+    "type": "misc",
+    "desc": "Something goes here",
+    "source": "github.html"
+  }
+]
