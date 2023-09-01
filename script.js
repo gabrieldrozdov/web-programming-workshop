@@ -908,21 +908,21 @@ function generateDocuments(id, source, section) {
 			<div data-doc="4-week" class='documents-catalog-link' data-color='purple'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><polygon points="60 60 60 70 70 70 70 30 60 30 60 50 40 50 40 30 30 30 30 60 60 60"/></svg>
 				<div>
-					<h4>4-week Workshop Overview</h4>
+					<h4>4-week Workshop Curriculum</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
 			<div data-doc="5-week" class='documents-catalog-link' data-color='yellow'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><polygon points="70 40 70 30 30 30 30 50 50 50 50 40 70 40"/><polygon points="70 70 70 50 50 50 50 60 30 60 30 70 70 70"/></svg>
 				<div>
-					<h4>5-week Intensive Overview</h4>
+					<h4>5-week Intensive Curriculum</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
 			<div data-doc="12-week" class='documents-catalog-link' data-color='green'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><rect x="30" y="30" width="10" height="40"/><polygon points="70 30 50 30 50 40 60 40 60 50 70 50 70 30"/><polygon points="70 70 70 60 60 60 60 50 50 50 50 70 70 70"/></svg>
 				<div>
-					<h4>12-week Semester Overview</h4>
+					<h4>12-week Semester Curriculum</h4>
 					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 				</div>
 			</div>
