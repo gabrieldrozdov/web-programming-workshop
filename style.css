@@ -3668,12 +3668,14 @@ body {
 /* CodeMirror theme */
 .CodeMirror {
 	height: unset;
-	font-family: "IBM Plex", monospace;
-	font-size: 12px;
 	cursor: text;
 	overflow: hidden;
 	border-radius: 18px;
 	border: 2px solid var(--black);
+}
+.CodeMirror * {
+	font-family: "IBM Plex", monospace;
+	font-size: 12px;
 }
 .cm-s-gdwithgd.CodeMirror { background: unset; color: var(--white); }
 .cm-s-gdwithgd div.CodeMirror-selected { background: rgba(0,0,0,.25); }
