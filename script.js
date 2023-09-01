@@ -1569,7 +1569,7 @@ function generateGlossary(id, source) {
 	glossaryMenuToggle.innerHTML = `
 		<button>
 			<svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="20"/><rect x="10" y="40" width="80" height="20"/><rect x="10" y="70" width="80" height="20"/></svg>
-			<span>Browse Glossary</span>
+			<span>Pick a Term</span>
 		</button>
 	`;
 	targetContent.appendChild(glossaryMenuToggle);
@@ -1610,13 +1610,335 @@ function generateGlossary(id, source) {
 // PROJECTS
 // ————————————————————————————————————————————————————————————
 
-function generateProjects(id) {
+function generateProjects(id, source) {
 	let target = document.querySelector("#"+id);
 	let targetContent = target.querySelector('.window-content');
+	let activeProject, activeIndex;
+	let initialize = true;
 
 	targetContent.innerHTML = `
-		<div>hi</div>
+		<div class="project-catalog"></div>
+		<div class="project-content"></div>
 	`
+	let projectCatalog = targetContent.querySelector('.project-catalog');
+	let projectContent = targetContent.querySelector('.project-content');
+
+	// Populate catalog
+	let projectsBackup;
+	async function fetchCatalog() {
+		const response = await fetch("sources/projects.json");
+		const data = await response.json();
+		projectsBackup = data;
+
+		let temp = '';
+		for (let index of Object.keys(projectsBackup)) {
+			let entry = projectsBackup[index];
+
+			// Generate difficulty rating
+			let color = 'red';
+			if (entry['difficulty'] == 2) {
+				color = 'blue';
+			} else if (entry['difficulty'] == 3) {
+				color = 'purple';
+			} else if (entry['difficulty'] == 4) {
+				color = 'yellow';
+			} else if (entry['difficulty'] == 5) {
+				color = 'green';
+			} else if (entry['difficulty'] == 6) {
+				color = 'pink';
+			}
+			let difficulty = `<div class='project-catalog-difficulty-rating'>`;
+			for (let i=1; i<7; i++) {
+				if (i<entry['difficulty']+1) {
+					difficulty += `<div data-active="1"></div>`;
+				} else {
+					difficulty += `<div></div>`;
+				}
+			}
+			difficulty += '</div>';
+
+			// Generate outcomes
+			let outcomesString = entry['outcomes'].split(',');
+			let outcomes = '';
+			for (let i of outcomesString) {
+				outcomes += `<li>${i.trimStart()}</li>`;
+			}
+
+			// Generate project number (if applicable)
+			let number = entry['number'];
+			if (number != "") {
+				number = `<span>${number}</span>`;
+			}
+
+			temp += `
+				<div class="project-catalog-link" data-index="${index}" data-color="${color}">
+					<div class="project-catalog-info">
+						<h4>
+							<span class="project-catalog-subtitle">${entry['type']}${number}</span>
+							<span  class="project-catalog-title">${entry['name']}</span>
+						</h4>
+						<p class="project-catalog-summary">
+							${entry['summary']}
+						</p>
+						<div class="project-catalog-outcomes">
+							<h5>Outcomes</h5>
+							<ul>
+								${outcomes}
+							</ul>
+						</div>
+					</div>
+					<div class="project-catalog-difficulty">
+						<h5>Difficulty</h5>
+						${difficulty}
+					</div>
+				</div>
+			`
+		}
+		projectCatalog.innerHTML = temp;
+		for (let catalogLink of target.querySelectorAll('.project-catalog-link')) {
+			let index = catalogLink.dataset.index;
+			let source = projectsBackup[index]['source'];
+			catalogLink.addEventListener('click', () => {
+				openProject(source);
+			});
+		}
+
+		// Get source file if specified
+		if (source != undefined) {
+			target.dataset.menu = 0;
+			openProject(source);
+		} else {
+			target.dataset.menu = 1;
+		}
+	}
+	fetchCatalog();
+
+	// Fetch source and generate project
+	let sourceBackup;
+	async function fetchSource(source) {
+		const response = await fetch("sources/projects/"+source);
+		const data = await response.text();
+		sourceBackup = data;
+
+		populateContent(source);
+	}
+
+	// Populate project content
+	function populateContent(source) {
+		activeIndex = findByProperty(projectsBackup, 'source', source);
+		let entry = projectsBackup[activeIndex];
+
+		// Generate rating color and dots
+		let color = 'red';
+		if (entry['difficulty'] == 2) {
+			color = 'blue';
+		} else if (entry['difficulty'] == 3) {
+			color = 'purple';
+		} else if (entry['difficulty'] == 4) {
+			color = 'yellow';
+		} else if (entry['difficulty'] == 5) {
+			color = 'green';
+		} else if (entry['difficulty'] == 6) {
+			color = 'pink';
+		}
+		projectContent.dataset.color = color;
+
+		let headerRating = '';
+		for (let i=1; i<7; i++) {
+			if (i<entry['difficulty']+1) {
+				headerRating += `<div data-active="1"></div>`;
+			} else {
+				headerRating += `<div></div>`;
+			}
+		}
+
+		// Generate header tags
+		let projectHTML = entry['html'].split(',');
+		let headerHTML = '';
+		if (projectHTML != '') {
+			headerHTML += '<div><h5>HTML</h5><ul data-color="yellow">';
+			for (let i of projectHTML) {
+				headerHTML += `<li>${i.trimStart()}</li>`;
+			}
+			headerHTML += '</ul></div>';
+		}
+
+		let projectCSS = entry['css'].split(',');
+		let headerCSS = '';
+		if (projectCSS != '') {
+			headerCSS += '<div><h5>CSS</h5><ul data-color="yellow">';
+			for (let i of projectCSS) {
+				headerCSS += `<li>${i.trimStart()}</li>`;
+			}
+			headerCSS += '</ul></div>';
+		}
+
+		let projectJS = entry['javascript'].split(',');
+		let headerJS = '';
+		if (projectJS != '') {
+			headerJS += '<div><h5>JavaScript</h5><ul data-color="yellow">';
+			for (let i of projectJS) {
+				headerJS += `<li>${i.trimStart()}</li>`;
+			}
+			headerJS += '</ul></div>';
+		}
+
+		let projectMisc = entry['misc'].split(',');
+		let headerMisc = '';
+		if (projectMisc != '') {
+			headerMisc += '<div><h5>Misc</h5><ul data-color="yellow">';
+			for (let i of projectMisc) {
+				headerMisc += `<li>${i.trimStart()}</li>`;
+			}
+			headerMisc += '</ul></div>';
+		}
+
+		// Header number
+		let headerNumber = entry['number'];
+		if (headerNumber != "") {
+			headerNumber = `<span>${headerNumber}</span>`;
+		}
+
+		let header = `
+			<header>
+				<h4>
+					<span class="project-doc-subtitle">${entry['type']}${headerNumber}</span>
+					<span class="project-doc-title">
+						<span class="project-doc-title-name">${entry['name']}</span>
+					</span>
+				</h4>
+
+				<p>${entry['summary']}</p>
+
+				<div class="project-doc-difficulty">
+					<h5>Difficulty</h5>
+					<div class="project-doc-difficulty-rating">
+						${headerRating}
+					</div>
+				</div>
+
+				<div class="project-doc-divider"></div>
+
+				<div class="project-doc-concepts">
+					${headerHTML}
+					${headerCSS}
+					${headerJS}
+					${headerMisc}
+				</div>
+			</header>
+		`
+
+		projectContent.innerHTML = `
+			<div class="project-doc" data-color="${'blue'}">
+				${header}
+				${sourceBackup}
+			</div>
+		`;
+
+		// Add navigation
+		projectContent.innerHTML += `
+			<div class="project-content-nav">
+				<button class='project-content-nav-catalog'>
+					<svg viewBox="0 0 100 100"><rect x="10" y="10" width="20" height="20"/><rect x="40" y="10" width="20" height="20"/><rect x="70" y="10" width="20" height="20"/><rect x="10" y="40" width="20" height="20"/><rect x="40" y="40" width="20" height="20"/><rect x="70" y="40" width="20" height="20"/><rect x="10" y="70" width="20" height="20"/><rect x="40" y="70" width="20" height="20"/><rect x="70" y="70" width="20" height="20"/></svg>
+					<span>View All Projects</span>
+				</button>
+				<button class='project-content-nav-prev'>
+					<svg viewBox="0 0 100 100"><polygon points="50 40 50 15 40 15 40 25 30 25 30 35 20 35 20 45 10 45 10 55 20 55 20 65 30 65 30 75 40 75 40 85 50 85 50 60 90 60 90 40 50 40"/></svg>
+					<span>Previous Project</span>
+				</button>
+				<button class='project-content-nav-next'>
+				<svg viewBox="0 0 100 100"><polygon points="50 40 50 15 60 15 60 25 70 25 70 35 80 35 80 45 90 45 90 55 80 55 80 65 70 65 70 75 60 75 60 85 50 85 50 60 10 60 10 40 50 40"/></svg>
+					<span>Next Project</span>
+				</button>
+			</div>
+		`
+		let navPrev = target.querySelector('.project-content-nav-prev');
+		navPrev.addEventListener('click', prevProject);
+		let navCatalog = target.querySelector('.project-content-nav-catalog');
+		navCatalog.addEventListener('click', openCatalog);
+		let navNext = target.querySelector('.project-content-nav-next');
+		navNext.addEventListener('click', nextProject);
+
+		// Add share icons to titles and copyURL event listeners
+		let projectTitle = projectContent.querySelector('.project-doc-title');
+		projectTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+		projectTitle.addEventListener('click', () => copyURL([['project',activeProject]]))
+		for (let section of projectContent.querySelectorAll('.project-doc section')) {
+			let sectionTitle = section.querySelector('h5');
+			sectionTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+			sectionTitle.addEventListener('click', () => copyURL([['project',activeProject], ['section',section.id]]));
+		}
+
+		// Add app icons to buttons
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button[data-color='red']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="40" y="30" width="10" height="20"/><rect x="50" y="10" width="10" height="20"/><rect x="10" y="10" width="10" height="20"/><rect x="30" y="10" width="10" height="20"/><rect x="20" y="30" width="10" height="20"/><polygon points="60 70 60 60 80 60 80 50 50 50 50 90 60 90 60 80 80 80 80 70 60 70"/><rect x="80" y="60" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button[data-color='blue']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button[data-color='purple']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button[data-color='yellow']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="80" y="80" width="10" height="10"/><rect x="70" y="70" width="10" height="10"/><rect x="60" y="60" width="10" height="10"/><rect x="50" y="50" width="10" height="10"/><rect x="30" y="60" width="20" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="10" y="30" width="10" height="20"/><rect x="20" y="20" width="10" height="10"/><rect x="30" y="10" width="20" height="10"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="30" width="10" height="20"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button[data-color='green']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><polygon points="30 70 20 70 20 60 10 60 10 90 40 90 40 80 30 80 30 70"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="40" width="10" height="10"/><rect x="40" y="30" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 10 60 10 60 20 50 20 50 30 60 30 60 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="50" width="10" height="10"/><rect x="50" y="60" width="10" height="10"/><rect x="40" y="70" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button[data-color='pink']`)) {
+			btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="10" y="40" width="10" height="10"/><rect x="20" y="30" width="10" height="10"/><rect x="20" y="50" width="10" height="10"/><rect x="30" y="70" width="10" height="20"/><rect x="40" y="50" width="10" height="20"/><rect x="50" y="30" width="10" height="20"/><rect x="60" y="10" width="10" height="20"/><rect x="70" y="60" width="10" height="10"/><rect x="80" y="50" width="10" height="10"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+		}
+		for (let btn of projectContent.querySelectorAll(`.project-doc section button`)) {
+			if (btn.dataset.color == undefined) {
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+			}
+		}
+
+		// Jump to section on initial load
+		if (initialize == true) {
+			let url = new URL(window.location.href);
+			let params = new URLSearchParams(url.search);
+			if (params.has('section')) {
+				setTimeout(() => {
+					jumpToSection(params.get('section'));
+				}, 500);
+			}
+			initialize = false;
+		}
+
+		target.dataset.menu = 0;
+	}
+
+	function jumpToSection(section) {
+		let anchor = projectContent.querySelector('#' + section);
+		anchor.scrollIntoView({
+			behavior: 'smooth',
+			block: "start",
+		});
+	}
+
+	// project traversal
+	function openProject(source) {
+		activeProject = source.split('.')[0];
+		fetchSource(source);
+	}
+	function openCatalog() {
+		target.dataset.menu = 1;
+	}
+	function prevProject() {
+		activeIndex--;
+		if (activeIndex < 0) {
+			activeIndex = projectsBackup.length-1;
+		}
+		openProject(projectsBackup[activeIndex]['source']);
+	}
+	function nextProject() {
+		activeIndex++;
+		if (activeIndex >= projectsBackup.length) {
+			activeIndex = 0;
+		}
+		openProject(projectsBackup[activeIndex]['source']);
+	}
 }
 
 // ————————————————————————————————————————————————————————————
@@ -1837,16 +2159,3 @@ function findByProperty(json, property, value) {
 	}
 	return false;
 }
-
-
-
-
-
-
-
-
-
-
-// TODO
-// hide lesson header row if nothing is in it
-// fix jump to section for lessons
