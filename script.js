@@ -959,8 +959,8 @@ function generateDocuments(id, source, section) {
 				<span>Menu</span>
 			</button>
 			<button class="doc-return-share">
-				<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>
-				<span>Share</span>
+				<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+				<span>Copy&nbsp;URL</span>
 			</button>
 			<button class="doc-return-close">
 				<svg viewBox="0 0 100 100"><polygon points="10 90 10 80 80 80 80 40 40 40 40 60 30 60 30 50 20 50 20 40 10 40 10 30 20 30 20 20 30 20 30 10 40 10 40 30 90 30 90 90 10 90"/></svg>
@@ -989,7 +989,7 @@ function generateDocuments(id, source, section) {
 		// Add share icons to titles and copyURL event listeners
 		let docContent = targetContent.querySelector('.doc-content');
 		for (let sectionLink of docContent.querySelectorAll('[data-link]')) {
-			sectionLink.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+			sectionLink.innerHTML += `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>`;
 			sectionLink.addEventListener('click', () => copyURL([['document',source],['section',sectionLink.dataset.link]]));
 		}
 
@@ -1014,7 +1014,7 @@ function generateDocuments(id, source, section) {
 		}
 		for (let btn of docContent.querySelectorAll(`button`)) {
 			if (btn.dataset.color == undefined) {
-				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
 			}
 		}
 
@@ -1330,11 +1330,11 @@ function generateLessons(id, source) {
 
 		// Add share icons to titles and copyURL event listeners
 		let lessonTitle = lessonContent.querySelector('.lesson-doc-title');
-		lessonTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+		lessonTitle.innerHTML += `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>`;
 		lessonTitle.addEventListener('click', () => copyURL([['lesson',activeLesson]]))
 		for (let section of lessonContent.querySelectorAll('.lesson-doc section')) {
 			let sectionTitle = section.querySelector('h5');
-			sectionTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+			sectionTitle.innerHTML += `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>`;
 			sectionTitle.addEventListener('click', () => copyURL([['lesson',activeLesson], ['section',section.id]]));
 		}
 
@@ -1359,7 +1359,7 @@ function generateLessons(id, source) {
 		}
 		for (let btn of lessonContent.querySelectorAll(`.lesson-doc section button`)) {
 			if (btn.dataset.color == undefined) {
-				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
 			}
 		}
 
@@ -1534,7 +1534,7 @@ function generateGlossary(id, source) {
 
 		// Add share icon to title and copyURL event listener
 		let glossaryName = glossaryContent.querySelector('.glossary-content-name');
-		glossaryName.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+		glossaryName.innerHTML += `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>`;
 		glossaryName.addEventListener('click', () => copyURL([['glossary',activeGlossary]]))
 
 		// Add app icons to buttons
@@ -1558,7 +1558,7 @@ function generateGlossary(id, source) {
 		}
 		for (let btn of glossaryContent.querySelectorAll(`button`)) {
 			if (btn.dataset.color == undefined) {
-				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
 			}
 		}
 	}
@@ -1861,11 +1861,11 @@ function generateProjects(id, source) {
 
 		// Add share icons to titles and copyURL event listeners
 		let projectTitle = projectContent.querySelector('.project-doc-title');
-		projectTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+		projectTitle.innerHTML += `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>`;
 		projectTitle.addEventListener('click', () => copyURL([['project',activeProject]]))
 		for (let section of projectContent.querySelectorAll('.project-doc section')) {
 			let sectionTitle = section.querySelector('h5');
-			sectionTitle.innerHTML += `<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>`;
+			sectionTitle.innerHTML += `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>`;
 			sectionTitle.addEventListener('click', () => copyURL([['project',activeProject], ['section',section.id]]));
 		}
 
@@ -1890,7 +1890,7 @@ function generateProjects(id, source) {
 		}
 		for (let btn of projectContent.querySelectorAll(`.project-doc section button`)) {
 			if (btn.dataset.color == undefined) {
-				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect class="cls-1" x="20" y="80" width="20" height="10"/><rect class="cls-1" x="10" y="60" width="10" height="20"/><rect class="cls-1" x="20" y="50" width="10" height="10"/><rect class="cls-1" x="50" y="50" width="10" height="20"/><rect class="cls-1" x="40" y="70" width="10" height="10"/><rect class="cls-1" x="40" y="30" width="10" height="20"/><rect class="cls-1" x="50" y="20" width="10" height="10"/><rect class="cls-1" x="60" y="10" width="20" height="10"/><rect class="cls-1" x="80" y="20" width="10" height="20"/><rect class="cls-1" x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
+				btn.innerHTML = `<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>` + btn.innerHTML;
 			}
 		}
 
@@ -1959,8 +1959,8 @@ function generateCodeEditor(id, source) {
 					<span>Reset</span>
 				</button>
 				<button class="editor-btn-share">
-					<svg viewBox="0 0 100 100"><polygon points="80 80 20 80 20 30 40 30 40 20 10 20 10 90 90 90 90 60 80 60 80 80"/><rect x="30" y="50" width="10" height="20"/><rect x="40" y="40" width="10" height="10"/><polygon points="80 30 80 20 70 20 70 30 50 30 50 40 70 40 70 50 80 50 80 40 90 40 90 30 80 30"/><rect x="60" y="10" width="10" height="10"/><rect x="60" y="50" width="10" height="10"/></svg>
-					<span>Copy Link</span>
+					<svg viewBox="0 0 100 100"><rect x="20" y="80" width="20" height="10"/><rect x="10" y="60" width="10" height="20"/><rect x="20" y="50" width="10" height="10"/><rect x="50" y="50" width="10" height="20"/><rect x="40" y="70" width="10" height="10"/><rect x="40" y="30" width="10" height="20"/><rect x="50" y="20" width="10" height="10"/><rect x="60" y="10" width="20" height="10"/><rect x="80" y="20" width="10" height="20"/><rect x="70" y="40" width="10" height="10"/></svg>
+					<span>Copy URL</span>
 				</button>
 			</div>
 			<textarea class="editor-text"></textarea>
