@@ -857,7 +857,7 @@ function generateWelcome(id) {
 		<div class="welcome-links">
 			<div data-color="blue" onclick="generateWindow('documents')" class="welcome-link">
 				<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>
-				<p>Taking (or teaching) a web programming course? Read through our <strong>documents</strong> to find the syllabus, schedules, and  resources!</p>
+				<p>Taking (or teaching) a web programming course? Read through our <strong>documents</strong> to find the syllabus, schedules, and resources!</p>
 			</div>
 			<div data-color="purple" onclick="generateWindow('lessons')" class="welcome-link">
 				<svg viewBox="0 0 100 100"><rect x="30" y="80" width="10" height="10"/><rect x="20" y="70" width="10" height="10"/><rect x="10" y="40" width="10" height="30"/><polygon points="40 40 40 50 60 50 60 40 50 40 50 20 40 20 40 30 20 30 20 40 40 40"/><rect x="50" y="10" width="20" height="10"/><rect x="60" y="30" width="20" height="10"/><rect x="80" y="40" width="10" height="30"/><rect x="70" y="70" width="10" height="10"/><rect x="40" y="70" width="20" height="10"/><rect x="60" y="80" width="10" height="10"/></svg>
@@ -895,35 +895,35 @@ function generateDocuments(id, source, section) {
 				<svg viewBox="0 0 100 100"><polygon points="70 30 70 80 30 80 30 20 60 20 60 10 20 10 20 90 80 90 80 30 70 30"/><rect x="40" y="60" width="20" height="10"/><rect x="40" y="40" width="20" height="10"/><rect x="60" y="20" width="10" height="10"/></svg>
 				<div>
 					<h4>Syllabus</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Start here to learn all about the course!</p>
 				</div>
 			</div>
 			<div data-doc="resources" class='documents-catalog-link' data-color='blue'>
 				<svg viewBox="0 0 100 100"><path d="m50,30V10H10v80h80V30h-40Zm-30-10h20v10h-20v-10Zm60,60H20v-40h60v40Z"/></svg>
 				<div>
 					<h4>Resources</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>Additional resources for working with and learning code.</p>
 				</div>
 			</div>
 			<div data-doc="4-week" class='documents-catalog-link' data-color='purple'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><polygon points="60 60 60 70 70 70 70 30 60 30 60 50 40 50 40 30 30 30 30 60 60 60"/></svg>
 				<div>
 					<h4>4-week Workshop Curriculum</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>A shortened version of the course, designed as a basic introduction to web programming concepts.</p>
 				</div>
 			</div>
 			<div data-doc="5-week" class='documents-catalog-link' data-color='yellow'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><polygon points="70 40 70 30 30 30 30 50 50 50 50 40 70 40"/><polygon points="70 70 70 50 50 50 50 60 30 60 30 70 70 70"/></svg>
 				<div>
 					<h4>5-week Intensive Curriculum</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>The (mostly) full curriculum, cramming 12 meetings into 5 weeks.</p>
 				</div>
 			</div>
 			<div data-doc="12-week" class='documents-catalog-link' data-color='green'>
 				<svg viewBox="0 0 100 100"><path d="m10,10v80h80V10H10Zm70,70H20V20h60v60Z"/><rect x="30" y="30" width="10" height="40"/><polygon points="70 30 50 30 50 40 60 40 60 50 70 50 70 30"/><polygon points="70 70 70 60 60 60 60 50 50 50 50 70 70 70"/></svg>
 				<div>
 					<h4>12-week Semester Curriculum</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					<p>The full curriculum at its normal pace.</p>
 				</div>
 			</div>
 		</div>
@@ -1103,6 +1103,10 @@ function generateLessons(id, source) {
 		for (let index of Object.keys(lessonsBackup)) {
 			let entry = lessonsBackup[index];
 
+			if (entry['active'] == 0) {
+				continue
+			}
+
 			// Generate difficulty rating
 			let color = 'red';
 			if (entry['difficulty'] == 2) {
@@ -1222,6 +1226,16 @@ function generateLessons(id, source) {
 		}
 
 		// Generate header tags
+		let lessonConcepts = entry['concepts'].split(',');
+		let headerConcepts = '';
+		if (lessonConcepts != '') {
+			headerConcepts += '<div><h5>Concepts</h5><ul data-color="yellow">';
+			for (let i of lessonConcepts) {
+				headerConcepts += `<li>${i.trimStart()}</li>`;
+			}
+			headerConcepts += '</ul></div>';
+		}
+
 		let lessonHTML = entry['html'].split(',');
 		let headerHTML = '';
 		if (lessonHTML != '') {
@@ -1289,6 +1303,7 @@ function generateLessons(id, source) {
 				<div class="lesson-doc-divider"></div>
 
 				<div class="lesson-doc-concepts">
+					${headerConcepts}
 					${headerHTML}
 					${headerCSS}
 					${headerJS}
@@ -1399,14 +1414,22 @@ function generateLessons(id, source) {
 		if (activeIndex < 0) {
 			activeIndex = lessonsBackup.length-1;
 		}
-		openLesson(lessonsBackup[activeIndex]['source']);
+		if (lessonsBackup[activeIndex]['active'] == 0) {
+			prevLesson();
+		} else {
+			openLesson(lessonsBackup[activeIndex]['source']);
+		}
 	}
 	function nextLesson() {
 		activeIndex++;
 		if (activeIndex >= lessonsBackup.length) {
 			activeIndex = 0;
 		}
-		openLesson(lessonsBackup[activeIndex]['source']);
+		if (lessonsBackup[activeIndex]['active'] == 0) {
+			nextLesson();
+		} else {
+			openLesson(lessonsBackup[activeIndex]['source']);
+		}
 	}
 }
 
@@ -1441,13 +1464,19 @@ function generateGlossary(id, source) {
 		for (let index of Object.keys(glossaryBackup)) {
 			let entry = glossaryBackup[index];
 
+			if (entry['active'] == 0) {
+				continue
+			}
+
 			let color = 'red';
-			if (entry['type'] == 'css') {
+			if (entry['type'] == 'html') {
 				color = 'blue';
-			} else if (entry['type'] == 'javascript') {
+			} else if (entry['type'] == 'css') {
 				color = 'purple';
-			} else if (entry['type'] == 'misc') {
+			} else if (entry['type'] == 'javascript') {
 				color = 'yellow';
+			} else if (entry['type'] == 'misc') {
+				color = 'green';
 			}
 
 			temp += `
@@ -1492,8 +1521,8 @@ function generateGlossary(id, source) {
 		if (source != undefined) {
 			target.dataset.menu = 0;
 		} else {
-			activeGlossary = 'index-html';
-			source = 'index-html.html';
+			activeGlossary = glossaryBackup[0]['term'];
+			source = glossaryBackup[0]['source'];
 			target.dataset.menu = 1;
 		}
 		fetchTerm(source);
@@ -1523,12 +1552,14 @@ function generateGlossary(id, source) {
 		// Set color
 		let type = glossaryBackup[key]['type'];
 		let color = 'red';
-		if (type == 'css') {
+		if (type == 'html') {
 			color = 'blue';
-		} else if (type == 'javascript') {
+		} else if (type == 'css') {
 			color = 'purple';
-		} else if (type == 'misc') {
+		} else if (type == 'javascript') {
 			color = 'yellow';
+		} else if (type == 'misc') {
+			color = 'green';
 		}
 		glossaryContent.dataset.color = color;
 
@@ -1633,6 +1664,10 @@ function generateProjects(id, source) {
 		let temp = '';
 		for (let index of Object.keys(projectsBackup)) {
 			let entry = projectsBackup[index];
+
+			if (entry['active'] == 0) {
+				continue
+			}
 
 			// Generate difficulty rating
 			let color = 'red';
@@ -1753,6 +1788,16 @@ function generateProjects(id, source) {
 		}
 
 		// Generate header tags
+		let projectConcepts = entry['concepts'].split(',');
+		let headerConcepts = '';
+		if (projectConcepts != '') {
+			headerConcepts += '<div><h5>Concepts</h5><ul data-color="yellow">';
+			for (let i of projectConcepts) {
+				headerConcepts += `<li>${i.trimStart()}</li>`;
+			}
+			headerConcepts += '</ul></div>';
+		}
+
 		let projectHTML = entry['html'].split(',');
 		let headerHTML = '';
 		if (projectHTML != '') {
@@ -1820,6 +1865,7 @@ function generateProjects(id, source) {
 				<div class="project-doc-divider"></div>
 
 				<div class="project-doc-concepts">
+					${headerConcepts}
 					${headerHTML}
 					${headerCSS}
 					${headerJS}
@@ -1930,14 +1976,22 @@ function generateProjects(id, source) {
 		if (activeIndex < 0) {
 			activeIndex = projectsBackup.length-1;
 		}
-		openProject(projectsBackup[activeIndex]['source']);
+		if (projectsBackup[activeIndex]['active'] == 0) {
+			prevProject();
+		} else {
+			openProject(projectsBackup[activeIndex]['source']);
+		}
 	}
 	function nextProject() {
 		activeIndex++;
 		if (activeIndex >= projectsBackup.length) {
 			activeIndex = 0;
 		}
-		openProject(projectsBackup[activeIndex]['source']);
+		if (projectsBackup[activeIndex]['active'] == 0) {
+			nextProject();
+		} else {
+			openProject(projectsBackup[activeIndex]['source']);
+		}
 	}
 }
 
@@ -2158,4 +2212,9 @@ function findByProperty(json, property, value) {
 		if (object[property] == value) return key;
 	}
 	return false;
+}
+
+// Open external link function for buttons
+function openLink(url) {
+	window.open(url, "_blank");
 }

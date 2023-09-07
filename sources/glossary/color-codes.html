@@ -1,0 +1,17 @@
+<section>
+	<p>
+		You can specify colors for things like text and backgrounds in a variety of ways. Here are the ones that are most commonly used:
+	</p>
+	<ul>
+		<li>Hex codes are written as #______, with six numbers/letters in a row. The first two digits represent red, the next two represent green, and the last two represent blue (just like in RGB). For instance, #000000 is black, #FFFFFF is white, and #FF0000 is red.</li>
+		<li>rgb(_, _, _) represents a color via three numbers in the ranges 0-255 for red, green, and blue. For these numbers, 0 represents the least of a color (darker) and 255 represents the most of a color (lighter). For instance, rgb(0, 0, 0) is black, rgb(255, 255, 255) is white, and rgb(255, 0, 0) is red. You can also specify the color as rgba(_, _, _, _) to add an alpha (opacity channel) with the decimal ranges 0-1. Then, rgba(255, 0, 0, .5) would be red at half opacity.</li>
+		<li>hsl(_, _, _) represents the hue, saturation, and lightness of a color. Hue is a value 0-360 using “deg” units, while saturation and lightness are in the range of 0-100 using percent (%) units. For instance, hsl(0deg, 0%, 0%) is black, hsl(0deg, 0%, 100%) is white, and hsl(0deg, 100%, 50%) is red. You can also specify the color as hsla(_, _, _, _) to add an alpha (opacity channel) with the decimal ranges 0-1. Then, hsl(0deg, 100%, 50%, .5) would be red at half opacity.</li>
+		<li>You can technically specify color by name, too. There is a limited set of predetermined CSS colors, which you can find a full list of <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/named-color">here</a>.</li>
+	</ul>
+	<button onclick="openLink('https://developer.mozilla.org/en-US/docs/Web/CSS/color_value')">
+		Learn more at MDN
+	</button>
+	<button data-color="yellow" onclick="generateWindow('code-editor', 'glossary-color-codes.html')">
+		Open Demo
+	</button>
+</section>

@@ -1,5 +1,21 @@
 <section>
 	<p>
-		Coming soon!
+		CSS units let us specify properties like font size and element width. There are more than you’ll ever likely need, so here are the ones worth knowing when you’re just getting started:
 	</p>
+	<ul>
+		<li>Pixels (px), your standard unit of measurement on the web.</li>
+		<li>Percent (%), relative to the parent element’s length. Useful for responsive layouts, but keep in mind that this usually won’t work for specifying heights!</li>
+		<li>em, where 1em = 100% the current font size. Useful for specifying things like line height, where you might want it to be 1.5x the font size (so 1.5em).</li>
+		<li>Viewport width (vw), where 1vw = 1% of the window width. Useful for layouts reliant on screen size, like when you want a font to exactly fit the width of the screen.</li>
+		<li>Viewport height (vh), where 1vh = 1% of the window height. When working on mobile, you’ll often want to use dynamic viewport height (dvh) units instead, which will take into account hiding elements like the search bar or controls (otherwise, vh might extend off of the visible area).</li>
+	</ul>
+	<p>
+		If you’re designing a website intended to be printed, you can also specify units in points (pt), inches (in), and centimeters (cm).
+	</p>
+	<button onclick="openLink('https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units')">
+		Learn more at MDN
+	</button>
+	<button data-color="yellow" onclick="generateWindow('code-editor', 'glossary-units.html')">
+		Open Demo
+	</button>
 </section>
