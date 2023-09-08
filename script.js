@@ -1231,7 +1231,7 @@ function generateLessons(id, source) {
 		if (lessonConcepts != '') {
 			headerConcepts += '<div><h5>Concepts</h5><ul data-color="yellow">';
 			for (let i of lessonConcepts) {
-				headerConcepts += `<li>${i.trimStart()}</li>`;
+				headerConcepts += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerConcepts += '</ul></div>';
 		}
@@ -1241,7 +1241,7 @@ function generateLessons(id, source) {
 		if (lessonHTML != '') {
 			headerHTML += '<div><h5>HTML</h5><ul data-color="yellow">';
 			for (let i of lessonHTML) {
-				headerHTML += `<li>${i.trimStart()}</li>`;
+				headerHTML += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerHTML += '</ul></div>';
 		}
@@ -1251,7 +1251,7 @@ function generateLessons(id, source) {
 		if (lessonCSS != '') {
 			headerCSS += '<div><h5>CSS</h5><ul data-color="yellow">';
 			for (let i of lessonCSS) {
-				headerCSS += `<li>${i.trimStart()}</li>`;
+				headerCSS += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerCSS += '</ul></div>';
 		}
@@ -1261,7 +1261,7 @@ function generateLessons(id, source) {
 		if (lessonJS != '') {
 			headerJS += '<div><h5>JavaScript</h5><ul data-color="yellow">';
 			for (let i of lessonJS) {
-				headerJS += `<li>${i.trimStart()}</li>`;
+				headerJS += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerJS += '</ul></div>';
 		}
@@ -1271,7 +1271,7 @@ function generateLessons(id, source) {
 		if (lessonMisc != '') {
 			headerMisc += '<div><h5>Misc</h5><ul data-color="yellow">';
 			for (let i of lessonMisc) {
-				headerMisc += `<li>${i.trimStart()}</li>`;
+				headerMisc += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerMisc += '</ul></div>';
 		}
@@ -1518,13 +1518,19 @@ function generateGlossary(id, source) {
 		})
 
 		// Get source file if specified
+		console.log(source);
 		if (source != undefined) {
 			target.dataset.menu = 0;
+			// Get correct source if .html is not included
+			if (!source.includes('.html')) {
+				source = glossaryBackup[findByProperty(glossaryBackup, 'term', source)]['source'];
+			}
 		} else {
 			activeGlossary = glossaryBackup[0]['term'];
 			source = glossaryBackup[0]['source'];
 			target.dataset.menu = 1;
 		}
+		console.log(source);
 		fetchTerm(source);
 	}
 	fetchMenu();
@@ -1793,7 +1799,7 @@ function generateProjects(id, source) {
 		if (projectConcepts != '') {
 			headerConcepts += '<div><h5>Concepts</h5><ul data-color="yellow">';
 			for (let i of projectConcepts) {
-				headerConcepts += `<li>${i.trimStart()}</li>`;
+				headerConcepts += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerConcepts += '</ul></div>';
 		}
@@ -1803,7 +1809,7 @@ function generateProjects(id, source) {
 		if (projectHTML != '') {
 			headerHTML += '<div><h5>HTML</h5><ul data-color="yellow">';
 			for (let i of projectHTML) {
-				headerHTML += `<li>${i.trimStart()}</li>`;
+				headerHTML += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerHTML += '</ul></div>';
 		}
@@ -1813,7 +1819,7 @@ function generateProjects(id, source) {
 		if (projectCSS != '') {
 			headerCSS += '<div><h5>CSS</h5><ul data-color="yellow">';
 			for (let i of projectCSS) {
-				headerCSS += `<li>${i.trimStart()}</li>`;
+				headerCSS += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerCSS += '</ul></div>';
 		}
@@ -1823,7 +1829,7 @@ function generateProjects(id, source) {
 		if (projectJS != '') {
 			headerJS += '<div><h5>JavaScript</h5><ul data-color="yellow">';
 			for (let i of projectJS) {
-				headerJS += `<li>${i.trimStart()}</li>`;
+				headerJS += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerJS += '</ul></div>';
 		}
@@ -1833,7 +1839,7 @@ function generateProjects(id, source) {
 		if (projectMisc != '') {
 			headerMisc += '<div><h5>Misc</h5><ul data-color="yellow">';
 			for (let i of projectMisc) {
-				headerMisc += `<li>${i.trimStart()}</li>`;
+				headerMisc += `<li onclick="generateWindow('glossary', '${i.trimStart()}')">${i.trimStart()}</li>`;
 			}
 			headerMisc += '</ul></div>';
 		}

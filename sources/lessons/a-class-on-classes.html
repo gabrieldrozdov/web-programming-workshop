@@ -1,1 +1,196 @@
-<div class="lesson-placeholder">Coming soon!</div>
+<section id="reduce-reuse-recycle">
+
+	<h5>
+		Reduce, Reuse, Recycle
+	</h5>
+	
+	<p>
+		No matter what you’re coding, you’re going to be juggling large amounts of code at once. “Complicated” code can be mathematically and logically complex, but it can also just be hard to keep track of.
+	</p>
+		
+	<p>
+		When CSS gets complicated, it’s usually because there’s too much to keep track of, not because anything individually is overly complex.
+	</p>
+
+	<p>
+		So far, we’ve been using inline CSS. This lets us embed CSS directly into HTML elements, but it also means that we have to keep track of CSS styles per element. That’s super annoying. Luckily, we have CSS classes!
+	</p>
+
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-1.html')">
+		<span>DEMO 2.1</span>
+	</button>
+
+	<p>
+		<span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'css-classes.html')">CSS classes</span> are groups of CSS styles that can be applied to multiple HTML elements simultaneously. There are a few reasons why we’d want to use classes instead of inline CSS:
+	</p>
+
+	<ol>
+		<li>CSS classes are centralized. You don’t have to search through your code to find out why something looks a certain way. Instead, just look at its class!</li>
+		<li>CSS classes are reusable. If you want multiple elements to have the same styles, then just give them the same class!</li>
+	</ol>
+	
+	<p>
+		Unlike inline CSS, classes have to be defined in a new HTML tag called the <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'style.html')">“style”</span> tag. This is an invisible HTML element that lets you write CSS code directly in an HTML document. (We’ll look at CSS files in a later lesson.)
+	</p>
+	
+	<p>
+		The “style” tag is also special because it has to live in another invisible HTML element — the <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'head.html')">“head”</span> tag. This lives at the top of your HTML document and defines your site’s <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'metadata.html')">metadata</span>.
+	</p>
+	
+	<p>
+		There’s a whole slew of other metadata we can include in the head tag.
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-2.html')">
+		<span>DEMO 2.2</span>
+	</button>
+
+	<p>
+		Now that we know what classes are, let’s put them into practice.
+	</p>
+	
+	<button data-color="green" onclick="generateWindow('projects', 'wikipedia-by-you-too.html')">
+		<span>EXERCISE 2.1: Wikipedia, By You, Too</span>
+	</button>
+
+</section>
+
+<section id="specificity">
+
+	<h5>
+		Specificity
+	</h5>
+	
+	<p>
+		When you use CSS, you might either accidentally or on purpose define the same property twice for one element. Maybe, you say that element should be red, and then you say that it should be blue. Which color will the element end up as?
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-3.html')">
+		<span>DEMO 2-3</span>
+	</button>
+
+	<p>
+		The answer to this question is <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'specificity.html')">CSS specificity</span> . When an element has conflicting styles, the most specific style will override any other styles.
+	</p>
+
+	<p>
+		This means that if an element has inline CSS and a class, its inline CSS will override any styles from that class. Simple enough, right?
+	</p>
+
+	<p>
+		Let’s pretend it is that simple for now. Now, let’s look at how we might want to actually combine classes with inline CSS.
+	</p>
+
+	<p>
+		So far, we’ve looked at how to style text using CSS. What if we wanted to create shapes instead?
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-4.html')">
+		<span>DEMO 2.4</span>
+	</button>
+
+	<p>
+		Remember the “div” element? Since it isn’t a semantic HTML element, it can technically be anything. We just need to give it some CSS and make it shine.
+	</p>
+
+	<p>
+		We can combine our shape’s class with some inline CSS to make a variety of forms.
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-5.html')">
+		<span>DEMO 2.5</span>
+	</button>
+
+</section>
+
+<section id="the-box-model">
+
+	<h5>
+		The Box Model
+	</h5>
+
+	<p>
+		We’re now verging on a big concept — the CSS box model.
+	</p>
+
+	<p>
+		<span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'box-model.html')">The box model</span> determines the size and shape of all HTML elements. Here’s what you need to know:
+	</p>
+
+	<ul>
+		<li>An element’s <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'margin.html')">“margin”</span> is outside of it.</li>
+		<li>An element’s <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'padding.html')">“padding”</span> is inside of it.</li>
+		<li>An element’s <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'border.html')">“border”</span> is between its margin and padding.</li>
+		<li>An element has a <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'width.html')">“width”</span> and <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'height.html')">“height”</span>, which are often determined by its parent element.</li>
+		<li>All of these properties are defined using various <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'units.html')">units</span>.</li>
+	</ul>
+
+	<p>
+		There’s a lot to keep track of, but luckily these rules apply to virtually all HTML elements. Learn it once and you won’t forget it!
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-6.html')">
+		<span>DEMO 2.6</span>
+	</button>
+
+	<p>
+		But, this only determines the shape of an element. What about where that element goes?
+	</p>
+
+	<p>
+		In almost all cases, we actually want that element’s position to be automatically defined by the parent element, or by the web page itself.
+	</p>
+
+	<p>
+		That being said, if we’re making art we might want to create something more deliberate.
+	</p>
+	
+	<button data-color="green" onclick="generateWindow('projects', 'css-self-portrait.html')">
+		<span>EXERCISE 2.2: CSS Self-portrait</span>
+	</button>
+
+</section>
+
+<section id="combinators">
+
+	<h5>
+		Combinators
+	</h5>
+
+	<p>
+		OK, so specificity is not always simple. I lied before. Sorry.
+	</p>
+
+	<p>
+		As I mentioned before, parent elements have a lot to say about what their child elements are doing. One way that happens is through class combinators.
+	</p>
+
+	<p>
+		<span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'combinators.html')">Combinators</span> let us extend a class so that it affects the children of an element, not just the element itself.
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-2-7.html')">
+		<span>DEMO 2.7</span>
+	</button>
+
+	<p>
+		In this case, only the paragraphs inside the “div” are red.
+	</p>
+
+	<p>
+		This is too complicated for now so I’m going to end this lesson here.
+	</p>
+
+</section>
+
+<section id="conclusion">
+
+	<h5>
+		In Conclusion
+	</h5>
+
+	<p>
+		In this lesson, we used CSS classes to make our code more efficient and maintainable. We also found ways to use classes with inline CSS, explored the CSS box model, and got more specific about what our classes should apply to. In the next lesson, we’ll learn how to take these ideas off of this website and into the real world.
+	</p>
+
+</section>

@@ -1,9 +1,44 @@
 [
   {
+    "term": "HTML",
+    "type": "concepts",
+    "desc": "HyperText Markup Language",
+    "source": "html.html",
+    "active": 1
+  },
+  {
     "term": "HTML Elements",
     "type": "concepts",
     "desc": "HTML tags",
     "source": "html-elements.html",
+    "active": 1
+  },
+  {
+    "term": "HTML Attributes",
+    "type": "concepts",
+    "desc": "Embedding data into an HTML element",
+    "source": "html-attributes.html",
+    "active": 1
+  },
+  {
+    "term": "Semantic HTML",
+    "type": "concepts",
+    "desc": "Element names that describe their content",
+    "source": "semantic-html.html",
+    "active": 1
+  },
+  {
+    "term": "Element Identifiers",
+    "type": "concepts",
+    "desc": "“id” attribute",
+    "source": "element-identifiers.html",
+    "active": 1
+  },
+  {
+    "term": "CSS",
+    "type": "concepts",
+    "desc": "Cascading Style Sheets",
+    "source": "css.html",
     "active": 1
   },
   {
@@ -28,6 +63,20 @@
     "active": 1
   },
   {
+    "term": "Specificity",
+    "type": "concepts",
+    "desc": "Resolving conflicting CSS styles",
+    "source": "specificity.html",
+    "active": 1
+  },
+  {
+    "term": "Box Model",
+    "type": "concepts",
+    "desc": "HTML element structure and styling",
+    "source": "box-model.html",
+    "active": 1
+  },
+  {
     "term": "Units",
     "type": "concepts",
     "desc": "Pixels, percent, em, viewport units (vw, vh)",
@@ -39,6 +88,34 @@
     "type": "concepts",
     "desc": "Hex, rgb, hsl",
     "source": "color-codes.html",
+    "active": 1
+  },
+  {
+    "term": "JavaScript",
+    "type": "concepts",
+    "desc": "Programming language for websites",
+    "source": "javascript.html",
+    "active": 1
+  },
+  {
+    "term": "JSON",
+    "type": "concepts",
+    "desc": "JavaScript Object Notation",
+    "source": "json.html",
+    "active": ""
+  },
+  {
+    "term": "DOM",
+    "type": "concepts",
+    "desc": "Document Object Model",
+    "source": "dom.html",
+    "active": 1
+  },
+  {
+    "term": "Libraries",
+    "type": "concepts",
+    "desc": "Extending programming languages",
+    "source": "libraries.html",
     "active": 1
   },
   {
@@ -63,24 +140,10 @@
     "active": 1
   },
   {
-    "term": "DOM",
-    "type": "concepts",
-    "desc": "Document Object Model",
-    "source": "dom.html",
-    "active": 1
-  },
-  {
     "term": "UI/UX",
     "type": "concepts",
     "desc": "User interface and experience design",
     "source": "uiux.html",
-    "active": 1
-  },
-  {
-    "term": "Libraries",
-    "type": "concepts",
-    "desc": "Extending programming languages",
-    "source": "libraries.html",
     "active": 1
   },
   {
@@ -98,9 +161,9 @@
     "active": 1
   },
   {
-    "term": "ol, ul, li",
+    "term": "ol ul li",
     "type": "html",
-    "desc": "Ordered and unordered lists",
+    "desc": "Ordered and Unordered Lists",
     "source": "ol-ul-li.html",
     "active": 1
   },
@@ -163,8 +226,15 @@
   {
     "term": "head",
     "type": "html",
-    "desc": "Metadata",
+    "desc": "Container for metadata",
     "source": "head.html",
+    "active": 1
+  },
+  {
+    "term": "meta",
+    "type": "html",
+    "desc": "Metadata",
+    "source": "meta.html",
     "active": 1
   },
   {
@@ -175,10 +245,24 @@
     "active": 1
   },
   {
+    "term": "link",
+    "type": "html",
+    "desc": "External data",
+    "source": "link.html",
+    "active": 1
+  },
+  {
     "term": "script",
     "type": "html",
     "desc": "Embedded JavaScript",
     "source": "script.html",
+    "active": 1
+  },
+  {
+    "term": "color",
+    "type": "css",
+    "desc": "Font color",
+    "source": "color.html",
     "active": 1
   },
   {
@@ -193,13 +277,6 @@
     "type": "css",
     "desc": "Weight or boldness",
     "source": "font-weight.html",
-    "active": 1
-  },
-  {
-    "term": "color",
-    "type": "css",
-    "desc": "Font color",
-    "source": "color.html",
     "active": 1
   },
   {
@@ -263,13 +340,6 @@
     "type": "css",
     "desc": "Custom fonts",
     "source": "font-face.html",
-    "active": 1
-  },
-  {
-    "term": "Box Model",
-    "type": "css",
-    "desc": "HTML element structure and styling",
-    "source": "box-model.html",
     "active": 1
   },
   {
@@ -350,6 +420,20 @@
     "active": 1
   },
   {
+    "term": "position",
+    "type": "css",
+    "desc": "Static, relative, absolute, fixed, sticky",
+    "source": "position.html",
+    "active": 1
+  },
+  {
+    "term": "z-index",
+    "type": "css",
+    "desc": "Overlapping elements",
+    "source": "z-index.html",
+    "active": ""
+  },
+  {
     "term": "transform",
     "type": "css",
     "desc": "Rotate, translate, scale, skew",
@@ -364,13 +448,6 @@
     "active": 1
   },
   {
-    "term": "position",
-    "type": "css",
-    "desc": "Static, relative, absolute, fixed, sticky",
-    "source": "position.html",
-    "active": 1
-  },
-  {
     "term": "transition",
     "type": "css",
     "desc": "Interpolate between values",
@@ -378,7 +455,7 @@
     "active": 1
   },
   {
-    "term": ":hover, :active",
+    "term": ":hover :active",
     "type": "css",
     "desc": "Hover and active states",
     "source": "hover-active.html",
@@ -392,7 +469,7 @@
     "active": 1
   },
   {
-    "term": "@keyframes, animation",
+    "term": "@keyframes animation",
     "type": "css",
     "desc": "Keyframed animations",
     "source": "keyframes-animation.html",

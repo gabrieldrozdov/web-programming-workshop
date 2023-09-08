@@ -1888,6 +1888,15 @@ body {
 .lesson-doc section li {
 	padding-left: .5em;
 }
+.lesson-doc section a {
+	color: var(--white);
+}
+.lesson-doc section a:hover {
+	text-decoration: none;
+}
+.lesson-doc section a:active {
+	opacity: .5;
+}
 
 /* Document header */
 .lesson-doc header {
@@ -3131,6 +3140,15 @@ body {
 }
 .project-doc section li {
 	padding-left: .5em;
+}
+.project-doc section a {
+	color: var(--white);
+}
+.project-doc section a:hover {
+	text-decoration: none;
+}
+.project-doc section a:active {
+	opacity: .5;
 }
 
 /* Document header */
