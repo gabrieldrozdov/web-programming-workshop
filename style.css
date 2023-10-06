@@ -1398,7 +1398,7 @@ body {
 /* Images and captions */
 .doc-content figure {
 	width: 100%;
-	max-width: 400px;
+	max-width: 600px;
 	align-self: center;
 	display: flex;
 	flex-direction: column;
@@ -1408,6 +1408,8 @@ body {
 }
 .doc-content figure img {
 	width: 100%;
+	border: 1px solid var(--white);
+	border-radius: 4px;
 }
 .doc-content figure figcaption {
 	border-top: 2px solid var(--color);
@@ -1416,6 +1418,7 @@ body {
 	padding-top: 4px;
 	font-size: 18px;
 	width: 100%;
+	line-height: 1em;
 	letter-spacing: .03em;
 	font-weight: bold;
 }
@@ -2124,7 +2127,7 @@ body {
 /* Images and captions */
 .lesson-doc figure {
 	width: 100%;
-	max-width: 400px;
+	max-width: 600px;
 	align-self: center;
 	display: flex;
 	flex-direction: column;
@@ -2133,7 +2136,12 @@ body {
 	margin: 20px 0px;
 }
 .lesson-doc figure img {
-	width: 100%;
+	max-width: 600px;
+	max-height: 450px;
+	height: auto;
+	width: auto;
+	border: 1px solid var(--white);
+	border-radius: 4px;
 }
 .lesson-doc figure figcaption {
 	border-top: 2px solid var(--color);
@@ -2144,9 +2152,16 @@ body {
 	width: 100%;
 	letter-spacing: .03em;
 	font-weight: bold;
+	line-height: 1em;
+	display: flex;
+	gap: 1em;
+}
+.figname {
+	flex-shrink: 0;
+	color: var(--white);
 }
 .lesson-doc figure figcaption a {
-	color: var(--white);
+	color: var(--color);
 }
 .lesson-doc figure figcaption a:hover {
 	text-decoration: none;
@@ -2658,7 +2673,7 @@ body {
 /* Images and captions */
 .glossary-content figure {
 	width: 100%;
-	max-width: 400px;
+	max-width: 600px;
 	align-self: center;
 	display: flex;
 	flex-direction: column;
@@ -2668,6 +2683,8 @@ body {
 }
 .glossary-content figure img {
 	width: 100%;
+	border: 1px solid var(--white);
+	border-radius: 4px;
 }
 .glossary-content figure figcaption {
 	border-top: 2px solid var(--color);
@@ -2678,6 +2695,7 @@ body {
 	width: 100%;
 	letter-spacing: .03em;
 	font-weight: bold;
+	line-height: 1em;
 }
 .glossary-content figure figcaption a {
 	color: var(--white);
@@ -3387,6 +3405,8 @@ body {
 }
 .project-doc figure img {
 	width: 100%;
+	border: 1px solid var(--white);
+	border-radius: 4px;
 }
 .project-doc figure figcaption {
 	border-top: 2px solid var(--color);
@@ -3397,6 +3417,7 @@ body {
 	width: 100%;
 	letter-spacing: .03em;
 	font-weight: bold;
+	line-height: 1em;
 }
 .project-doc figure figcaption a {
 	color: var(--white);

@@ -1,219 +1,350 @@
+<section id="what-is-a-website">
+
+	<h5>
+		What is a website?
+	</h5>
+	
+	<p>
+		Everyone's a little bit of a graphic designer. That includes you, even if you don’t know it. At some point, you’ve probably formatted a document, and you had to make some decisions. You decided what font to use, how big to make it, whether to set it left, right, or center aligned, and so on. While you were making these decisions, you were probably focused on making your document look pretty, or professional, or cool. And furthermore, you probably didn’t have to try very hard to make these decisions. It’s easy to digitally edit a text document, right? Just click a few buttons, select a couple of options, and you’re good to go.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-1.jpg">
+		<figcaption>
+			<span class="figname">FIGURE 1.1</span>
+			<span>I’ve made many design decisions while writing this document in Google Docs.</span>
+		</figcaption>
+	</figure>
+		
+	<p>
+		When you finish designing your document, you might print it. You might save it as a PDF, or as an image. But once it’s done, it’s done. If everything goes right, the document’s layout won’t change ever again.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-2.png">
+		<figcaption>
+			<span class="figname">FIGURE 1.2</span>
+			<span>This is an image. It’s always going to look like this, as unforunate as that may be.</span>
+		</figcaption>
+	</figure>
+
+	<p>
+		A lot of the time, websites look like the documents that you’re familiar with. Sometimes, they’re even designed to emulate the experience of a printed document.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-3.jpg">
+		<figcaption>
+			<span class="figname">FIGURE 1.3</span>
+			<span>The homepage for The New York Times borrows its design from the newspaper’s print edition. <a href="https://www.nytimes.com/" target="_blank">Visit the website</a></span>
+		</figcaption>
+	</figure>
+	
+	<p>
+		However, websites face a little conundrum that printed documents don’t face. And when I say little, I actually mean earth-shattering.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-4.jpg">
+		<figcaption>
+			<span class="figname">FIGURE 1.4</span>
+			<span>The same homepage for The New York Times, but in a smaller browser window.</span>
+		</figcaption>
+	</figure>
+	
+	<p>
+		Websites don’t have the luxury of just being one thing. While a PDF or image is set in stone, a website might be viewed on a phone, tablet, or desktop. Even worse, there isn’t one set size for each of those devices.
+	</p>
+
+	<p>
+		For a long time, we didn’t care much about this problem. Home computing was still in its infancy, and smartphones were a long way off. Web design from that era reflects this — web developers used what limited tools were available to make websites that just worked.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-5.jpg">
+		<figcaption>
+			<span class="figname">FIGURE 1.5</span>
+			<span>Apple’s homepage from July 15, 1997. <a href="https://web.archive.org/web/19970715124703/http://www.apple.com/" target="_blank">View on archive.org</a></span>
+		</figcaption>
+	</figure>
+
+	<p>
+		We live in a different era. Today’s websites are fluid, adapting for multiple screen sizes, resolutions, aspect ratios, and types of input. We have way more people to account for, and they’re all using radically different devices. At the same time, we have much better tools available to us to create these websites.
+	</p>
+
+	<p>
+		It’s easy to gloss over the fact that websites are an invented medium. If you haven’t worked with code before, it might seem that programming languages are some sort of natural phenomena — they just seem to exist. In fact, programming languages are designed, by humans, in the same way that you might design a document. Let’s say you need your document to look fancy. What if your text editor has no calligraphic, swirly fonts? If enough people have that problem, then there might be a new version of your text editor that features fancy fonts.
+	</p>
+
+	<p>
+		Websites started as a place to simply communicate information.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-6.jpg">
+		<figcaption>
+			<span class="figname">FIGURE 1.6</span>
+			<span>The first website ever created. <a href="http://info.cern.ch/hypertext/WWW/TheProject.html" target="_blank">Visit the website</a></span>
+		</figcaption>
+	</figure>
+
+	<p>
+		Now, as you’re well aware of, they’re a place to do so much more.
+	</p>
+
+</section>
+
 <section id="baby-steps">
 
 	<h5>
 		Baby Steps
 	</h5>
-	
+
 	<p>
-		What is a website?
-	</p>
-		
-	<p>
-		Oh, that’s easy. This is a website.
+		That was all fine and dandy, but we didn’t really talk about what a website is, did we?
 	</p>
 
+	<p>
+		This is a website.
+	</p>
+	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-1.html')">
 		<span>DEMO 1.1: A website</span>
 	</button>
 
 	<p>
-		From one perspective, websites are just files full of text. We call this text “plain text” because the file doesn’t contain any formatting information for its content. This means that the text is just text — it doesn’t have a font, color, weight, size, or anything of the sort. It is just text, and that text is code.
+		It’s not much. In fact, it is the bare minimum of what we might call a “website.”
 	</p>
-	
+
 	<p>
-		For websites, that code is specifically HTML code.
+		A website has to contain at least one file. This file has to be an HTML file, which ends with the extension of “.html”. <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'html.html')">HTML</span>, aka HyperText Markup Language (you don’t need to remember that), is a programming language. It’s the main programming language for websites, and the only one that’s required.
 	</p>
-	
+
 	<p>
-		What is HTML?
+		That first demo was an HTML file. I can prove it! Open up the demo again, and download it. Then, drag that file into your browser.
+	</p>
+
+	<figure>
+		<img src="/assets/figures/figure-1-7.jpg">
+		<figcaption>
+			<span class="figname">FIGURE 1.7</span>
+			<span>Web browsers read and display HTML files.</span>
+		</figcaption>
+	</figure>
+
+	<p>
+		An HTML file is a file that contains HTML code. Code is just text, but it’s text without any formatting. This means that the file doesn’t contain any information about the text’s font, color, alignment, etc. Instead, it’s what we call plain text.
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-2.html')">
-		<span>DEMO 1.2: HTML</span>
+		<span>DEMO 1.2: Let’s talk about plain text</span>
 	</button>
-	
-	<p>
-		<span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'html.html')">HTML</span> is the main language that websites use to display content. It’s different from human languages because it’s intended for web browsers, not humans. A web browser can’t interpret language based on context clues like we do, so that means that HTML has to be extremely precise. This precision appears in the form of <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'html-tags.html')">HTML tags</span>.
-	</p>
-	
-	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-3.html')">
-		<span>DEMO 1.3: “strong” (bolded) text</span>
-	</button>
-	
-	<p>
-		HTML tags split up plain text into various distinct elements. In the previous demo, we witnessed our first HTML tag — the <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'strong.html')">“strong”</span> tag. This tag tells the browser that the text contained within it is supposed to be bold.
-	</p>
 
 	<p>
-		What if we wanted our text to be italic?
+		Notice that in our code editor, we have the plain text on the left and a preview of the website on the right. This is how websites work. You write code, and then it gets interpreted by a web browser and displayed properly.
+	</p>
+	
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-1.html')">
+		<span>DEMO 1.3: Let the web browser do the work</span>
+	</button>
+
+	<p>
+		Well, displayed properly only if your code is written properly.
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-4.html')">
-		<span>DEMO 1.4: “em” (italicized) text</span>
+		<span>DEMO 1.4: Let the web browser, uh, do the work?</span>
 	</button>
 
 	<p>
-		Easy enough! What if we wanted our text to be bold AND italic?
+		This is what we would call the syntax of a programming language. Computers, despite their marvels, can’t think. They take instructions, and then they spit something out. Every programming language has its own syntax, or its own way of writing instructions for a computer to understand. Most of the time, if the computer spits out something wrong, then it’s, uh, your fault for not following this syntax.
+	</p>
+
+	<p>
+		Let’s do a classic exercise to see what it means to write code.
+	</p>
+	
+	<button data-color="green" onclick="generateWindow('exercises', 'tell-me-a-picture.html')">
+		<span>EXERCISE 1.1: Tell me a picture</span>
+	</button>
+
+	<p>
+		Instead of saying that writing code is hard, it feels more appropriate to say that writing code is tricky. The hardest part about learning your first programming language is learning both how easy it is to break your own code, and how easy it is to fix it.
+	</p>
+
+	<p>
+		When we’re coding in HTML, we are usually creating things called HTML elements. This is the syntax for telling the web browser that a heading is different from a paragraph, which is different from another paragraph, and so on. Most HTML elements use the following format:
+	</p>
+
+	<ul>
+		<li>An <strong>opening tag</strong> indicates the start of an element. This is some text enclosed in angle/alligator brackets (&lt; and &gt;) that indicates the type of the element. For example, the opening tag for a paragraph element is &lt;p&gt;.</li>
+		<li>A <strong>closing tag</strong> indicates the end of an element. This is the same as the opening tag, except with a forward slash (/) added right after the first angle bracket. For example, the closing tag for a paragraph element is &lt;/p&gt;.</li>
+	</ul>
+
+	<figure>
+		<img src="/assets/figures/figure-1-8.png">
+		<figcaption>
+			<span class="figname">FIGURE 1.8</span>
+			<span>The standard syntax for creating an HTML element. This one is a paragraph!</span>
+		</figcaption>
+	</figure>
+
+	<p>
+		HTML elements can be tricky because even a single typo can break your code. Luckily, we have systems for tracking down typos.
+	</p>
+
+	<p>
+		For instance, what happens if I forget an angle bracket?
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-5.html')">
-		<span>DEMO 1.5: Bold AND italic</span>
+		<span>DEMO 1.5: Missing angle bracket</span>
 	</button>
 
 	<p>
-		HTML elements are (usually) marked by an opening and closing tag. The closing tag features the same name as the opening tag, with an extra backslash (/) to indicate that it isn’t starting a new element. We have to be a little careful to not mix up or overlap our HTML tags, but we can place an HTML tag inside of another one.
-	</p>
-
-	<p>
-		It seems like we have enough information about HTML to start laying out a document. Let’s try it!
+		Or, what happens if I name the closing tag wrong?
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-6.html')">
-		<span>DEMO 1.6: A failure of a document</span>
+		<span>DEMO 1.6: Wrong closing tag</span>
 	</button>
 
 	<p>
-		Well, that didn’t work. HTML code doesn’t care about line breaks. Let’s give that one more go.
+		Or, what happens if I forget a closing tag entirely?
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-7.html')">
-		<span>DEMO 1.7: Less of a failure of a document</span>
+		<span>DEMO 1.7: Missing closing tag</span>
 	</button>
 
 	<p>
-		We found a solution! The <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'br.html')">“br”</span> tag provides the line break we were looking for. It’s also one of those funny elements that doesn’t require a closing tag.
-	</p>
-
-	<p>
-		Now that we have some tools for controlling structure, what if I wanted to do something more stylistic?
+		Or, what happens if you intersect HTML tags (instead of nesting them)?
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-8.html')">
-		<span>DEMO 1.8: Paint it red</span>
+		<span>DEMO 1.8: Intersecting tags</span>
 	</button>
 
 	<p>
-		Wahoo! We made some text red!
+		Code editors are built to help you find and correct typos. Editors will help you out by color-coding your code, showing you where things break your programming language’s syntax. This is partially while file extensions (like .html) are so important — they tell your code editor what language to check your syntax against.
 	</p>
 
 	<p>
-		We made that happen through another programming language that web browsers can understand. This language is called <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'css.html')">CSS</span> and works with HTML to style elements. Think of it this way: HTML is about structuring content, and CSS is about making that content look pretty.
+		Speaking of other languages, there is another one we should talk about.
+	</p>
+
+</section>
+
+<section id="make-it-pretty">
+
+	<h5>
+		Make It Pretty
+	</h5>
+
+	<p>
+		HTML is one of the three programming languages that web browsers understand. The other two are CSS and JavaScript. JavaScript will be useful much later on, but CSS is almost as fundamental as HTML is.
 	</p>
 
 	<p>
-		We can embed CSS into HTML tags through something called the “style” <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'attribute.html')">attribute</span>. This lives inside of the opening tag and styles any elements within the relevant HTML element. When we apply CSS this way, we call it <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'inline-css.html')">inline CSS</span>. In the previous demo, we used the <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'span.html')">“span”</span> tag to let us apply some inline CSS without messing up the structure.
+		CSS, which stands for Cascading Style Sheets, is the language that lets us make HTML pretty. CSS is different from HTML because it follows a completely different syntax.
 	</p>
 
 	<p>
-		Let’s take a look at another example of inline CSS.
+		So, what does CSS do?
 	</p>
 	
 	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-9.html')">
-		<span>DEMO 1.9: Another way to bold</span>
+		<span>DEMO 1.9: Make it bold</span>
 	</button>
 
 	<p>
-		In this demo, notice how our strong tag became unbolded. This is because <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'font-weight.html')">“font-weight”</span> is just a CSS property, and any <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'css-property.html')">CSS property</span>  can be manually defined or overridden.
+		This is still HTML, but there’s CSS hiding in the background that’s telling our web browser to bold some text. CSS controls every single design decision on a website, including font weight (which determines if text is bold or not).
+	</p>
+
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-10.html')">
+		<span>DEMO 1.10: Make it bold, but different</span>
+	</button>
+
+	<p>
+		We can manually define an element’s styles using inline CSS. Inline CSS lets us define CSS properties for a specific HTML element.
 	</p>
 
 	<p>
-		Alright, you’re doing great. Let’s try making something pretty with code.
+		We also just discovered the “span” element, which is a sort of generic version of the “strong” and “em” elements we saw in previous demos. To bold text we use “strong”, to italicize text we use “em” (short for emphasized), and to do whatever we want to text, including bolding it or italicizing it, we use “span”.
 	</p>
+
+	<p>
+		Let’s look at another example.
+	</p>
+
+	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-11.html')">
+		<span>DEMO 1.11: Make it pretty</span>
+	</button>
+
+	<p>
+		We can combine multiple CSS properties to make more complicated designs. CSS follows a different syntax from HTML:
+	</p>
+
+	<ul>
+		<li>First, we type the CSS property we want to set. A CSS property is any part of an element’s design, like font weight, font size, font family, and so on. CSS properties can’t contain spaces, so font weight would be “font-weight”. There’s a huge set of properties we can define, and you’ll gradually learn more as we keep going.</li>
+		<li>This property name is followed by a colon (:).</li>
+		<li>Then, we specify the property’s value. This depends on what property we’re setting.</li>
+		<li>If we want multiple properties, we separate them by a semicolon (;).</li>
+	</ul>
+
+	<figure>
+		<img src="/assets/figures/figure-1-9.png">
+		<figcaption>
+			<span class="figname">FIGURE 1.9</span>
+			<span>There is no limit to the number of CSS properties on a given element. Don’t get your colons (:) and semicolons (;) mixed up!</span>
+		</figcaption>
+	</figure>
+
+	<p>
+		We can embed CSS into HTML via the “style” attribute. HTML attributes live in the opening tag of an HTML element and follow a specific format:
+	</p>
+
+	<ul>
+		<li>Start with the name of the attribute. For inline CSS, we use the “style” attribute.</li>
+		<li>Follow that with an equals (=) sign.</li>
+		<li>Then add either a single (') or double (") quote to start adding content to the attribute.</li>
+		<li>Lastly, close the attribute with a single (') or double (") quote to match the first quote.</li>
+	</ul>
+
+	<figure>
+		<img src="/assets/figures/figure-1-10.png">
+		<figcaption>
+			<span class="figname">FIGURE 1.10</span>
+			<span>There are many useful HTML attributes, but we’ll just be working with the “style” attribute for now.</span>
+		</figcaption>
+	</figure>
 	
 	<button data-color="green" onclick="generateWindow('projects', 'programmatic-poetry.html')">
-		<span>EXERCISE 1.1: Programmatic Poetry</span>
+		<span>EXERCISE 1.2: Programmatic Poetry</span>
 	</button>
 
 </section>
 
-<section id="semantics">
+<section id="something-else-lol">
 
 	<h5>
-		Semantics
+		Something else lol
 	</h5>
 	
 	<p>
-		There’s one big caveat to what we’ve learned so far. Even though we can make anything look like anything with CSS, we should still keep our code organized with HTML tags. This means that headings should be marked with heading elements (<span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'h1-h6.html')">“h1” to “h6”</span>), paragraphs should be paragraph elements (<span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'p.html')">“p”</span>), and bolded or italic text should be contained within the “strong” and “em” tags from before. We call these <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'html-semantics.html')">semantic HTML elements</span> because they clearly describe the type of content inside of them.
-	</p>
-
-	<p>
-		Let’s take a look at how we might structure an article using semantic HTML tags.
+		Sooooo... I'm still writing (and revising, and revising) these lessons. We still have a bit more to do today, so let's keep going!
 	</p>
 	
-	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-10.html')">
-		<span>DEMO 1.10</span>
+	<button onclick="openLink('https://code.visualstudio.com/')">
+		<span>Download Visual Studio Code (aka VS Code)</span>
 	</button>
-
-	<p>
-		This structure is looking solid. We’re even seeing some new elements, like <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'ol-ul-li.html')">ordered and unordered lists</span>. And, we’re starting to see that there are default CSS styles set for different elements. Headings are bigger and bolder than paragraphs, and lists are marked with bullet points.
-	</p>
-
-	<p>
-		But now I have a big design request — what if I wanted everything to be set in a sans serif font?
-	</p>
-
-	<p>
-		Well, one way is to add inline CSS to every single element.
-	</p>
 	
-	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-11.html')">
-		<span>DEMO 1.11</span>
+	<button onclick="openLink('https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer')">
+		<span>Download and install the Live Server extension</span>
 	</button>
-
-	<p>
-		That is a huge pain though, because now I want all of my text to be green. Oh, and I might want it to be larger later on. I’m not sure yet; I want to see it both ways before making a decision.
-	</p>
-
-	<p>
-		Luckily, we’ve got another tool up our sleeve that’ll make our lives way, way, WAAAAY easier.
-	</p>
 	
-	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-12.html')">
-		<span>DEMO 1.12</span>
+	<button onclick="openLink('https://gabrieldrozdov.github.io/wpw22/week1/')">
+		<span>Web Programming Workshop 2022</span>
 	</button>
-
-	<p>
-		When you apply CSS to a main element (a.k.a. parent), all of its sub elements (a.k.a children) will inherit the same styles. This is actually where CSS gets its name, Cascading Style Sheets, because of this cascading-down effect.
-	</p>
-
-	<p>
-		The <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'div.html')">“div”</span> tag is a sort of universal “anything” tag for structuring content. You can put any other HTML elements into it, including other div tags. Anything contained inside a div tag (the child elements) will inherit the CSS applied to the div tag (the parent element).
-	</p>
-
-	<p>
-		Div tags are also useful because they let us tell the web browser what content is contained where. We can indicate that through the <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'id.html')">“id”</span> attribute.
-	</p>
-	
-	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-13.html')">
-		<span>DEMO 1.13</span>
-	</button>
-
-	<p>
-		The <span class="lesson-doc-highlight" data-color="yellow" onclick="generateWindow('glossary', 'a.html')">“a”</span> element (which gets its name from the word “anchor”) is how we link to content in our website. In this case, we are using it as an anchor link, jumping us to a section contained within the same web page. We can similarly use it to link to somewhere else.
-	</p>
-	
-	<button data-color="pink" onclick="generateWindow('code-editor', 'demo-1-14.html')">
-		<span>DEMO 1.14</span>
-	</button>
-
-	<p>
-		Let’s put all of that knowledge into practice!
-	</p>
-	
-	<button data-color="green" onclick="generateWindow('projects', 'wikipedia-by-you.html')">
-		<span>EXERCISE 1.2: Wikipedia, By You</span>
-	</button>
-
-</section>
-
-<section id="conclusion">
-
-	<h5>
-		In Conclusion
-	</h5>
-
-	<p>
-		In this lesson, we explored the basics of HTML and how to incorporate inline CSS to start styling elements. In the next lesson, we’ll delve deeper into CSS by working with classes.
-	</p>
 
 </section>
